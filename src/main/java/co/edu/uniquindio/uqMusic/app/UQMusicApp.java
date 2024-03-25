@@ -9,7 +9,7 @@ public class UQMusicApp extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        FXMLLoader loader = new FXMLLoader(UQMusicApp.class.getResource("/windows/principal.fxml"));
+        FXMLLoader loader = new FXMLLoader(UQMusicApp.class.getResource("/windows/menu.fxml"));
         Parent parent = loader.load();
 
         Scene scene = new Scene(parent);

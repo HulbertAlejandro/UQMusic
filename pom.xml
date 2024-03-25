@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
-    <artifactId>TiendaUQ</artifactId>
+    <artifactId>MusicUQ</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -21,7 +21,7 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.8</version>
                 <configuration>
-                    <mainClass>co.edu.uniquindio.tiendaUQ.app.TiendaUqApp</mainClass>
+                    <mainClass>co.edu.uniquindio.uqMusic.app.UQMusicApp</mainClass>
                 </configuration>
             </plugin>
         </plugins>

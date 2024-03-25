@@ -6,9 +6,7 @@ import lombok.Setter;
 @Setter
 @Getter
 public class Autor {
-    private String codigo;
-    private String nombre;
-    private String nacionalidad;
+    private String codigo, nombre,nacionalidad;
     private boolean esGrupo;
     private ListaDoblementeEnlazada<Cancion> listaCanciones = new ListaDoblementeEnlazada<Cancion>();
 

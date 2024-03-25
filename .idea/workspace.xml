@@ -5,12 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="698de894-61a7-45c5-a972-1023c3504b6f" name="Changes" comment="">
+<<<<<<< Updated upstream
       <change afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/uqMusic/model/Autor.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/uqMusic/model/Cancion.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/uqMusic/model/ListaDoblementeEnlazada.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/uqMusic/model/NodoDoble.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/uqMusic/model/Usuario.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/uqMusic/app/UQMusicApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/uqMusic/app/UQMusicApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/windows/menu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/windows/menu.fxml" afterDir="false" />
+>>>>>>> Stashed changes
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +43,7 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< Updated upstream
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
@@ -54,6 +61,26 @@
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+=======
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
+    "Application.UQMusicApp.executor": "Run",
+    "Maven.MusicUQ [org.openjfx:javafx-maven-plugin:0.0.8:run].executor": "Run",
+    "Maven.TiendaUQ [org.openjfx:javafx-maven-plugin:0.0.8:run].executor": "Run",
+    "Maven.UQMusic [org.openjfx:javafx-maven-plugin:0.0.8:run].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Program Files/Java/jdk-17",
+    "project.structure.last.edited": "SDKs",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
+>>>>>>> Stashed changes
   }
 }</component>
   <component name="SharedIndexes">

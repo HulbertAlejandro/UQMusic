@@ -6,7 +6,6 @@ import lombok.Setter;
 @Setter
 @Getter
 public class Usuario {
-    private String username;
-    private String contrasena;
-    private String email;
+    private String username,contrasena,email;
+    private ListaCircular<Cancion> canciones;
 }
