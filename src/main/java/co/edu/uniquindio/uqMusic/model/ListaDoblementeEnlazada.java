@@ -3,8 +3,10 @@ package co.edu.uniquindio.uqMusic.model;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 @Setter @Getter
-public class ListaDoblementeEnlazada <T>{
+public class ListaDoblementeEnlazada <T> implements Serializable {
 
     private NodoDoble<T> nodoPrimero;
     private NodoDoble<T> nodoUltimo;

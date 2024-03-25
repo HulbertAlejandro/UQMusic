@@ -1,11 +1,15 @@
 package co.edu.uniquindio.uqMusic.model;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 @Setter
 @Getter
-public class Autor {
+@Builder
+public class Autor implements Serializable {
     private String codigo, nombre,nacionalidad;
     private boolean esGrupo;
     private ListaDoblementeEnlazada<Cancion> listaCanciones = new ListaDoblementeEnlazada<Cancion>();

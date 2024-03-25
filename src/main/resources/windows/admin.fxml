@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="921.0" style="-fx-background-color: #000000; -fx-border-radius: 80;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.uqMusic.controllers.AdminController">
+   <children>
+      <Pane id="sidebarPane" layoutX="11.0" layoutY="18.0" prefHeight="564.0" prefWidth="888.0" style="-fx-background-color: #121212; -fx-background-radius: 10;">
+         <children>
+            <Pane id="contentPane" focusTraversable="true" layoutX="222.0" layoutY="19.0" prefHeight="531.0" prefWidth="461.0" style="-fx-background-color: #212121; -fx-background-radius: 10;">
+               <children>
+                  <ImageView fitHeight="91.0" fitWidth="119.0" layoutX="25.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/storify.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="159.0" layoutY="17.0" text="Storify" textFill="WHITE">
+                     <font>
+                        <Font name="Segoe UI Bold" size="80.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="102.0" layoutY="157.0" prefHeight="43.0" prefWidth="273.0" text="Funciones" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Segoe UI Bold" size="36.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="crearCancion" layoutX="98.0" layoutY="252.0" mnemonicParsing="false" onAction="#crearCancion" prefHeight="44.0" prefWidth="277.0" style="-fx-background-color: #121212; -fx-background-radius: 20;" text="Crear Canción" textFill="WHITE">
+                     <font>
+                        <Font name="Segoe UI Semibold" size="20.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="crearArtista" layoutX="98.0" layoutY="327.0" mnemonicParsing="false" onAction="#crearArtista" prefHeight="44.0" prefWidth="277.0" style="-fx-background-color: #121212; -fx-background-radius: 20;" text="Crear Artista" textFill="WHITE">
+                     <font>
+                        <Font name="Segoe UI Semibold" size="20.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="cargarInformacion" layoutX="98.0" layoutY="402.0" mnemonicParsing="false" onAction="#cargarInformacion" prefHeight="44.0" prefWidth="277.0" style="-fx-background-color: #121212; -fx-background-radius: 20;" text="Cargar Información" textFill="WHITE">
+                     <font>
+                        <Font name="Segoe UI Semibold" size="20.0" />
+                     </font>
+                  </Button>
+               </children>
+            </Pane>
+            <Button fx:id="back" layoutX="16.0" layoutY="510.0" mnemonicParsing="false" onAction="#back" prefHeight="34.0" prefWidth="108.0" style="-fx-background-color: #212121;" text="Back" textFill="WHITE">
+               <font>
+                  <Font name="Segoe UI Semibold" size="15.0" />
+               </font>
+            </Button>
+         </children></Pane>
+   </children>
+   <stylesheets>
+
+   </stylesheets>
+</AnchorPane>
