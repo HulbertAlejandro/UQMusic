@@ -26,6 +26,7 @@ public class Storify {
     private final Map<String, Usuario> usuarios = new HashMap<>();
     private MediaPlayer mediaPlayer;
     private static Storify storify;
+    private int proximoCodigoCancion = 0;
     public static Storify getInstance() {
         if (storify == null) {
             storify = new Storify();
@@ -64,14 +65,18 @@ public class Storify {
         if (verifyCredentials(username, contrasena)) {
             throw new CampoRepetido("Las credenciales proporcionadas no estan disponibles");
         }
-        Usuario usuario = Usuario.builder()
-                .username(username)
-                .email(email)
-                .contrasena(contrasena)
-                .canciones(new ListaCircular<>()).build();
-
-        usuarios.put(username, usuario);
-        ArchivoUtils.serializarUsuario(RUTA_USUARIOS, (HashMap<String, Usuario>) usuarios);
+        if (verifyUser(username, usuarios)) {
+            Usuario usuario = Usuario.builder()
+                    .username(username)
+                    .email(email)
+                    .contrasena(contrasena)
+                    .canciones(new ListaCircular<>()).build();
+            usuarios.put(username, usuario);
+            ArchivoUtils.serializarUsuario(RUTA_USUARIOS, (HashMap<String, Usuario>) usuarios);
+            storify.mostrarMensaje(Alert.AlertType.INFORMATION, "Registro exitoso");
+        }else{
+            mostrarMensaje(Alert.AlertType.WARNING,"El usuario ya existe");
+        }
     }
     /*
     METODO PARA VERIFICAR EL NUMERO DE IDENTIFICACION EXISTA EN EL SISTEMA
@@ -99,7 +104,12 @@ public class Storify {
         }
         return state;
     }
+    //METODO PARA VERIFICAR QUE EL USUARIO SEA UNICO
+    private boolean verifyUser(String username, Map<String, Usuario> usuarios) {
+        return !usuarios.containsKey(username);
+    }
     /*
+
     METODO PARA CARGAR LAS PESTAÑAS
      */
     public void loadStage(String url, Event event) {
@@ -201,6 +211,11 @@ public class Storify {
             }
         }
         return findUser;
+    }
+    //METODO PARA GENERAR AUTOMATICAMENTE EL CODIGO DE LA CANCION
+    private int generarCodigoProducto() {
+        proximoCodigoCancion+= 1;
+        return proximoCodigoCancion;
     }
     /*
     METODO PARA ALMACENAR EL Usuario
