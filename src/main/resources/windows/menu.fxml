@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0"
+            prefWidth="921.0" style="-fx-background-color: #000000; -fx-border-radius: 20;"
+            xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="co.edu.uniquindio.Storify.controllers.PrincipalController">
+    <children>
+        <Pane id="contentPane" focusTraversable="true" layoutX="100.0" layoutY="41.0" prefHeight="455.0"
+              prefWidth="805.0" style="-fx-background-color: #212121; -fx-background-radius: 10;">
+            <children>
+                <Pane layoutX="54.0" layoutY="228.0" prefHeight="62.0" prefWidth="210.0"
+                      style="-fx-background-color: #2A232B; -fx-background-radius: 10;">
+                    <children>
+                        <ImageView fitHeight="62.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/likes.png"/>
+                            </image>
+                        </ImageView>
+                    </children>
+                </Pane>
+                <Pane layoutX="54.0" layoutY="319.0" prefHeight="62.0" prefWidth="210.0"
+                      style="-fx-background-color: #2A232B; -fx-background-radius: 10;"/>
+                <Pane layoutX="307.0" layoutY="228.0" prefHeight="62.0" prefWidth="210.0"
+                      style="-fx-background-color: #2A232B; -fx-background-radius: 10;"/>
+                <Pane layoutX="307.0" layoutY="313.0" prefHeight="62.0" prefWidth="210.0"
+                      style="-fx-background-color: #2A232B; -fx-background-radius: 10;"/>
+                <Pane layoutX="564.0" layoutY="228.0" prefHeight="62.0" prefWidth="210.0"
+                      style="-fx-background-color: #2A232B; -fx-background-radius: 10;"/>
+                <Pane layoutX="564.0" layoutY="313.0" prefHeight="62.0" prefWidth="210.0"
+                      style="-fx-background-color: #2A232B; -fx-background-radius: 10;"/>
+            </children>
+        </Pane>
+        <Pane id="sidebarPane" layoutX="14.0" layoutY="169.0" prefHeight="328.0" prefWidth="71.0"
+              style="-fx-background-color: #121212; -fx-background-radius: 10;">
+            <children>
+                <Button fx:id="newPlaylist" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="10.0"
+                        layoutY="14.0" mnemonicParsing="false" onAction="#newPlaylist" prefHeight="34.0"
+                        prefWidth="35.0" style="-fx-background-color: #121212;">
+                    <graphic>
+                        <ImageView fitHeight="37.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/anadir.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+            </children>
+        </Pane>
+        <Pane id="sidebarPane" layoutX="14.0" layoutY="41.0" prefHeight="111.0" prefWidth="71.0"
+              style="-fx-background-color: #121212; -fx-background-radius: 10;">
+            <children>
+                <Button fx:id="search" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="10.0" layoutY="14.0"
+                        mnemonicParsing="false" onAction="#search" prefHeight="34.0" prefWidth="35.0"
+                        style="-fx-background-color: #121212;">
+                    <graphic>
+                        <ImageView fitHeight="37.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/SEARCH.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button fx:id="home" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="10.0" layoutY="63.0"
+                        mnemonicParsing="false" onAction="#home" prefHeight="34.0" prefWidth="35.0"
+                        style="-fx-background-color: #121212;">
+                    <graphic>
+                        <ImageView fitHeight="37.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/home.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+            </children>
+        </Pane>
+        <Slider fx:id="slider" layoutX="310.0" layoutY="542.0" prefHeight="14.0" prefWidth="431.0">
+            <cursor>
+                <Cursor fx:constant="SW_RESIZE"/>
+            </cursor>
+            <effect>
+                <Lighting>
+                    <bumpInput>
+                        <Shadow/>
+                    </bumpInput>
+                    <light>
+                    </light>
+                </Lighting>
+            </effect>
+        </Slider>
+        <Label fx:id="nombreCancion" layoutX="100.0" layoutY="518.0" prefHeight="27.0" prefWidth="170.0" text="ACHO PR"
+               textFill="WHITE">
+            <font>
+                <Font name="Franklin Gothic Demi" size="18.0"/>
+            </font>
+        </Label>
+        <Label fx:id="artistas" layoutX="100.0" layoutY="540.0" prefHeight="27.0" prefWidth="170.0"
+               text="Bad Bunny, Arcangel" textFill="WHITE">
+            <font>
+                <Font name="Franklin Gothic Book" size="13.0"/>
+            </font>
+        </Label>
+        <Button fx:id="isAgregada" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="853.0" layoutY="529.0"
+                mnemonicParsing="false" onAction="#isAgregada" prefHeight="34.0" prefWidth="35.0"
+                style="-fx-background-color: #000000;">
+            <graphic>
+                <ImageView fitHeight="37.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/check.png"/>
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+        <Button fx:id="cancion" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="14.0" layoutY="505.0"
+                mnemonicParsing="false" onAction="#cancion" prefHeight="71.0" prefWidth="71.0"
+                style="-fx-background-color: #000000;">
+            <graphic>
+                <ImageView fx:id="imgCancion" fitHeight="71.0" fitWidth="86.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/TLT.png"/>
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+        <Button fx:id="atras" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="451.0" layoutY="499.0"
+                mnemonicParsing="false" onAction="#atras" prefHeight="34.0" prefWidth="35.0"
+                style="-fx-background-color: #000000;">
+            <graphic>
+                <ImageView fitHeight="37.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/back.png"/>
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+        <Button fx:id="play" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="493.0" layoutY="499.0"
+                mnemonicParsing="false" onAction="#play" prefHeight="34.0" prefWidth="35.0"
+                style="-fx-background-color: #000000;">
+            <graphic>
+                <ImageView fitHeight="37.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/play.png"/>
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+        <Button fx:id="next" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="537.0" layoutY="498.0"
+                mnemonicParsing="false" onAction="#next" prefHeight="34.0" prefWidth="35.0"
+                style="-fx-background-color: #000000;">
+            <graphic>
+                <ImageView fitHeight="37.0" fitWidth="36.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true"
+                           preserveRatio="true">
+                    <image>
+                        <Image url="@../images/back.png"/>
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+        <Button fx:id="aleatorio" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="416.0" layoutY="503.0"
+                mnemonicParsing="false" onAction="#aleatorio" prefHeight="34.0" prefWidth="35.0"
+                style="-fx-background-color: #000000;">
+            <graphic>
+                <ImageView fitHeight="32.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/aleatorioOFF.png"/>
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+    </children>
+    <stylesheets>
+
+    </stylesheets>
+</AnchorPane>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.*?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0"
+            prefWidth="921.0" style="-fx-background-color: #000000; -fx-border-radius: 80;"
+            xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="co.edu.uniquindio.Storify.controllers.RegistroController">
+    <children>
+        <Pane id="sidebarPane" layoutX="11.0" layoutY="18.0" prefHeight="564.0" prefWidth="888.0"
+              style="-fx-background-color: #121212; -fx-background-radius: 10;">
+            <children>
+                <Pane id="contentPane" focusTraversable="true" layoutX="222.0" layoutY="19.0" prefHeight="531.0"
+                      prefWidth="461.0" style="-fx-background-color: #212121; -fx-background-radius: 10;">
+                    <children>
+                        <ImageView fitHeight="91.0" fitWidth="119.0" layoutX="25.0" layoutY="22.0" pickOnBounds="true"
+                                   preserveRatio="true">
+                            <image>
+                                <Image url="@../images/storify.png"/>
+                            </image>
+                        </ImageView>
+                        <Label layoutX="159.0" layoutY="17.0" text="Storify" textFill="WHITE">
+                            <font>
+                                <Font name="Segoe UI Bold" size="80.0"/>
+                            </font>
+                        </Label>
+                        <TextField fx:id="username" layoutX="68.0" layoutY="215.0" prefHeight="45.0" prefWidth="346.0"
+                                   promptText="Username"
+                                   style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;">
+                            <font>
+                                <Font name="Segoe UI Semibold" size="17.0"/>
+                            </font>
+                        </TextField>
+                        <TextField fx:id="contrasena" layoutX="68.0" layoutY="290.0" prefHeight="45.0" prefWidth="346.0"
+                                   promptText="Password"
+                                   style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;">
+                            <font>
+                                <Font name="Segoe UI Semibold" size="17.0"/>
+                            </font>
+                        </TextField>
+                        <Button fx:id="registro" layoutX="184.0" layoutY="450.0" mnemonicParsing="false"
+                                onAction="#registrarse" prefHeight="34.0" prefWidth="108.0"
+                                style="-fx-background-color: #212121;" text="Sign Up" textFill="WHITE">
+                            <font>
+                                <Font name="Segoe UI Semibold" size="20.0"/>
+                            </font>
+                        </Button>
+                        <TextField fx:id="correo" layoutX="68.0" layoutY="365.0" prefHeight="45.0" prefWidth="346.0"
+                                   promptText="Email" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;">
+                            <font>
+                                <Font name="Segoe UI Semibold" size="17.0"/>
+                            </font>
+                        </TextField>
+                        <Label layoutX="162.0" layoutY="140.0" text="Registro" textFill="WHITE">
+                            <font>
+                                <Font name="Segoe UI Bold" size="36.0"/>
+                            </font>
+                        </Label>
+                    </children>
+                </Pane>
+                <Button fx:id="back" layoutX="16.0" layoutY="510.0" mnemonicParsing="false" onAction="#back"
+                        prefHeight="34.0" prefWidth="108.0" style="-fx-background-color: #212121;" text="Back"
+                        textFill="WHITE">
+                    <font>
+                        <Font name="Segoe UI Semibold" size="15.0"/>
+                    </font>
+                </Button>
+            </children>
+        </Pane>
+    </children>
+    <stylesheets>
+
+    </stylesheets>
+</AnchorPane>
