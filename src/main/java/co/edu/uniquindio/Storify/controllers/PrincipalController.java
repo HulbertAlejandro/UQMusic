@@ -1,6 +1,4 @@
-package co.edu.uniquindio.Storify.controllers; /**
- * Sample Skeleton for 'menu.fxml' Controller Class
- */
+package co.edu.uniquindio.Storify.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,53 +10,77 @@ import javafx.scene.image.ImageView;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Controlador para la ventana principal de la aplicación Storify (menu.fxml).
+ * Maneja las acciones del usuario en la pantalla principal, como reproducir canciones,
+ * navegar entre páginas, agregar canciones a la lista de reproducción, entre otras.
+ */
 public class PrincipalController {
 
-    @FXML // ResourceBundle that was given to the FXMLLoader
+    /** ResourceBundle proporcionado al FXMLLoader. */
+    @FXML
     private ResourceBundle resources;
 
-    @FXML // URL location of the FXML file that was given to the FXMLLoader
+    /** URL de la ubicación del archivo FXML proporcionado al FXMLLoader. */
+    @FXML
     private URL location;
 
-    @FXML // fx:id="aleatorio"
-    private Button aleatorio; // Value injected by FXMLLoader
+    /** Botón para activar el modo aleatorio de reproducción de canciones. */
+    @FXML
+    private Button aleatorio;
 
-    @FXML // fx:id="artistas"
-    private Label artistas; // Value injected by FXMLLoader
+    /** Etiqueta que muestra el nombre del artista o grupo musical actualmente seleccionado. */
+    @FXML
+    private Label artistas;
 
-    @FXML // fx:id="atras"
-    private Button atras; // Value injected by FXMLLoader
+    /** Botón para retroceder a la canción anterior en la lista de reproducción. */
+    @FXML
+    private Button atras;
 
-    @FXML // fx:id="cancion"
-    private Button cancion; // Value injected by FXMLLoader
+    /** Botón para seleccionar una canción y ver sus detalles. */
+    @FXML
+    private Button cancion;
 
-    @FXML // fx:id="home"
-    private Button home; // Value injected by FXMLLoader
+    /** Botón para volver a la página de inicio. */
+    @FXML
+    private Button home;
 
-    @FXML // fx:id="imgCancion"
-    private ImageView imgCancion; // Value injected by FXMLLoader
+    /** ImageView para mostrar la imagen de la canción actualmente seleccionada. */
+    @FXML
+    private ImageView imgCancion;
 
-    @FXML // fx:id="isAgregada"
-    private Button isAgregada; // Value injected by FXMLLoader
+    /** Botón para marcar una canción como agregada a la lista de reproducción del usuario. */
+    @FXML
+    private Button isAgregada;
 
-    @FXML // fx:id="newPlaylist"
-    private Button newPlaylist; // Value injected by FXMLLoader
+    /** Botón para crear una nueva lista de reproducción. */
+    @FXML
+    private Button newPlaylist;
 
-    @FXML // fx:id="next"
-    private Button next; // Value injected by FXMLLoader
+    /** Botón para avanzar a la siguiente canción en la lista de reproducción. */
+    @FXML
+    private Button next;
 
-    @FXML // fx:id="nombreCancion"
-    private Label nombreCancion; // Value injected by FXMLLoader
+    /** Etiqueta que muestra el nombre de la canción actualmente seleccionada. */
+    @FXML
+    private Label nombreCancion;
 
-    @FXML // fx:id="play"
-    private Button play; // Value injected by FXMLLoader
+    /** Botón para reproducir o pausar la canción actualmente seleccionada. */
+    @FXML
+    private Button play;
 
-    @FXML // fx:id="search"
-    private Button search; // Value injected by FXMLLoader
+    /** Botón para buscar canciones dentro de la aplicación. */
+    @FXML
+    private Button search;
 
-    @FXML // fx:id="slider"
-    private Slider slider; // Value injected by FXMLLoader
+    /** Slider para controlar el volumen de reproducción de la canción. */
+    @FXML
+    private Slider slider;
 
+    /**
+     * Método que maneja el evento de activar el modo aleatorio de reproducción de canciones.
+     * @param event El evento de acción del botón de modo aleatorio.
+     */
     @FXML
     void aleatorio(ActionEvent event) {
         System.out.println("PRESIONADO");

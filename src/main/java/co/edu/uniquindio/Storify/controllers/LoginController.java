@@ -10,48 +10,79 @@ import javafx.scene.control.TextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Controlador para la ventana de inicio de sesión de la aplicación Storify.
+ * Gestiona las acciones del usuario, como el inicio de sesión y el registro.
+ */
 public class LoginController {
+    /**
+     * Instancia de la clase Storify para acceder a la lógica de negocio de la aplicación.
+     */
     private final Storify storify = Storify.getInstance();
-    @FXML // ResourceBundle that was given to the FXMLLoader
+
+    /**
+     * Recurso de conjunto de mensajes localizado para esta ventana.
+     */
+    @FXML
     private ResourceBundle resources;
 
-    @FXML // URL location of the FXML file that was given to the FXMLLoader
+    /**
+     * Ubicación URL del archivo FXML para esta ventana.
+     */
+    @FXML
     private URL location;
 
-    @FXML // fx:id="contrasena"
-    private TextField contrasena; // Value injected by FXMLLoader
+    /**
+     * Campo de texto para ingresar el nombre de usuario.
+     */
+    @FXML
+    private TextField username;
 
-    @FXML // fx:id="ingresar"
-    private Button ingresar; // Value injected by FXMLLoader
+    /**
+     * Campo de texto para ingresar la contraseña.
+     */
+    @FXML
+    private TextField contrasena;
 
-    @FXML // fx:id="registro"
-    private Button registro; // Value injected by FXMLLoader
+    /**
+     * Botón para iniciar sesión.
+     */
+    @FXML
+    private Button ingresar;
 
-    @FXML // fx:id="username"
-    private TextField username; // Value injected by FXMLLoader
+    /**
+     * Botón para registrarse como nuevo usuario.
+     */
+    @FXML
+    private Button registro;
 
+    /**
+     * Método que maneja el evento de inicio de sesión del usuario.
+     * Verifica las credenciales ingresadas y redirige a la ventana correspondiente.
+     *
+     * @param event El evento de acción del botón de inicio de sesión.
+     */
     @FXML
     void ingresar(ActionEvent event) {
-        if (username.getText().equals("admin") && contrasena.getText().equals("admin")) {
+        if (username.getText().equals("admin") && contrasena.getText().equals("$aDmiN")) {
             storify.loadStage("/windows/admin.fxml", event);
         } else {
             if (storify.verificarUsuario(username.getText(), contrasena.getText())) {
                 storify.loadStage("/windows/menu.fxml", event);
             } else {
-                storify.mostrarMensaje(Alert.AlertType.ERROR, "Credenciales invalidas");
+                storify.mostrarMensaje(Alert.AlertType.ERROR, "Credenciales inválidas");
             }
         }
     }
 
+    /**
+     * Método que maneja el evento de registro del usuario.
+     * Carga la ventana de registro para que el usuario pueda crear una nueva cuenta.
+     *
+     * @param event El evento de acción del botón de registro.
+     */
     @FXML
     void registrarse(ActionEvent event) {
         storify.loadStage("/windows/registro.fxml", event);
     }
-
-    @FXML
-        // This method is called by the FXMLLoader when initialization is complete
-    void initialize() {
-
-    }
-
 }

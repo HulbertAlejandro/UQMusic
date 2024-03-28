@@ -23,7 +23,7 @@ public class StorifyApp extends Application {
      */
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(StorifyApp.class.getResource("/windows/admin.fxml"));
+        FXMLLoader loader = new FXMLLoader(StorifyApp.class.getResource("/windows/login.fxml"));
         Parent parent = loader.load();
 
         Scene scene = new Scene(parent);

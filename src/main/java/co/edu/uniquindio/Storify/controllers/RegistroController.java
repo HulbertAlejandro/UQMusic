@@ -13,38 +13,61 @@ import javafx.scene.control.TextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Controlador para la ventana de registro de usuarios en la aplicación Storify.
+ * Permite que los usuarios nuevos se registren proporcionando un nombre de usuario, contraseña y correo electrónico.
+ */
 public class RegistroController {
+    /** Instancia de la clase Storify para acceder a la lógica de negocio de la aplicación. */
     private final Storify storify = Storify.getInstance();
-    @FXML // ResourceBundle that was given to the FXMLLoader
+
+    /** Recurso de conjunto de mensajes localizado para esta ventana. */
+    @FXML
     private ResourceBundle resources;
 
-    @FXML // URL location of the FXML file that was given to the FXMLLoader
+    /** Ubicación URL del archivo FXML para esta ventana. */
+    @FXML
     private URL location;
 
-    @FXML // fx:id="back"
-    private Button back; // Value injected by FXMLLoader
+    /** Botón para volver a la ventana de inicio de sesión. */
+    @FXML
+    private Button back;
 
-    @FXML // fx:id="contrasena"
-    private TextField contrasena; // Value injected by FXMLLoader
+    /** Campo de texto para ingresar el nombre de usuario. */
+    @FXML
+    private TextField username;
 
-    @FXML // fx:id="correo"
-    private TextField correo; // Value injected by FXMLLoader
+    /** Campo de texto para ingresar la contraseña. */
+    @FXML
+    private TextField contrasena;
 
-    @FXML // fx:id="registro"
-    private Button registro; // Value injected by FXMLLoader
+    /** Campo de texto para ingresar el correo electrónico. */
+    @FXML
+    private TextField correo;
 
-    @FXML // fx:id="username"
-    private TextField username; // Value injected by FXMLLoader
-
+    /**
+     * Método que maneja el evento de volver a la ventana de inicio de sesión.
+     * Carga la ventana de inicio de sesión para que el usuario pueda iniciar sesión si lo desea.
+     * @param event El evento de acción del botón de volver.
+     */
     @FXML
     void back(ActionEvent event) {
         storify.loadStage("/windows/login.fxml", event);
     }
 
+    /**
+     * Método que maneja el evento de registro de un nuevo usuario.
+     * Registra un nuevo usuario en el sistema con los datos proporcionados.
+     * @param event El evento de acción del botón de registro.
+     * @throws CampoRepetido Si el nombre de usuario ya está en uso por otro usuario registrado.
+     * @throws CampoObligatorioException Si falta algún campo obligatorio para completar el registro.
+     * @throws CampoVacioException Si algún campo necesario está vacío.
+     */
     @FXML
     void registrarse(ActionEvent event) throws CampoRepetido, CampoObligatorioException, CampoVacioException {
         try {
             storify.registrarUsuario(username.getText(), contrasena.getText(), correo.getText());
+            // Limpia los campos de texto después de un registro exitoso
             username.setText("");
             contrasena.setText("");
             correo.setText("");
@@ -52,11 +75,5 @@ public class RegistroController {
             storify.mostrarMensaje(Alert.AlertType.ERROR, e.getMessage());
         }
     }
-
-    @FXML
-        // This method is called by the FXMLLoader when initialization is complete
-    void initialize() {
-
-    }
-
 }
+

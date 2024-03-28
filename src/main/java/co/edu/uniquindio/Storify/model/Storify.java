@@ -13,6 +13,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -28,28 +29,23 @@ public class Storify {
     /**
      * Ruta del archivo que almacena los datos de los usuarios.
      */
-    private static final String RUTA_USUARIOS = "src/main/java/co/edu/uniquindio/uqMusic/serializable/usuario.ser";
-
-    /**
-     * Usuario en sesión actual.
-     */
-    private Usuario USUARIO_SESION = new Usuario();
-
-    /**
-     * Mapa que almacena los usuarios registrados en la aplicación.
-     */
-    private final Map<String, Usuario> usuarios = new HashMap<>();
-
-    /**
-     * Reproductor de medios para la reproducción de canciones.
-     */
-    private MediaPlayer mediaPlayer;
-
+    private static final String RUTA_USUARIOS = "src/main/resources/serializable/usuario.ser";
     /**
      * Instancia única de la clase Storify.
      */
     private static Storify storify;
-
+    /**
+     * Mapa que almacena los usuarios registrados en la aplicación.
+     */
+    private final Map<String, Usuario> usuarios = new HashMap<>();
+    /**
+     * Usuario en sesión actual.
+     */
+    private Usuario USUARIO_SESION = new Usuario();
+    /**
+     * Reproductor de medios para la reproducción de canciones.
+     */
+    private MediaPlayer mediaPlayer;
     /**
      * Código para la próxima canción a ser registrada.
      */
@@ -96,7 +92,13 @@ public class Storify {
      * Lee los usuarios almacenados en el archivo de datos y los carga en la aplicación.
      */
     private void leerUsuario() {
-        try (ObjectInputStream entrada = new ObjectInputStream(new FileInputStream(RUTA_USUARIOS))) {
+        File archivoUsuarios = new File(RUTA_USUARIOS);
+        if (archivoUsuarios.length() == 0) {
+            System.out.println("El archivo de usuarios esta vacio.");
+            return;
+        }
+
+        try (ObjectInputStream entrada = new ObjectInputStream(new FileInputStream(archivoUsuarios))) {
             HashMap<String, Usuario> listaUsuarios = (HashMap<String, Usuario>) entrada.readObject();
             System.out.println("Lectura de usuarios exitosa");
             usuarios.putAll(listaUsuarios);
