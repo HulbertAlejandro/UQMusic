@@ -64,7 +64,7 @@ public class LoginController {
      */
     @FXML
     void ingresar(ActionEvent event) {
-        if (username.getText().equals("admin") && contrasena.getText().equals("$aDmiN")) {
+        if (username.getText().equals("admin") && contrasena.getText().equals("admin")) {
             storify.loadStage("/windows/admin.fxml", event);
         } else {
             if (storify.verificarUsuario(username.getText(), contrasena.getText())) {

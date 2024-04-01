@@ -50,7 +50,10 @@ public class Storify {
      * Código para la próxima canción a ser registrada.
      */
     private int proximoCodigoCancion = 0;
-
+    /**
+     * Código para la próxima canción a ser registrada.
+     */
+    private ArbolBinario autores = new ArbolBinario();
     /**
      * Método que devuelve la instancia única de la clase Storify (patrón Singleton).
      *
@@ -143,7 +146,48 @@ public class Storify {
             mostrarMensaje(Alert.AlertType.WARNING, "El usuario ya existe");
         }
     }
-
+    /**
+     * Registra un nuevo usuario en la aplicación.
+     *
+     * @param codigoArtista   El codigo de usuario del nuevo artista.
+     * @param nombreArtista  El nombre del artista.
+     * @param nacionalidadArtista      La nacionalidad del artista.
+     * @param esGrupo      Si es grupo el artista.
+     * @throws CampoVacioException       Si algún campo obligatorio está vacío.
+     * @throws CampoObligatorioException Si algún campo es obligatorio y no se proporciona.
+     * @throws CampoRepetido             Si las credenciales proporcionadas ya están en uso.
+     */
+    public void registrarArtista(String codigoArtista, String nombreArtista, String nacionalidadArtista, boolean esGrupo) throws CampoObligatorioException,CampoVacioException {
+        if (codigoArtista == null || codigoArtista.isEmpty()) {
+            throw new CampoObligatorioException(("Es necesario ingresar el nombre"));
+        }
+        if (verificarArtista(codigoArtista)) {
+            throw new CampoVacioException("El codigo del artista no es valido");
+        }
+        if (nombreArtista == null || nombreArtista.isEmpty()) {
+            throw new CampoVacioException("Es necesario ingresar la direccion.");
+        }
+        if (nacionalidadArtista == null || nacionalidadArtista.isEmpty()) {
+            throw new CampoVacioException("Es necesario ingresar la contraseña");
+        }
+        Autor autor = Autor.builder()
+                .nombre(nombreArtista)
+                .codigo(codigoArtista)
+                .esGrupo(esGrupo)
+                .build();
+        autores.insertar(autor);
+        autores.recorridoEnOrden(autores.getInicio(),0);
+        storify.mostrarMensaje(Alert.AlertType.INFORMATION, "Registro exitoso");
+    }
+    /**
+     * Verifica si el codigo de un artista ya existe en la lista de artistas registrados.
+     *
+     * @param codigoArtista El nombre de usuario a verificar.
+     * @return El usuario si es encontrado, o null si no existe.
+     */
+    private boolean verificarArtista(String codigoArtista) {
+        return autores.buscarCodigo(codigoArtista);
+    }
     /**
      * Verifica si un usuario ya existe en la lista de usuarios registrados.
      *
@@ -345,4 +389,6 @@ public class Storify {
         alert.setContentText(mensaje);
         alert.show();
     }
+
+
 }
