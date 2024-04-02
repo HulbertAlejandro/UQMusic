@@ -17,6 +17,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -144,6 +145,48 @@ public class Storify {
             storify.mostrarMensaje(Alert.AlertType.INFORMATION, "Registro exitoso");
         } else {
             mostrarMensaje(Alert.AlertType.WARNING, "El usuario ya existe");
+        }
+    }
+    public void guardarCancion(String nombre, String album, String urlCaratula, int anioLanzamiento, double duracionCancion, String genre, String url, String codigo, Autor autorSelected) throws CampoObligatorioException, CampoVacioException{
+        if (nombre == null || nombre.isEmpty()) {
+            throw new CampoObligatorioException(("Es necesario ingresar el nombre"));
+        }
+        if (album == null || album.isEmpty()) {
+            throw new CampoVacioException("Es necesario ingresar la direccion.");
+        }
+        if (urlCaratula == null || urlCaratula.isEmpty()) {
+            throw new CampoVacioException("Es necesario ingresar la contraseña");
+        }
+        if (anioLanzamiento<0) {
+            throw new CampoVacioException("Es necesario ingresar la contraseña");
+        }
+        if (duracionCancion < 0 ) {
+            throw new CampoVacioException("Es necesario ingresar la contraseña");
+        }
+        if (genre == null || genre.isEmpty()) {
+            throw new CampoVacioException("Es necesario ingresar la contraseña");
+        }
+        if (url == null || url.isEmpty()) {
+            throw new CampoVacioException("Es necesario ingresar la contraseña");
+        }
+        if (codigo == null || codigo.isEmpty()) {
+            throw new CampoVacioException("Es necesario ingresar la contraseña");
+        }
+        Cancion cancion = Cancion.builder()
+                .nombreCancion(nombre)
+                .anio(anioLanzamiento)
+                .artistas(autorSelected.getNombre())
+                .caratula(urlCaratula)
+                .codigo(codigo)
+                .genero(genre)
+                .url(url)
+                .duracion(duracionCancion)
+                .nombreAlbum(album)
+                .build();
+        if(autores.agregarAtributo(autores.getInicio(),autorSelected.getCodigo(),cancion)){
+            mostrarMensaje(Alert.AlertType.CONFIRMATION,"La cancion ha sido agregada correctamente al artista: " + autorSelected.getNombre());
+        }else {
+            mostrarMensaje(Alert.AlertType.ERROR,"No se logró agregar la cancion correctamente");
         }
     }
     /**
@@ -388,6 +431,10 @@ public class Storify {
         alert.setHeaderText(null);
         alert.setContentText(mensaje);
         alert.show();
+    }
+
+    public ArrayList<Autor> enviarAutores() {
+        return autores.toList();
     }
 
 

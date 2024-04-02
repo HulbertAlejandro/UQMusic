@@ -5,20 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="698de894-61a7-45c5-a972-1023c3504b6f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/controllers/RegistroArtistaController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/controllers/RegistroCancionController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/windows/registroArtista.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/windows/registroCancion.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/app/StorifyApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/app/StorifyApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/controllers/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/controllers/AdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/controllers/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/controllers/PrincipalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/controllers/PrincipalController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/controllers/RegistroController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/controllers/RegistroController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/controllers/RegistroCancionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/controllers/RegistroCancionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/model/ArbolBinario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/model/ArbolBinario.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/model/Storify.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/model/Storify.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/serializable/usuario.ser" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/serializable/usuario.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/windows/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/windows/login.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/windows/registro.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/windows/registro.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/windows/registroCancion.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/windows/registroCancion.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +39,7 @@
   "keyToString": {
     "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
     "Application.UQMusicApp.executor": "Run",
+    "Maven.MusicUQ [org.openjfx:javafx-maven-plugin:0.0.8:run].executor": "Run",
     "Maven.TiendaUQ [org.openjfx:javafx-maven-plugin:0.0.8:run].executor": "Run",
     "Maven.UQMusic [org.openjfx:javafx-maven-plugin:0.0.8:run].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
@@ -67,7 +58,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-17.0.10-corretto-17.0.10-4caba194b151-5cd809f4" />
+        <option value="jdk-17.0.9-corretto-17.0.9-4caba194b151-107bc6b7" />
       </set>
     </attachedChunks>
   </component>

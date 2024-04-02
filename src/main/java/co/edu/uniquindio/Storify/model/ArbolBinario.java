@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * La clase ArbolBinario representa un árbol binario de búsqueda que almacena autores.
@@ -50,11 +51,9 @@ public class ArbolBinario implements Serializable {
     public boolean buscarCodigo(String codigo) {
         return buscar(inicio, codigo);
     }
-
     private boolean buscar(NodoArbol nodo, String codigo) {
         if (nodo == null)
             return false;
-
         int comparacion = codigo.compareTo(nodo.getAutor().getCodigo());
         if (comparacion == 0)
             return true;
@@ -63,6 +62,32 @@ public class ArbolBinario implements Serializable {
         else
             return buscar(nodo.getNodoDerecha(), codigo);
     }
+    public boolean agregarAtributo(NodoArbol nodo, String codigo, Cancion cancion) {
+        if (nodo == null) {
+            return false;
+        }
+        int comparacion = codigo.compareTo(nodo.getAutor().getCodigo());
+        if (comparacion == 0) {
+            nodo.getAutor().getListaCanciones().añadirFinal(cancion);
+            return true;
+        } else if (comparacion < 0) {
+            return agregarAtributo(nodo.getNodoIzquierda(), codigo, cancion);
+        } else {
+            return agregarAtributo(nodo.getNodoDerecha(), codigo, cancion);
+        }
+    }
+    public ArrayList<Autor> toList() {
+        ArrayList<Autor> lista = new ArrayList<>();
+        recorridoEnOrden(inicio, lista);
+        return lista;
+    }
 
+    private void recorridoEnOrden(NodoArbol nodo, ArrayList<Autor> lista) {
+        if (nodo != null) {
+            recorridoEnOrden(nodo.getNodoIzquierda(), lista);
+            lista.add(nodo.getAutor());
+            recorridoEnOrden(nodo.getNodoDerecha(), lista);
+        }
+    }
 }
 
