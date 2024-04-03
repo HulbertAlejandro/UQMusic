@@ -1,14 +1,20 @@
 package co.edu.uniquindio.Storify.controllers;
 
+import co.edu.uniquindio.Storify.model.Autor;
+import co.edu.uniquindio.Storify.model.Cancion;
+import co.edu.uniquindio.Storify.model.Storify;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.Slider;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import static co.edu.uniquindio.Storify.utils.ArchivoUtils.cargarCanciones;
 
 /**
  * Controlador para la ventana principal de la aplicación Storify (menu.fxml).
@@ -17,6 +23,10 @@ import java.util.ResourceBundle;
  */
 public class PrincipalController {
 
+    @FXML
+    private TableView<Cancion> tablaCanciones;
+    @FXML
+    private TableColumn<Cancion,String> canciones;
     /** ResourceBundle proporcionado al FXMLLoader. */
     @FXML
     private ResourceBundle resources;
@@ -115,7 +125,8 @@ public class PrincipalController {
     void search(ActionEvent event) {
         System.out.println("PRESIONADO");
     }
-
+    private final Storify storify = Storify.getInstance();
+    private ObservableList<Cancion> cancionesSistema = FXCollections.observableArrayList(storify.enviarCanciones());
     public void isAgregada(ActionEvent actionEvent) {
         System.out.println("PRESIONADO");
     }
@@ -127,7 +138,12 @@ public class PrincipalController {
     @FXML
         // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
-
+        tablaCanciones.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
+        cargarTabla();
+    }
+    private void cargarTabla() {
+        canciones.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNombreCancion()));
+        tablaCanciones.setItems(cancionesSistema);
     }
 
 }

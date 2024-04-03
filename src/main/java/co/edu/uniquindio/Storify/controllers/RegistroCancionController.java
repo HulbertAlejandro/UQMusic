@@ -78,7 +78,6 @@ public class RegistroCancionController implements Serializable {
 
         columnaArtista.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNombre()));
         tablaArtistas.setItems(autores);
-
         filtroArtista.textProperty().addListener((observable, oldValue, newValue) ->
                 tablaArtistas.setItems(filtrarPorNombre(newValue)));
     }
@@ -108,20 +107,24 @@ public class RegistroCancionController implements Serializable {
      */
     @FXML
     void crearCancion(ActionEvent event) {
-        String nombre = nombreCancion.getText();
-        String album = nombreAlbum.getText();
-        String urlCaratula = caratula.getText();
-        int anioLanzamiento = Integer.parseInt(anio.getText());
-        double duracionCancion = Double.parseDouble(duracion.getText());
-        String genre = genero.getValue();
-        String url = urlCancion.getText();
-        // Generar código aleatorio para la canción
-        String codigo = generarCodigoAleatorio();
+        if(isSelected){
+            String nombre = nombreCancion.getText();
+            String album = nombreAlbum.getText();
+            String urlCaratula = caratula.getText();
+            int anioLanzamiento = Integer.parseInt(anio.getText());
+            double duracionCancion = Double.parseDouble(duracion.getText());
+            String genre = genero.getValue();
+            String url = urlCancion.getText();
+            // Generar código aleatorio para la canción
+            String codigo = generarCodigoAleatorio();
 
-        try {
-            storify.guardarCancion(nombre,album,urlCaratula,anioLanzamiento,duracionCancion,genre,url,codigo, autorSelected);
-        }catch (CampoVacioException | CampoObligatorioException e ){
-            storify.mostrarMensaje(Alert.AlertType.ERROR, e.getMessage());
+            try {
+                storify.guardarCancion(nombre,album,urlCaratula,anioLanzamiento,duracionCancion,genre,url,codigo, autorSelected);
+            }catch (CampoVacioException | CampoObligatorioException e ){
+                storify.mostrarMensaje(Alert.AlertType.ERROR, e.getMessage());
+            }
+        }else{
+            storify.mostrarMensaje(Alert.AlertType.ERROR, "No has seleccionado ningun artista");
         }
     }
 
@@ -136,6 +139,8 @@ public class RegistroCancionController implements Serializable {
     }
 
     public void seleccionarArtista(ActionEvent actionEvent) {
+        storify.mostrarMensaje(Alert.AlertType.CONFIRMATION, "Se selecciono el artista");
+        isSelected = true;
         autorSelected = tablaArtistas.getSelectionModel().getSelectedItem();
     }
 

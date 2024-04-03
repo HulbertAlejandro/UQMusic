@@ -17,10 +17,10 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.*;
 
 /**
  * La clase Storify representa la lógica de negocio de la aplicación Storify.
@@ -31,6 +31,10 @@ public class Storify {
      * Ruta del archivo que almacena los datos de los usuarios.
      */
     private static final String RUTA_USUARIOS = "src/main/resources/serializable/usuario.ser";
+    /**
+     * Ruta del archivo que almacena los datos de los artistas.
+     */
+    private static final String RUTA_ARTISTAS = "src/main/resources/serializable/artistas.ser";
     /**
      * Instancia única de la clase Storify.
      */
@@ -71,7 +75,22 @@ public class Storify {
      * Inicializa la aplicación cargando los datos almacenados.
      */
     public void inicializar() {
+        leerArtistas();
         leerUsuario();
+    }
+
+    private void leerArtistas() {
+        File archivoUsuarios = new File(RUTA_ARTISTAS);
+        if (archivoUsuarios.length() == 0) {
+            System.out.println("El archivo de usuarios esta vacio.");
+            return;
+        }
+        try (ObjectInputStream entrada = new ObjectInputStream(new FileInputStream(archivoUsuarios))) {
+            autores = (ArbolBinario) entrada.readObject();
+            System.out.println("Lectura de artistas exitosa");
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -188,6 +207,7 @@ public class Storify {
         }else {
             mostrarMensaje(Alert.AlertType.ERROR,"No se logró agregar la cancion correctamente");
         }
+        ArchivoUtils.serializarArtista(RUTA_ARTISTAS,autores);
     }
     /**
      * Registra un nuevo usuario en la aplicación.
@@ -217,10 +237,12 @@ public class Storify {
                 .nombre(nombreArtista)
                 .codigo(codigoArtista)
                 .esGrupo(esGrupo)
+                .listaCanciones(new ListaDoblementeEnlazada<>())
                 .build();
         autores.insertar(autor);
         autores.recorridoEnOrden(autores.getInicio(),0);
         storify.mostrarMensaje(Alert.AlertType.INFORMATION, "Registro exitoso");
+        ArchivoUtils.serializarArtista(RUTA_ARTISTAS, autores);
     }
     /**
      * Verifica si el codigo de un artista ya existe en la lista de artistas registrados.
@@ -350,10 +372,11 @@ public class Storify {
                 .artistas(artistas)
                 .build();
         almacenarCancion(cancion, artistas);
-        //ArchivoUtils.serializarArtistas(RUTA_ARTISTAS, artistas);
+        ArchivoUtils.serializarArtista(RUTA_ARTISTAS,autores);
     }
 
     private void almacenarCancion(Cancion cancion, String artistas) {
+
     }
 
     /**
@@ -436,6 +459,20 @@ public class Storify {
     public ArrayList<Autor> enviarAutores() {
         return autores.toList();
     }
-
-
+    public  void borrarDatosSerializados(String archivo) {
+        Path path = Paths.get(archivo);
+        try {
+            if (Files.exists(path)) {
+                Files.walk(path)
+                        .sorted(Comparator.reverseOrder())
+                        .map(Path::toFile)
+                        .forEach(File::delete);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public ArrayList<Cancion> enviarCanciones() {
+        return autores.recorridoCanciones(autores.getInicio(),new ArrayList<>());
+    }
 }

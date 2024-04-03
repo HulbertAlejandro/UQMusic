@@ -89,5 +89,14 @@ public class ArbolBinario implements Serializable {
             recorridoEnOrden(nodo.getNodoDerecha(), lista);
         }
     }
+
+    public ArrayList<Cancion> recorridoCanciones(NodoArbol nodo, ArrayList<Cancion> lista) {
+        if (nodo != null) {
+            recorridoCanciones(nodo.getNodoIzquierda(), lista);
+            lista.addAll(nodo.getAutor().getListaCanciones().toArrayList());
+            recorridoCanciones(nodo.getNodoDerecha(), lista);
+        }
+        return lista;
+    }
 }
 

@@ -1,9 +1,6 @@
 package co.edu.uniquindio.Storify.utils;
 
-import co.edu.uniquindio.Storify.model.Autor;
-import co.edu.uniquindio.Storify.model.Cancion;
-import co.edu.uniquindio.Storify.model.ListaDoblementeEnlazada;
-import co.edu.uniquindio.Storify.model.Usuario;
+import co.edu.uniquindio.Storify.model.*;
 
 import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;
@@ -81,6 +78,14 @@ public class ArchivoUtils {
         try (ObjectOutputStream salida = new ObjectOutputStream(new FileOutputStream(ruta))) {
             salida.writeObject(clientes);
             System.out.println("Cliente serializado correctamente.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public static void serializarArtista(String ruta, ArbolBinario arbolBinario) {
+        try (ObjectOutputStream salida = new ObjectOutputStream(new FileOutputStream(ruta))) {
+            salida.writeObject(arbolBinario);
+            System.out.println("Artistas Serializados Correctamente");
         } catch (IOException e) {
             e.printStackTrace();
         }
