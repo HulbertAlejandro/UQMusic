@@ -9,9 +9,12 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Random;
 import java.util.ResourceBundle;
 
 import static co.edu.uniquindio.Storify.utils.ArchivoUtils.cargarCanciones;
@@ -23,41 +26,51 @@ import static co.edu.uniquindio.Storify.utils.ArchivoUtils.cargarCanciones;
  */
 public class PrincipalController {
 
-    @FXML
-    private TableView<Cancion> tablaCanciones;
-    @FXML
-    private TableColumn<Cancion,String> canciones;
-    /** ResourceBundle proporcionado al FXMLLoader. */
+    /**
+     * ResourceBundle proporcionado al FXMLLoader.
+     */
     @FXML
     private ResourceBundle resources;
 
-    /** URL de la ubicación del archivo FXML proporcionado al FXMLLoader. */
+    /**
+     * URL de la ubicación del archivo FXML proporcionado al FXMLLoader.
+     */
     @FXML
     private URL location;
 
-    /** Botón para activar el modo aleatorio de reproducción de canciones. */
+    /**
+     * Botón para activar el modo aleatorio de reproducción de canciones.
+     */
     @FXML
     private Button aleatorio;
 
-    /** Etiqueta que muestra el nombre del artista o grupo musical actualmente seleccionado. */
+    /**
+     * Etiqueta que muestra el nombre del artista o grupo musical actualmente seleccionado.
+     */
     @FXML
     private Label artistas;
 
-    /** Botón para retroceder a la canción anterior en la lista de reproducción. */
+    /**
+     * Botón para retroceder a la canción anterior en la lista de reproducción.
+     */
     @FXML
     private Button atras;
 
-    /** Botón para seleccionar una canción y ver sus detalles. */
+    /**
+     * Botón para seleccionar una canción y ver sus detalles.
+     */
     @FXML
-    private Button cancion;
+    private Button cancion, cancion1, cancion2, cancion3, cancion4, cancion5, cancion6;
+
+    /**
+     * ImageView para mostrar la imagen de la canción actualmente seleccionada.
+     */
+    @FXML
+    private ImageView imgCancion, imgCancion1, imgCancion2, imgCancion3, imgCancion4, imgCancion5, imgCancion6;
 
     /** Botón para volver a la página de inicio. */
     @FXML
     private Button home;
-
-    /** ImageView para mostrar la imagen de la canción actualmente seleccionada. */
-    @FXML
-    private ImageView imgCancion;
 
     /** Botón para marcar una canción como agregada a la lista de reproducción del usuario. */
     @FXML
@@ -73,7 +86,7 @@ public class PrincipalController {
 
     /** Etiqueta que muestra el nombre de la canción actualmente seleccionada. */
     @FXML
-    private Label nombreCancion;
+    private Label nombreCancion,titulo1,titulo2,titulo3,titulo4,titulo5,titulo6;
 
     /** Botón para reproducir o pausar la canción actualmente seleccionada. */
     @FXML
@@ -126,7 +139,8 @@ public class PrincipalController {
         System.out.println("PRESIONADO");
     }
     private final Storify storify = Storify.getInstance();
-    private ObservableList<Cancion> cancionesSistema = FXCollections.observableArrayList(storify.enviarCanciones());
+    private ArrayList<Cancion> cancionesSistema = storify.enviarCanciones();
+    private ArrayList<Cancion> cancionesBox = new ArrayList<>();
     public void isAgregada(ActionEvent actionEvent) {
         System.out.println("PRESIONADO");
     }
@@ -138,12 +152,71 @@ public class PrincipalController {
     @FXML
         // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
-        tablaCanciones.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
-        cargarTabla();
+      cargarArray();
+      loadBox();
     }
-    private void cargarTabla() {
-        canciones.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNombreCancion()));
-        tablaCanciones.setItems(cancionesSistema);
+    private void loadBox(){
+        Image image = new Image(cancionesBox.get(0).getCaratula());
+        titulo1.setText(cancionesBox.get(0).getNombreCancion());
+        imgCancion1.setImage(image);
+        Image image1 = new Image(cancionesBox.get(1).getCaratula());
+        titulo2.setText(cancionesBox.get(1).getNombreCancion());
+        imgCancion2.setImage(image1);
+        Image image2 = new Image(cancionesBox.get(2).getCaratula());
+        titulo3.setText(cancionesBox.get(2).getNombreCancion());
+        imgCancion3.setImage(image2);
+        Image image3 = new Image(cancionesBox.get(3).getCaratula());
+        titulo4.setText(cancionesBox.get(3).getNombreCancion());
+        imgCancion4.setImage(image3);
+        Image image4 = new Image(cancionesBox.get(4).getCaratula());
+        titulo5.setText(cancionesBox.get(4).getNombreCancion());
+        imgCancion5.setImage(image4);
+        Image image5 = new Image(cancionesBox.get(5).getCaratula());
+        titulo6.setText(cancionesBox.get(5).getNombreCancion());
+        imgCancion6.setImage(image5);
     }
-
+    private void cargarArray() {
+        Random rand = new Random();
+        // Generar 6 números aleatorios dentro del rango del tamaño de la lista
+        for (int i = 0; i < 6; i++) {
+            int indiceAleatorio = rand.nextInt(cancionesSistema.size());
+            cancionesBox.add(cancionesSistema.get(indiceAleatorio));
+        }
+    }
+    public void cancion1(ActionEvent actionEvent) {
+        Image imagen = new Image(cancionesBox.get(0).getCaratula());
+        imgCancion.setImage(imagen);
+        nombreCancion.setText(cancionesBox.get(0).getNombreCancion());
+        artistas.setText(cancionesBox.get(0).getArtistas());
+    }
+    public void cancion2(ActionEvent actionEvent) {
+        Image imagen = new Image(cancionesBox.get(1).getCaratula());
+        imgCancion.setImage(imagen);
+        nombreCancion.setText(cancionesBox.get(1).getNombreCancion());
+        artistas.setText(cancionesBox.get(1).getArtistas());
+    }
+    public void cancion3(ActionEvent actionEvent) {
+        Image imagen = new Image(cancionesBox.get(2).getCaratula());
+        imgCancion.setImage(imagen);
+        nombreCancion.setText(cancionesBox.get(2).getNombreCancion());
+        artistas.setText(cancionesBox.get(2).getArtistas());
+    }
+    public void cancion4(ActionEvent actionEvent) {
+        Image imagen = new Image(cancionesBox.get(3).getCaratula());
+        imgCancion.setImage(imagen);
+        nombreCancion.setText(cancionesBox.get(3).getNombreCancion());
+        artistas.setText(cancionesBox.get(3).getArtistas());
+    }
+    public void cancion5(ActionEvent actionEvent) {
+        Image imagen = new Image(cancionesBox.get(4).getCaratula());
+        imgCancion.setImage(imagen);
+        nombreCancion.setText(cancionesBox.get(4).getNombreCancion());
+        artistas.setText(cancionesBox.get(4).getArtistas());
+    }
+    public void cancion6(ActionEvent actionEvent) {
+        Image imagen = new Image(cancionesBox.get(5).getCaratula());
+        imgCancion.setImage(imagen);
+        nombreCancion.setText(cancionesBox.get(5).getNombreCancion());
+        artistas.setText(cancionesBox.get(5).getArtistas());
+    }
 }

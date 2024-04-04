@@ -77,6 +77,7 @@ public class Storify {
     public void inicializar() {
         leerArtistas();
         leerUsuario();
+        autores.recorridoEnOrden(autores.getInicio(),0);
     }
 
     private void leerArtistas() {
@@ -202,7 +203,7 @@ public class Storify {
                 .duracion(duracionCancion)
                 .nombreAlbum(album)
                 .build();
-        if(autores.agregarAtributo(autores.getInicio(),autorSelected.getCodigo(),cancion)){
+        if(autores.agregarAtributo(autores.getInicio(),autorSelected.getNombre(),cancion)){
             mostrarMensaje(Alert.AlertType.CONFIRMATION,"La cancion ha sido agregada correctamente al artista: " + autorSelected.getNombre());
         }else {
             mostrarMensaje(Alert.AlertType.ERROR,"No se logró agregar la cancion correctamente");

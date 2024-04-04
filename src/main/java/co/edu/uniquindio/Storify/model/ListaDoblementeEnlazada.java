@@ -38,7 +38,6 @@ public class ListaDoblementeEnlazada<T> implements Serializable {
         this.nodoUltimo = null;
         tamano = 0;
     }
-
     /**
      * Agrega un nuevo elemento al inicio de la lista.
      *

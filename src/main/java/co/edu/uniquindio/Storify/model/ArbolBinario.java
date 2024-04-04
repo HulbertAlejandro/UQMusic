@@ -66,13 +66,21 @@ public class ArbolBinario implements Serializable {
         if (nodo == null) {
             return false;
         }
-        int comparacion = codigo.compareTo(nodo.getAutor().getCodigo());
+        // Comparar el código del autor del nodo actual con el código proporcionado
+        int comparacion = codigo.compareTo(nodo.getAutor().getNombre());
+
         if (comparacion == 0) {
+            System.out.println("===" + nodo.getAutor().getNombre());
+            // Agregar la canción al autor encontrado
             nodo.getAutor().getListaCanciones().añadirFinal(cancion);
             return true;
         } else if (comparacion < 0) {
+            System.out.println("<" + nodo.getAutor().getNombre());
+            // Si el código proporcionado es menor, buscar en el subárbol izquierdo
             return agregarAtributo(nodo.getNodoIzquierda(), codigo, cancion);
         } else {
+            System.out.println(">" + nodo.getAutor().getNombre());
+            // Si el código proporcionado es mayor, buscar en el subárbol derecho
             return agregarAtributo(nodo.getNodoDerecha(), codigo, cancion);
         }
     }

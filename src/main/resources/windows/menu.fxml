@@ -4,8 +4,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Slider?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.effect.Lighting?>
 <?import javafx.scene.effect.Shadow?>
 <?import javafx.scene.image.Image?>
@@ -18,14 +16,74 @@
     <children>
         <Pane id="contentPane" focusTraversable="true" layoutX="100.0" layoutY="41.0" prefHeight="455.0" prefWidth="805.0" style="-fx-background-color: #212121; -fx-background-radius: 10;">
          <children>
-            <TableView fx:id="tablaCanciones" layoutX="42.0" layoutY="43.0" prefHeight="378.0" prefWidth="716.0" style="-fx-background-color: transparent;">
-              <columns>
-                <TableColumn fx:id="canciones" prefWidth="723.0" text="CANCIONES" />
-              </columns>
-            </TableView>
+            <Button fx:id="cancion1" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="94.0" layoutY="49.0" mnemonicParsing="false" onAction="#cancion1" prefHeight="71.0" prefWidth="71.0" style="-fx-background-color: #212121;">
+               <graphic>
+                  <ImageView fx:id="imgCancion1" fitHeight="137.0" fitWidth="148.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </Button>
+            <Button fx:id="cancion2" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="339.0" layoutY="49.0" mnemonicParsing="false" onAction="#cancion2" prefHeight="71.0" prefWidth="71.0" style="-fx-background-color: #212121;">
+               <graphic>
+                  <ImageView fx:id="imgCancion2" fitHeight="137.0" fitWidth="148.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </Button>
+            <Button fx:id="cancion3" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="580.0" layoutY="49.0" mnemonicParsing="false" onAction="#cancion3" prefHeight="71.0" prefWidth="71.0" style="-fx-background-color: #212121;">
+               <graphic>
+                  <ImageView fx:id="imgCancion3" fitHeight="137.0" fitWidth="148.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </Button>
+            <Button fx:id="cancion6" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="580.0" layoutY="254.0" mnemonicParsing="false" onAction="#cancion6" prefHeight="71.0" prefWidth="71.0" style="-fx-background-color: #212121;">
+               <graphic>
+                  <ImageView fx:id="imgCancion6" fitHeight="137.0" fitWidth="148.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </Button>
+            <Button fx:id="cancion5" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="339.0" layoutY="254.0" mnemonicParsing="false" onAction="#cancion5" prefHeight="71.0" prefWidth="71.0" style="-fx-background-color: #212121;">
+               <graphic>
+                  <ImageView fx:id="imgCancion5" fitHeight="137.0" fitWidth="148.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </Button>
+            <Button fx:id="cancion4" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="94.0" layoutY="254.0" mnemonicParsing="false" onAction="#cancion4" prefHeight="71.0" prefWidth="71.0" style="-fx-background-color: #212121;">
+               <graphic>
+                  <ImageView fx:id="imgCancion4" fitHeight="137.0" fitWidth="148.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </Button>
+            <Label alignment="CENTER" layoutX="176.0" prefHeight="49.0" prefWidth="478.0" text="Canciones" textFill="WHITE">
+               <font>
+                  <Font name="Segoe UI Bold" size="27.0" />
+               </font>
+            </Label>
+            <Label fx:id="titulo1" alignment="CENTER" layoutX="94.0" layoutY="202.0" prefHeight="27.0" prefWidth="153.0" textFill="WHITE">
+               <font>
+                  <Font name="Segoe UI Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="titulo4" alignment="CENTER" layoutX="100.0" layoutY="408.0" prefHeight="27.0" prefWidth="153.0" textFill="WHITE">
+               <font>
+                  <Font name="Segoe UI Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="titulo2" alignment="CENTER" layoutX="345.0" layoutY="202.0" prefHeight="27.0" prefWidth="153.0" textFill="WHITE">
+               <font>
+                  <Font name="Segoe UI Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="titulo3" alignment="CENTER" layoutX="586.0" layoutY="202.0" prefHeight="27.0" prefWidth="153.0" textFill="WHITE">
+               <font>
+                  <Font name="Segoe UI Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="titulo5" alignment="CENTER" layoutX="345.0" layoutY="408.0" prefHeight="27.0" prefWidth="153.0" textFill="WHITE">
+               <font>
+                  <Font name="Segoe UI Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="titulo6" alignment="CENTER" layoutX="586.0" layoutY="408.0" prefHeight="27.0" prefWidth="153.0" textFill="WHITE">
+               <font>
+                  <Font name="Segoe UI Bold" size="14.0" />
+               </font>
+            </Label>
          </children>
         </Pane>
-        <Pane id="sidebarPane" layoutX="14.0" layoutY="169.0" prefHeight="328.0" prefWidth="71.0" style="-fx-background-color: #121212; -fx-background-radius: 10;">
+        <Pane id="sidebarPane" layoutX="14.0" layoutY="221.0" prefHeight="276.0" prefWidth="71.0" style="-fx-background-color: #121212; -fx-background-radius: 10;">
             <children>
                 <Button fx:id="newPlaylist" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="10.0" layoutY="14.0" mnemonicParsing="false" onAction="#newPlaylist" prefHeight="34.0" prefWidth="35.0" style="-fx-background-color: #121212;">
                     <graphic>
@@ -38,7 +96,7 @@
                 </Button>
             </children>
         </Pane>
-        <Pane id="sidebarPane" layoutX="14.0" layoutY="41.0" prefHeight="111.0" prefWidth="71.0" style="-fx-background-color: #121212; -fx-background-radius: 10;">
+        <Pane id="sidebarPane" layoutX="14.0" layoutY="41.0" prefHeight="163.0" prefWidth="71.0" style="-fx-background-color: #121212; -fx-background-radius: 10;">
             <children>
                 <Button fx:id="search" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="10.0" layoutY="14.0" mnemonicParsing="false" onAction="#search" prefHeight="34.0" prefWidth="35.0" style="-fx-background-color: #121212;">
                     <graphic>
@@ -74,12 +132,12 @@
                 </Lighting>
             </effect>
         </Slider>
-        <Label fx:id="nombreCancion" layoutX="100.0" layoutY="518.0" prefHeight="27.0" prefWidth="170.0" text="ACHO PR" textFill="WHITE">
+        <Label fx:id="nombreCancion" layoutX="100.0" layoutY="518.0" prefHeight="27.0" prefWidth="170.0" textFill="WHITE">
             <font>
                 <Font name="Franklin Gothic Demi" size="18.0" />
             </font>
         </Label>
-        <Label fx:id="artistas" layoutX="100.0" layoutY="540.0" prefHeight="27.0" prefWidth="170.0" text="Bad Bunny, Arcangel" textFill="WHITE">
+        <Label fx:id="artistas" layoutX="100.0" layoutY="540.0" prefHeight="27.0" prefWidth="170.0" textFill="WHITE">
             <font>
                 <Font name="Franklin Gothic Book" size="13.0" />
             </font>
@@ -95,11 +153,7 @@
         </Button>
         <Button fx:id="cancion" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="14.0" layoutY="505.0" mnemonicParsing="false" onAction="#cancion" prefHeight="71.0" prefWidth="71.0" style="-fx-background-color: #000000;">
             <graphic>
-                <ImageView fx:id="imgCancion" fitHeight="71.0" fitWidth="86.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../images/TLT.png" />
-                    </image>
-                </ImageView>
+                <ImageView fx:id="imgCancion" fitHeight="71.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true" />
             </graphic>
         </Button>
         <Button fx:id="atras" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="451.0" layoutY="499.0" mnemonicParsing="false" onAction="#atras" prefHeight="34.0" prefWidth="35.0" style="-fx-background-color: #000000;">
