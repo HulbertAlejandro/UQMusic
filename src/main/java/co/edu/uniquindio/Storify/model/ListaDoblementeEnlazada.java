@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * La clase ListaDoblementeEnlazada representa una lista doblemente enlazada genérica.
@@ -37,7 +38,6 @@ public class ListaDoblementeEnlazada<T> implements Serializable {
         this.nodoUltimo = null;
         tamano = 0;
     }
-
     /**
      * Agrega un nuevo elemento al inicio de la lista.
      *
@@ -110,6 +110,15 @@ public class ListaDoblementeEnlazada<T> implements Serializable {
             actual = actual.getSiguiente();
         }
         System.out.println();
+    }
+    public ArrayList<T> toArrayList() {
+        ArrayList<T> arrayList = new ArrayList<>();
+        NodoDoble actual = nodoPrimero;
+        while (actual != null) {
+            arrayList.add((T) actual.getValor());
+            actual = actual.getSiguiente();
+        }
+        return arrayList;
     }
 
     /**

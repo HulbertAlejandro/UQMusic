@@ -37,7 +37,7 @@ public class Autor implements Serializable {
     /**
      * La lista de canciones asociadas al autor.
      */
-    private ListaDoblementeEnlazada<Cancion> listaCanciones;
+    private ListaDoblementeEnlazada<Cancion> listaCanciones = new ListaDoblementeEnlazada<>();
 
     /**
      * Constructor que crea un nuevo autor con los datos especificados.

@@ -17,9 +17,10 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.*;
 
 /**
  * La clase Storify representa la lógica de negocio de la aplicación Storify.
@@ -30,6 +31,10 @@ public class Storify {
      * Ruta del archivo que almacena los datos de los usuarios.
      */
     private static final String RUTA_USUARIOS = "src/main/resources/serializable/usuario.ser";
+    /**
+     * Ruta del archivo que almacena los datos de los artistas.
+     */
+    private static final String RUTA_ARTISTAS = "src/main/resources/serializable/artistas.ser";
     /**
      * Instancia única de la clase Storify.
      */
@@ -50,7 +55,10 @@ public class Storify {
      * Código para la próxima canción a ser registrada.
      */
     private int proximoCodigoCancion = 0;
-
+    /**
+     * Código para la próxima canción a ser registrada.
+     */
+    private ArbolBinario autores = new ArbolBinario();
     /**
      * Método que devuelve la instancia única de la clase Storify (patrón Singleton).
      *
@@ -67,7 +75,23 @@ public class Storify {
      * Inicializa la aplicación cargando los datos almacenados.
      */
     public void inicializar() {
+        leerArtistas();
         leerUsuario();
+        autores.recorridoEnOrden(autores.getInicio(),0);
+    }
+
+    private void leerArtistas() {
+        File archivoUsuarios = new File(RUTA_ARTISTAS);
+        if (archivoUsuarios.length() == 0) {
+            System.out.println("El archivo de usuarios esta vacio.");
+            return;
+        }
+        try (ObjectInputStream entrada = new ObjectInputStream(new FileInputStream(archivoUsuarios))) {
+            autores = (ArbolBinario) entrada.readObject();
+            System.out.println("Lectura de artistas exitosa");
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -143,7 +167,93 @@ public class Storify {
             mostrarMensaje(Alert.AlertType.WARNING, "El usuario ya existe");
         }
     }
-
+    public void guardarCancion(String nombre, String album, String urlCaratula, int anioLanzamiento, double duracionCancion, String genre, String url, String codigo, Autor autorSelected) throws CampoObligatorioException, CampoVacioException{
+        if (nombre == null || nombre.isEmpty()) {
+            throw new CampoObligatorioException(("Es necesario ingresar el nombre"));
+        }
+        if (album == null || album.isEmpty()) {
+            throw new CampoVacioException("Es necesario ingresar la direccion.");
+        }
+        if (urlCaratula == null || urlCaratula.isEmpty()) {
+            throw new CampoVacioException("Es necesario ingresar la contraseña");
+        }
+        if (anioLanzamiento<0) {
+            throw new CampoVacioException("Es necesario ingresar la contraseña");
+        }
+        if (duracionCancion < 0 ) {
+            throw new CampoVacioException("Es necesario ingresar la contraseña");
+        }
+        if (genre == null || genre.isEmpty()) {
+            throw new CampoVacioException("Es necesario ingresar la contraseña");
+        }
+        if (url == null || url.isEmpty()) {
+            throw new CampoVacioException("Es necesario ingresar la contraseña");
+        }
+        if (codigo == null || codigo.isEmpty()) {
+            throw new CampoVacioException("Es necesario ingresar la contraseña");
+        }
+        Cancion cancion = Cancion.builder()
+                .nombreCancion(nombre)
+                .anio(anioLanzamiento)
+                .artistas(autorSelected.getNombre())
+                .caratula(urlCaratula)
+                .codigo(codigo)
+                .genero(genre)
+                .url(url)
+                .duracion(duracionCancion)
+                .nombreAlbum(album)
+                .build();
+        if(autores.agregarAtributo(autores.getInicio(),autorSelected.getNombre(),cancion)){
+            mostrarMensaje(Alert.AlertType.CONFIRMATION,"La cancion ha sido agregada correctamente al artista: " + autorSelected.getNombre());
+        }else {
+            mostrarMensaje(Alert.AlertType.ERROR,"No se logró agregar la cancion correctamente");
+        }
+        ArchivoUtils.serializarArtista(RUTA_ARTISTAS,autores);
+    }
+    /**
+     * Registra un nuevo usuario en la aplicación.
+     *
+     * @param codigoArtista   El codigo de usuario del nuevo artista.
+     * @param nombreArtista  El nombre del artista.
+     * @param nacionalidadArtista      La nacionalidad del artista.
+     * @param esGrupo      Si es grupo el artista.
+     * @throws CampoVacioException       Si algún campo obligatorio está vacío.
+     * @throws CampoObligatorioException Si algún campo es obligatorio y no se proporciona.
+     * @throws CampoRepetido             Si las credenciales proporcionadas ya están en uso.
+     */
+    public void registrarArtista(String codigoArtista, String nombreArtista, String nacionalidadArtista, boolean esGrupo) throws CampoObligatorioException,CampoVacioException {
+        if (codigoArtista == null || codigoArtista.isEmpty()) {
+            throw new CampoObligatorioException(("Es necesario ingresar el nombre"));
+        }
+        if (verificarArtista(codigoArtista)) {
+            throw new CampoVacioException("El codigo del artista no es valido");
+        }
+        if (nombreArtista == null || nombreArtista.isEmpty()) {
+            throw new CampoVacioException("Es necesario ingresar la direccion.");
+        }
+        if (nacionalidadArtista == null || nacionalidadArtista.isEmpty()) {
+            throw new CampoVacioException("Es necesario ingresar la contraseña");
+        }
+        Autor autor = Autor.builder()
+                .nombre(nombreArtista)
+                .codigo(codigoArtista)
+                .esGrupo(esGrupo)
+                .listaCanciones(new ListaDoblementeEnlazada<>())
+                .build();
+        autores.insertar(autor);
+        autores.recorridoEnOrden(autores.getInicio(),0);
+        storify.mostrarMensaje(Alert.AlertType.INFORMATION, "Registro exitoso");
+        ArchivoUtils.serializarArtista(RUTA_ARTISTAS, autores);
+    }
+    /**
+     * Verifica si el codigo de un artista ya existe en la lista de artistas registrados.
+     *
+     * @param codigoArtista El nombre de usuario a verificar.
+     * @return El usuario si es encontrado, o null si no existe.
+     */
+    private boolean verificarArtista(String codigoArtista) {
+        return autores.buscarCodigo(codigoArtista);
+    }
     /**
      * Verifica si un usuario ya existe en la lista de usuarios registrados.
      *
@@ -263,10 +373,11 @@ public class Storify {
                 .artistas(artistas)
                 .build();
         almacenarCancion(cancion, artistas);
-        //ArchivoUtils.serializarArtistas(RUTA_ARTISTAS, artistas);
+        ArchivoUtils.serializarArtista(RUTA_ARTISTAS,autores);
     }
 
     private void almacenarCancion(Cancion cancion, String artistas) {
+
     }
 
     /**
@@ -344,5 +455,30 @@ public class Storify {
         alert.setHeaderText(null);
         alert.setContentText(mensaje);
         alert.show();
+    }
+
+    public ArrayList<Autor> enviarAutores() {
+        return autores.toList();
+    }
+    public  void borrarDatosSerializados(String archivo) {
+        Path path = Paths.get(archivo);
+        try {
+            if (Files.exists(path)) {
+                Files.walk(path)
+                        .sorted(Comparator.reverseOrder())
+                        .map(Path::toFile)
+                        .forEach(File::delete);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public ArrayList<Cancion> enviarCanciones() {
+        return autores.recorridoCanciones(autores.getInicio(),new ArrayList<>());
+    }
+
+    public void cargarArtista(Autor autor) {
+        autores.insertar(autor);
+        ArchivoUtils.serializarArtista(RUTA_ARTISTAS, autores);
     }
 }

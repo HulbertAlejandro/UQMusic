@@ -64,7 +64,7 @@ public class LoginController {
      */
     @FXML
     void ingresar(ActionEvent event) {
-        if (username.getText().equals("admin") && contrasena.getText().equals("$aDmiN")) {
+        if (username.getText().equals("admin") && contrasena.getText().equals("admin")) {
             storify.loadStage("/windows/admin.fxml", event);
         } else {
             if (storify.verificarUsuario(username.getText(), contrasena.getText())) {
@@ -74,7 +74,6 @@ public class LoginController {
             }
         }
     }
-
     /**
      * Método que maneja el evento de registro del usuario.
      * Carga la ventana de registro para que el usuario pueda crear una nueva cuenta.

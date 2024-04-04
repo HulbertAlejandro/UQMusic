@@ -1,11 +1,17 @@
 package co.edu.uniquindio.Storify.controllers;
 
+import co.edu.uniquindio.Storify.exceptions.CampoObligatorioException;
+import co.edu.uniquindio.Storify.exceptions.CampoVacioException;
+import co.edu.uniquindio.Storify.model.Autor;
 import co.edu.uniquindio.Storify.model.Storify;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -14,7 +20,8 @@ import java.util.Random;
  * Controlador para la ventana de registro de canciones en la aplicación Storify.
  * Permite al administrador agregar nuevas canciones al sistema.
  */
-public class RegistroCancionController {
+public class RegistroCancionController implements Serializable {
+    private final Storify storify = Storify.getInstance();
 
     /** Campo de texto para el nombre de la canción. */
     @FXML
@@ -42,7 +49,7 @@ public class RegistroCancionController {
 
     /** Campo de texto para la URL de la canción. */
     @FXML
-    private TextField urlCancion;
+    private TextField urlCancion,filtroArtista;
 
     /** Botón para crear la canción en el sistema. */
     @FXML
@@ -50,11 +57,16 @@ public class RegistroCancionController {
 
     /** Botón para volver a la ventana de administración. */
     @FXML
-    private Button back;
+    private Button back,bttSeleccionar;
+    @FXML
+    private TableColumn<Autor, String> columnaArtista;
+    @FXML
+    private TableView<Autor> tablaArtistas;
+    private ObservableList<Autor> autores = FXCollections.observableArrayList(storify.enviarAutores());
+    private boolean isSelected = false;
+    private Autor autorSelected = null;
 
     /** Instancia de la clase Storify para acceder a la lógica de negocio de la aplicación. */
-    private final Storify storify = Storify.getInstance();
-
     /**
      * Método que se llama automáticamente al inicializar el controlador.
      * Llena el ChoiceBox de géneros musicales con opciones predefinidas.
@@ -63,8 +75,21 @@ public class RegistroCancionController {
     void initialize() {
         List<String> generos = Arrays.asList("Rock", "Pop", "Punk", "Reggaeton", "Electrónica");
         genero.setItems(FXCollections.observableArrayList(generos));
-    }
 
+        columnaArtista.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNombre()));
+        tablaArtistas.setItems(autores);
+        filtroArtista.textProperty().addListener((observable, oldValue, newValue) ->
+                tablaArtistas.setItems(filtrarPorNombre(newValue)));
+    }
+    private ObservableList<Autor> filtrarPorNombre(String nombre) {
+        ObservableList<Autor> artistasFiltrados = FXCollections.observableArrayList();
+        for (Autor artista : autores) {
+            if (artista.getNombre().toLowerCase().contains(nombre.toLowerCase())) {
+                artistasFiltrados.add(artista);
+            }
+        }
+        return artistasFiltrados;
+    }
     /**
      * Método que maneja el evento de volver a la ventana de administración.
      * Carga la ventana de administración para que el usuario pueda realizar otras acciones.
@@ -82,16 +107,25 @@ public class RegistroCancionController {
      */
     @FXML
     void crearCancion(ActionEvent event) {
-        String nombre = nombreCancion.getText();
-        String album = nombreAlbum.getText();
-        String urlCaratula = caratula.getText();
-        int anioLanzamiento = Integer.parseInt(anio.getText());
-        double duracionCancion = Double.parseDouble(duracion.getText());
-        String genre = genero.getValue();
-        String url = urlCancion.getText();
+        if(isSelected){
+            String nombre = nombreCancion.getText();
+            String album = nombreAlbum.getText();
+            String urlCaratula = caratula.getText();
+            int anioLanzamiento = Integer.parseInt(anio.getText());
+            double duracionCancion = Double.parseDouble(duracion.getText());
+            String genre = genero.getValue();
+            String url = urlCancion.getText();
+            // Generar código aleatorio para la canción
+            String codigo = generarCodigoAleatorio();
 
-        // Generar código aleatorio para la canción
-        String codigo = generarCodigoAleatorio();
+            try {
+                storify.guardarCancion(nombre,album,urlCaratula,anioLanzamiento,duracionCancion,genre,url,codigo, autorSelected);
+            }catch (CampoVacioException | CampoObligatorioException e ){
+                storify.mostrarMensaje(Alert.AlertType.ERROR, e.getMessage());
+            }
+        }else{
+            storify.mostrarMensaje(Alert.AlertType.ERROR, "No has seleccionado ningun artista");
+        }
     }
 
     /**
@@ -103,4 +137,11 @@ public class RegistroCancionController {
         int codigoAleatorio = random.nextInt(900000) + 100000;
         return String.valueOf(codigoAleatorio);
     }
+
+    public void seleccionarArtista(ActionEvent actionEvent) {
+        storify.mostrarMensaje(Alert.AlertType.CONFIRMATION, "Se selecciono el artista");
+        isSelected = true;
+        autorSelected = tablaArtistas.getSelectionModel().getSelectedItem();
+    }
+
 }

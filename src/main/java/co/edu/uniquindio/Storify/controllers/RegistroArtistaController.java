@@ -1,5 +1,8 @@
 package co.edu.uniquindio.Storify.controllers;
 
+import co.edu.uniquindio.Storify.exceptions.CampoObligatorioException;
+import co.edu.uniquindio.Storify.exceptions.CampoRepetido;
+import co.edu.uniquindio.Storify.exceptions.CampoVacioException;
 import co.edu.uniquindio.Storify.model.Storify;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -74,11 +77,16 @@ public class RegistroArtistaController {
      * @param event El evento de acción del botón de registro.
      */
     @FXML
-    void registrarse(ActionEvent event) {
+    void registrarse(ActionEvent event) throws CampoVacioException, CampoObligatorioException {
         String codigoArtista = codigo.getText();
         String nombreArtista = nombre.getText();
         String nacionalidadArtista = nacionalidad.getText();
         boolean esGrupo = esGrupoCheckBox.isSelected();
 
+        try {
+            storify.registrarArtista(codigoArtista,nombreArtista,nacionalidadArtista,esGrupo);
+        }catch (CampoVacioException | CampoObligatorioException e){
+            storify.mostrarMensaje(Alert.AlertType.ERROR,e.getMessage());
+        }
     }
 }
