@@ -81,6 +81,9 @@ public class AdminController {
                 List<Autor> artistas = ArchivoUtils.cargarArtistas(filePath);
                 ArchivoUtils.cargarCanciones(filePath, artistas);
                 System.out.println("Información cargada exitosamente desde el archivo: " + filePath);
+                for(Autor autor : artistas){
+                    storify.cargarArtista(autor);
+                }
             } catch (IOException e) {
                 // Manejar errores al cargar el archivo
                 e.printStackTrace();

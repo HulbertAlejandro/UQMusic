@@ -48,11 +48,7 @@
             <scope>provided</scope>
         </dependency>
 
-        <dependency>
-            <groupId>org.openjfx</groupId>
-            <artifactId>javafx-media</artifactId>
-            <version>17</version>
-        </dependency>
+       
 
     </dependencies>
 

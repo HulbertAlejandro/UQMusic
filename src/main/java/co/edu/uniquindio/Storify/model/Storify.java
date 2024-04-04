@@ -476,4 +476,9 @@ public class Storify {
     public ArrayList<Cancion> enviarCanciones() {
         return autores.recorridoCanciones(autores.getInicio(),new ArrayList<>());
     }
+
+    public void cargarArtista(Autor autor) {
+        autores.insertar(autor);
+        ArchivoUtils.serializarArtista(RUTA_ARTISTAS, autores);
+    }
 }
