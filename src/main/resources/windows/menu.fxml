@@ -1,95 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Slider?>
-<?import javafx.scene.effect.Lighting?>
-<?import javafx.scene.effect.Shadow?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Font?>
+<?import java.net.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="921.0" style="-fx-background-color: #000000; -fx-border-radius: 20;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.Storify.controllers.PrincipalController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="921.0" style="-fx-background-color: #000000; -fx-border-radius: 20;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.Storify.controllers.PrincipalController">
+    <stylesheets>
+        <URL value="@../styles.css" />
+    </stylesheets>
     <children>
         <Pane id="contentPane" focusTraversable="true" layoutX="100.0" layoutY="41.0" prefHeight="455.0" prefWidth="805.0" style="-fx-background-color: #212121; -fx-background-radius: 10;">
-         <children>
-            <Button fx:id="cancion1" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="94.0" layoutY="49.0" mnemonicParsing="false" onAction="#cancion1" prefHeight="71.0" prefWidth="71.0" style="-fx-background-color: #212121;">
-               <graphic>
-                  <ImageView fx:id="imgCancion1" fitHeight="137.0" fitWidth="148.0" pickOnBounds="true" preserveRatio="true" />
-               </graphic>
-            </Button>
-            <Button fx:id="cancion2" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="339.0" layoutY="49.0" mnemonicParsing="false" onAction="#cancion2" prefHeight="71.0" prefWidth="71.0" style="-fx-background-color: #212121;">
-               <graphic>
-                  <ImageView fx:id="imgCancion2" fitHeight="137.0" fitWidth="148.0" pickOnBounds="true" preserveRatio="true" />
-               </graphic>
-            </Button>
-            <Button fx:id="cancion3" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="580.0" layoutY="49.0" mnemonicParsing="false" onAction="#cancion3" prefHeight="71.0" prefWidth="71.0" style="-fx-background-color: #212121;">
-               <graphic>
-                  <ImageView fx:id="imgCancion3" fitHeight="137.0" fitWidth="148.0" pickOnBounds="true" preserveRatio="true" />
-               </graphic>
-            </Button>
-            <Button fx:id="cancion6" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="580.0" layoutY="254.0" mnemonicParsing="false" onAction="#cancion6" prefHeight="71.0" prefWidth="71.0" style="-fx-background-color: #212121;">
-               <graphic>
-                  <ImageView fx:id="imgCancion6" fitHeight="137.0" fitWidth="148.0" pickOnBounds="true" preserveRatio="true" />
-               </graphic>
-            </Button>
-            <Button fx:id="cancion5" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="339.0" layoutY="254.0" mnemonicParsing="false" onAction="#cancion5" prefHeight="71.0" prefWidth="71.0" style="-fx-background-color: #212121;">
-               <graphic>
-                  <ImageView fx:id="imgCancion5" fitHeight="137.0" fitWidth="148.0" pickOnBounds="true" preserveRatio="true" />
-               </graphic>
-            </Button>
-            <Button fx:id="cancion4" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="94.0" layoutY="254.0" mnemonicParsing="false" onAction="#cancion4" prefHeight="71.0" prefWidth="71.0" style="-fx-background-color: #212121;">
-               <graphic>
-                  <ImageView fx:id="imgCancion4" fitHeight="137.0" fitWidth="148.0" pickOnBounds="true" preserveRatio="true" />
-               </graphic>
-            </Button>
-            <Label alignment="CENTER" layoutX="176.0" prefHeight="49.0" prefWidth="478.0" text="Canciones" textFill="WHITE">
-               <font>
-                  <Font name="Segoe UI Bold" size="27.0" />
-               </font>
-            </Label>
-            <Label fx:id="titulo1" alignment="CENTER" layoutX="94.0" layoutY="202.0" prefHeight="27.0" prefWidth="153.0" textFill="WHITE">
-               <font>
-                  <Font name="Segoe UI Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label fx:id="titulo4" alignment="CENTER" layoutX="100.0" layoutY="408.0" prefHeight="27.0" prefWidth="153.0" textFill="WHITE">
-               <font>
-                  <Font name="Segoe UI Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label fx:id="titulo2" alignment="CENTER" layoutX="345.0" layoutY="202.0" prefHeight="27.0" prefWidth="153.0" textFill="WHITE">
-               <font>
-                  <Font name="Segoe UI Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label fx:id="titulo3" alignment="CENTER" layoutX="586.0" layoutY="202.0" prefHeight="27.0" prefWidth="153.0" textFill="WHITE">
-               <font>
-                  <Font name="Segoe UI Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label fx:id="titulo5" alignment="CENTER" layoutX="345.0" layoutY="408.0" prefHeight="27.0" prefWidth="153.0" textFill="WHITE">
-               <font>
-                  <Font name="Segoe UI Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label fx:id="titulo6" alignment="CENTER" layoutX="586.0" layoutY="408.0" prefHeight="27.0" prefWidth="153.0" textFill="WHITE">
-               <font>
-                  <Font name="Segoe UI Bold" size="14.0" />
-               </font>
-            </Label>
-         </children>
+            <children>
+                <TableView fx:id="tablaCanciones" layoutX="39.0" layoutY="43.0" prefHeight="370.0" prefWidth="728.0">
+                    <columns>
+                        <TableColumn fx:id="columnaCaratula" prefWidth="156.0" style="-fx-alignment: CENTER;" text="CARÁTULA">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="caratula" />
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn fx:id="columnaNombreCancion" prefWidth="179.0" text="CANCIÓN">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="nombreCancion" />
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn fx:id="columnaNombreAlbum" prefWidth="152.0" text="ÁLBUM">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="nombreAlbum" />
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn fx:id="columnaArtistas" minWidth="0.0" prefWidth="125.0" text="ARTISTA">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="artistas" />
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn fx:id="columnaDuracion" prefWidth="114.0" text="DURACIÓN">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="duracion" />
+                            </cellValueFactory>
+                        </TableColumn>
+                    </columns>
+                </TableView>
+            </children>
         </Pane>
         <Pane id="sidebarPane" layoutX="14.0" layoutY="221.0" prefHeight="276.0" prefWidth="71.0" style="-fx-background-color: #121212; -fx-background-radius: 10;">
             <children>
-                <Button fx:id="newPlaylist" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="10.0" layoutY="14.0" mnemonicParsing="false" onAction="#newPlaylist" prefHeight="34.0" prefWidth="35.0" style="-fx-background-color: #121212;">
+                <Button fx:id="newPlaylist" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="10.0" layoutY="14.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="35.0" style="-fx-background-color: #121212;">
                     <graphic>
                         <ImageView fitHeight="37.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../images/anadir.png" />
+                                <Image url="@../imagenes/anadir.png" />
                             </image>
                         </ImageView>
                     </graphic>
@@ -98,20 +61,20 @@
         </Pane>
         <Pane id="sidebarPane" layoutX="14.0" layoutY="41.0" prefHeight="163.0" prefWidth="71.0" style="-fx-background-color: #121212; -fx-background-radius: 10;">
             <children>
-                <Button fx:id="search" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="10.0" layoutY="14.0" mnemonicParsing="false" onAction="#search" prefHeight="34.0" prefWidth="35.0" style="-fx-background-color: #121212;">
+                <Button fx:id="search" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="10.0" layoutY="14.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="35.0" style="-fx-background-color: #121212;">
                     <graphic>
                         <ImageView fitHeight="37.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../images/SEARCH.png" />
+                                <Image url="@../imagenes/SEARCH.png" />
                             </image>
                         </ImageView>
                     </graphic>
                 </Button>
-                <Button fx:id="home" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="10.0" layoutY="63.0" mnemonicParsing="false" onAction="#home" prefHeight="34.0" prefWidth="35.0" style="-fx-background-color: #121212;">
+                <Button fx:id="home" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="10.0" layoutY="63.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="35.0" style="-fx-background-color: #121212;">
                     <graphic>
                         <ImageView fitHeight="37.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../images/home.png" />
+                                <Image url="@../imagenes/home.png" />
                             </image>
                         </ImageView>
                     </graphic>
@@ -122,45 +85,21 @@
             <cursor>
                 <Cursor fx:constant="SW_RESIZE" />
             </cursor>
-            <effect>
-                <Lighting>
-                    <bumpInput>
-                        <Shadow />
-                    </bumpInput>
-                    <light>
-                    </light>
-                </Lighting>
-            </effect>
         </Slider>
-        <Label fx:id="nombreCancion" layoutX="100.0" layoutY="518.0" prefHeight="27.0" prefWidth="170.0" textFill="WHITE">
-            <font>
-                <Font name="Franklin Gothic Demi" size="18.0" />
-            </font>
-        </Label>
-        <Label fx:id="artistas" layoutX="100.0" layoutY="540.0" prefHeight="27.0" prefWidth="170.0" textFill="WHITE">
-            <font>
-                <Font name="Franklin Gothic Book" size="13.0" />
-            </font>
-        </Label>
-        <Button fx:id="isAgregada" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="853.0" layoutY="529.0" mnemonicParsing="false" onAction="#isAgregada" prefHeight="34.0" prefWidth="35.0" style="-fx-background-color: #000000;">
+        <Button fx:id="isAgregada" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="853.0" layoutY="529.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="35.0" style="-fx-background-color: #000000;">
             <graphic>
                 <ImageView fitHeight="37.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../images/check.png" />
+                        <Image url="@../imagenes/check.png" />
                     </image>
                 </ImageView>
             </graphic>
         </Button>
-        <Button fx:id="cancion" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="14.0" layoutY="505.0" mnemonicParsing="false" onAction="#cancion" prefHeight="71.0" prefWidth="71.0" style="-fx-background-color: #000000;">
-            <graphic>
-                <ImageView fx:id="imgCancion" fitHeight="71.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true" />
-            </graphic>
-        </Button>
-        <Button fx:id="atras" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="451.0" layoutY="499.0" mnemonicParsing="false" onAction="#atras" prefHeight="34.0" prefWidth="35.0" style="-fx-background-color: #000000;">
+        <Button fx:id="atras" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="451.0" layoutY="499.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="35.0" style="-fx-background-color: #000000;">
             <graphic>
                 <ImageView fitHeight="37.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../images/back.png" />
+                        <Image url="@../imagenes/back.png" />
                     </image>
                 </ImageView>
             </graphic>
@@ -169,31 +108,33 @@
             <graphic>
                 <ImageView fitHeight="37.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../images/play.png" />
+                        <Image url="@../imagenes/play.png" />
                     </image>
                 </ImageView>
             </graphic>
         </Button>
-        <Button fx:id="next" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="537.0" layoutY="498.0" mnemonicParsing="false" onAction="#next" prefHeight="34.0" prefWidth="35.0" style="-fx-background-color: #000000;">
+        <Button fx:id="next" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="537.0" layoutY="498.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="35.0" style="-fx-background-color: #000000;">
             <graphic>
                 <ImageView fitHeight="37.0" fitWidth="36.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../images/back.png" />
+                        <Image url="@../imagenes/back.png" />
                     </image>
                 </ImageView>
             </graphic>
         </Button>
-        <Button fx:id="aleatorio" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="416.0" layoutY="503.0" mnemonicParsing="false" onAction="#aleatorio" prefHeight="34.0" prefWidth="35.0" style="-fx-background-color: #000000;">
+        <Button fx:id="aleatorio" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="416.0" layoutY="503.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="35.0" style="-fx-background-color: #000000;">
             <graphic>
                 <ImageView fitHeight="32.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../images/aleatorioOFF.png" />
+                        <Image url="@../imagenes/aleatorioOFF.png" />
                     </image>
                 </ImageView>
             </graphic>
         </Button>
+      <ImageView fx:id="imagenView" fitHeight="59.0" fitWidth="71.0" layoutX="50.0" layoutY="520.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="labelCancion" layoutX="133.0" layoutY="539.0" prefHeight="21.0" prefWidth="145.0" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
     </children>
-    <stylesheets>
-
-    </stylesheets>
 </AnchorPane>

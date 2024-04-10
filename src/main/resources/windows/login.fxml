@@ -13,7 +13,7 @@
                     <children>
                         <ImageView fitHeight="91.0" fitWidth="119.0" layoutX="23.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../images/storify.png" />
+                                <Image url="@../imagenes/storify.png" />
                             </image>
                         </ImageView>
                         <Label layoutX="157.0" layoutY="47.0" text="Storify" textFill="WHITE">

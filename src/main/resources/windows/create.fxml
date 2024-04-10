@@ -20,7 +20,7 @@
                     <children>
                         <ImageView fitHeight="62.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../images/likes.png"/>
+                                <Image url="@../imagenes/likes.png"/>
                             </image>
                         </ImageView>
                     </children>
@@ -41,12 +41,12 @@
               style="-fx-background-color: #121212; -fx-background-radius: 10;">
             <children>
                 <Button fx:id="newPlaylist" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="10.0"
-                        layoutY="14.0" mnemonicParsing="false" onAction="#newPlaylist" prefHeight="34.0"
+                        layoutY="14.0" mnemonicParsing="false"  prefHeight="34.0"
                         prefWidth="35.0" style="-fx-background-color: #121212;">
                     <graphic>
                         <ImageView fitHeight="37.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../images/anadir.png"/>
+                                <Image url="@../imagenes/anadir.png"/>
                             </image>
                         </ImageView>
                     </graphic>
@@ -57,23 +57,23 @@
               style="-fx-background-color: #121212; -fx-background-radius: 10;">
             <children>
                 <Button fx:id="search" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="10.0" layoutY="14.0"
-                        mnemonicParsing="false" onAction="#search" prefHeight="34.0" prefWidth="35.0"
+                        mnemonicParsing="false"  prefHeight="34.0" prefWidth="35.0"
                         style="-fx-background-color: #121212;">
                     <graphic>
                         <ImageView fitHeight="37.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../images/SEARCH.png"/>
+                                <Image url="@../imagenes/SEARCH.png"/>
                             </image>
                         </ImageView>
                     </graphic>
                 </Button>
                 <Button fx:id="home" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="10.0" layoutY="63.0"
-                        mnemonicParsing="false" onAction="#home" prefHeight="34.0" prefWidth="35.0"
+                        mnemonicParsing="false" prefHeight="34.0" prefWidth="35.0"
                         style="-fx-background-color: #121212;">
                     <graphic>
                         <ImageView fitHeight="37.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../images/home.png"/>
+                                <Image url="@../imagenes/home.png"/>
                             </image>
                         </ImageView>
                     </graphic>
@@ -112,7 +112,7 @@
             <graphic>
                 <ImageView fitHeight="37.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../images/check.png"/>
+                        <Image url="@../imagenes/check.png"/>
                     </image>
                 </ImageView>
             </graphic>
@@ -123,18 +123,18 @@
             <graphic>
                 <ImageView fx:id="imgCancion" fitHeight="71.0" fitWidth="86.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../images/TLT.png"/>
+                        <Image url="@../imagenes/TLT.png"/>
                     </image>
                 </ImageView>
             </graphic>
         </Button>
         <Button fx:id="atras" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="451.0" layoutY="499.0"
-                mnemonicParsing="false" onAction="#atras" prefHeight="34.0" prefWidth="35.0"
+                mnemonicParsing="false" prefHeight="34.0" prefWidth="35.0"
                 style="-fx-background-color: #000000;">
             <graphic>
                 <ImageView fitHeight="37.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../images/back.png"/>
+                        <Image url="@../imagenes/back.png"/>
                     </image>
                 </ImageView>
             </graphic>
@@ -145,30 +145,30 @@
             <graphic>
                 <ImageView fitHeight="37.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../images/play.png"/>
+                        <Image url="@../imagenes/play.png"/>
                     </image>
                 </ImageView>
             </graphic>
         </Button>
         <Button fx:id="next" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="537.0" layoutY="498.0"
-                mnemonicParsing="false" onAction="#next" prefHeight="34.0" prefWidth="35.0"
+                mnemonicParsing="false" prefHeight="34.0" prefWidth="35.0"
                 style="-fx-background-color: #000000;">
             <graphic>
                 <ImageView fitHeight="37.0" fitWidth="36.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true"
                            preserveRatio="true">
                     <image>
-                        <Image url="@../images/back.png"/>
+                        <Image url="@../imagenes/back.png"/>
                     </image>
                 </ImageView>
             </graphic>
         </Button>
         <Button fx:id="aleatorio" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="416.0" layoutY="503.0"
-                mnemonicParsing="false" onAction="#aleatorio" prefHeight="34.0" prefWidth="35.0"
+                mnemonicParsing="false" prefHeight="34.0" prefWidth="35.0"
                 style="-fx-background-color: #000000;">
             <graphic>
                 <ImageView fitHeight="32.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../images/aleatorioOFF.png"/>
+                        <Image url="@../imagenes/aleatorioOFF.png"/>
                     </image>
                 </ImageView>
             </graphic>

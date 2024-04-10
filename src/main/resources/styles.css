@@ -1,0 +1,35 @@
+/* Estilos para la TableView */
+.table-view {
+    -fx-background-color: #212121; /* Color de fondo de la TableView */
+}
+
+/* Estilos para las celdas de la TableView */
+.table-cell {
+    -fx-background-color: #212121; /* Color de fondo de las celdas (transparente) */
+    -fx-border-color: #212121; /* Color del borde de las celdas */
+    -fx-border-width: 0.5; /* Ancho del borde de las celdas */
+    -fx-border-style: solid; /* Estilo del borde de las celdas */
+    -fx-text-fill: #FFFFFF; /* Color del texto dentro de las celdas (blanco) */
+    -fx-alignment: center; /* Centrar el texto dentro de las celdas */
+}
+
+
+/* Estilos para las líneas divisorias entre las celdas */
+.table-row-cell {
+    -fx-table-cell-border-color: #212121; /* Color de las líneas divisorias */
+    -fx-table-cell-border-width: 0.5; /* Ancho de las líneas divisorias */
+    -fx-table-cell-border-style: solid; /* Estilo de las líneas divisorias */
+}
+
+/* Estilos para los encabezados de columna (títulos) */
+.column-header {
+    -fx-background-color: transparent; /* Color de fondo de los encabezados de columna */
+    -fx-font-weight: bold; /* Establecer el texto en negrita */
+    -fx-text-fill: #FFFFFF; /* Color del texto de los encabezados de columna (blanco) */
+    -fx-alignment: center; /* Centrar el texto de los encabezados de columna */
+    -fx-border-color: black; /* Color del borde */
+    -fx-border-width: 1; /* Ancho del borde */
+    -fx-padding: 5; /* Espaciado interno */
+}
+
+
