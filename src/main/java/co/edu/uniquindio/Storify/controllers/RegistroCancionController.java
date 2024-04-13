@@ -78,8 +78,10 @@ public class RegistroCancionController implements Serializable {
 
         columnaArtista.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNombre()));
         tablaArtistas.setItems(autores);
+
         filtroArtista.textProperty().addListener((observable, oldValue, newValue) ->
                 tablaArtistas.setItems(filtrarPorNombre(newValue)));
+
     }
     private ObservableList<Autor> filtrarPorNombre(String nombre) {
         ObservableList<Autor> artistasFiltrados = FXCollections.observableArrayList();

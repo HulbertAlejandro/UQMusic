@@ -5,38 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="09a5be0b-dfd4-46c5-9245-9a8d4b49f8c0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/controllers/PrincipalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/controllers/PrincipalController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/EDDT.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/imagenes/EDDT.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/FXX.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/imagenes/FXX.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/HMT.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/imagenes/HMT.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/LDC.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/imagenes/LDC.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/MNLALO.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/imagenes/MNLALO.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/PSR.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/imagenes/PSR.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/SEARCH.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/imagenes/SEARCH.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/TLT.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/imagenes/TLT.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/aleatorioOFF.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/imagenes/aleatorioOFF.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/aleatorioON.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/imagenes/aleatorioON.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/anadir.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/imagenes/anadir.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/back.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/imagenes/back.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/check.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/imagenes/check.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/home.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/imagenes/home.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/likes.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/imagenes/likes.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/play.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/imagenes/play.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/stop.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/imagenes/stop.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/storify.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/imagenes/storify.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/storifyLet.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/imagenes/storifyLet.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/controllers/RegistroCancionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/controllers/RegistroCancionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/model/ArbolBinario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/model/ArbolBinario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/model/Cancion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/model/Cancion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/model/Storify.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/model/Storify.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/serializable/artistas.ser" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/serializable/artistas.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/serializable/usuario.ser" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/serializable/usuario.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/windows/admin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/windows/admin.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/windows/create.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/windows/create.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/windows/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/windows/login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/windows/menu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/windows/menu.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/windows/registro.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/windows/registro.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/windows/registroArtista.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/windows/registroArtista.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/windows/registroCancion.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/windows/registroCancion.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,8 +55,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
-        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
+        <option value="jdk-17.0.9-corretto-17.0.9-4caba194b151-107bc6b7" />
       </set>
     </attachedChunks>
   </component>

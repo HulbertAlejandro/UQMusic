@@ -481,4 +481,7 @@ public class Storify {
         autores.insertar(autor);
         ArchivoUtils.serializarArtista(RUTA_ARTISTAS, autores);
     }
+    public ArbolBinario enviarArtistas(){
+        return autores;
+    }
 }

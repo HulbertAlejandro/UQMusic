@@ -91,4 +91,17 @@ public class Cancion implements Serializable {
      */
     public Cancion() {
     }
+    /**
+     * Verifica si al menos uno de los atributos de la canción coincide con el valor proporcionado.
+     *
+     * @param atributo El valor a comparar con los atributos de la canción.
+     * @return true si al menos un atributo coincide, false de lo contrario.
+     */
+    public boolean coincideAtributo(String atributo) {
+        // Verificar si algún atributo de la canción coincide con el atributo especificado
+        return nombreCancion.equalsIgnoreCase(atributo) ||
+                nombreAlbum.equalsIgnoreCase(atributo) ||
+                artistas.equalsIgnoreCase(atributo) ||
+                genero.equalsIgnoreCase(atributo);
+    }
 }

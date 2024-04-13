@@ -52,15 +52,15 @@ public class ArbolBinario implements Serializable {
         return buscar(inicio, codigo);
     }
     private boolean buscar(NodoArbol nodo, String codigo) {
-        if (nodo == null)
+        if (nodo == null){
             return false;
-        int comparacion = codigo.compareTo(nodo.getAutor().getCodigo());
-        if (comparacion == 0)
+        }
+        if (codigo.equals(nodo.getAutor().getCodigo())){
             return true;
-        else if (comparacion < 0)
-            return buscar(nodo.getNodoIzquierda(), codigo);
-        else
-            return buscar(nodo.getNodoDerecha(), codigo);
+        }
+        else{
+            return buscar(nodo.getNodoIzquierda(),codigo) || buscar(nodo.getNodoDerecha(),codigo);
+        }
     }
     public boolean agregarAtributo(NodoArbol nodo, String codigo, Cancion cancion) {
         if (nodo == null) {
@@ -105,6 +105,36 @@ public class ArbolBinario implements Serializable {
             recorridoCanciones(nodo.getNodoDerecha(), lista);
         }
         return lista;
+    }
+    /**
+     * Busca un autor en el árbol binario por su nombre.
+     *
+     * @param nombre El nombre del autor a buscar.
+     * @return Una lista de canciones del autor si se encuentra, o null si no se encuentra.
+     */
+    public ArrayList<Cancion> buscarAutor(String nombre) {
+        return buscarAutor(inicio, nombre);
+    }
+
+    /**
+     * Método auxiliar para buscar un autor en el árbol binario.
+     *
+     * @param nodo   El nodo actual a evaluar.
+     * @param nombre El nombre del autor a buscar.
+     * @return Una lista de canciones del autor si se encuentra, o null si no se encuentra.
+     */
+    private ArrayList<Cancion> buscarAutor(NodoArbol nodo, String nombre) {
+        if (nodo == null)
+            return null;
+
+        int comparacion = nombre.compareTo(nodo.getAutor().getNombre());
+
+        if (comparacion == 0)
+            return nodo.getAutor().getListaCanciones().toArrayList(); // Devuelve la lista de canciones del autor encontrado
+        else if (comparacion < 0)
+            return buscarAutor(nodo.getNodoIzquierda(), nombre);
+        else
+            return buscarAutor(nodo.getNodoDerecha(), nombre);
     }
 }
 

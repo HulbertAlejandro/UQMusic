@@ -5,7 +5,7 @@
 
 /* Estilos para las celdas de la TableView */
 .table-cell {
-    -fx-background-color: #212121; /* Color de fondo de las celdas (transparente) */
+    -fx-background-color: #212121; /* Color de fondo de las celdas */
     -fx-border-color: #212121; /* Color del borde de las celdas */
     -fx-border-width: 0.5; /* Ancho del borde de las celdas */
     -fx-border-style: solid; /* Estilo del borde de las celdas */
