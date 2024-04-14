@@ -112,16 +112,16 @@
             </Button>
             </children>
         </Pane>
-        <Button fx:id="isAgregada" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="853.0" layoutY="529.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="35.0" style="-fx-background-color: #000000;">
+        <Button fx:id="isAgregada" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="853.0" layoutY="527.0" mnemonicParsing="false" onAction="#like" prefHeight="34.0" prefWidth="35.0" style="-fx-background-color: #000000;">
             <graphic>
-                <ImageView fitHeight="37.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fx:id="imgLike" fitHeight="37.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../imagenes/check.png" />
                     </image>
                 </ImageView>
             </graphic>
         </Button>
-        <Button fx:id="atras" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="438.0" layoutY="524.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="35.0" style="-fx-background-color: #000000;">
+        <Button fx:id="atras" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="438.0" layoutY="523.0" mnemonicParsing="false" onAction="#back" prefHeight="34.0" prefWidth="35.0" style="-fx-background-color: #000000;">
             <graphic>
                 <ImageView fitHeight="42.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
                     <image>
@@ -130,7 +130,7 @@
                 </ImageView>
             </graphic>
         </Button>
-        <Button fx:id="play" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="503.0" layoutY="524.0" mnemonicParsing="false" onAction="#play" prefHeight="34.0" prefWidth="35.0" style="-fx-background-color: #000000;">
+        <Button fx:id="play" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="503.0" layoutY="523.0" mnemonicParsing="false" onAction="#play" prefHeight="34.0" prefWidth="35.0" style="-fx-background-color: #000000;">
             <graphic>
                 <ImageView fitHeight="42.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
                     <image>
@@ -139,7 +139,7 @@
                 </ImageView>
             </graphic>
         </Button>
-        <Button fx:id="next" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="568.0" layoutY="524.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="14.0" style="-fx-background-color: #000000;">
+        <Button fx:id="next" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="568.0" layoutY="523.0" mnemonicParsing="false" onAction="#next" prefHeight="20.0" prefWidth="14.0" style="-fx-background-color: #000000;">
             <graphic>
                 <ImageView fitHeight="42.0" fitWidth="41.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
                     <image>
@@ -148,9 +148,9 @@
                 </ImageView>
             </graphic>
         </Button>
-        <Button fx:id="aleatorio" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="387.0" layoutY="527.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="35.0" style="-fx-background-color: #000000;">
+        <Button fx:id="aleatorio" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="387.0" layoutY="527.0" mnemonicParsing="false" onAction="#aleatorio" prefHeight="34.0" prefWidth="35.0" style="-fx-background-color: #000000;">
             <graphic>
-                <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fx:id="imgAleatorio" fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../imagenes/aleatorioOFF.png" />
                     </image>

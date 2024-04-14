@@ -477,4 +477,13 @@ public class Storify {
     public Usuario enviarUsuario() {
         return USUARIO_SESION;
     }
+
+    public boolean verificarContencion(ArrayList<Cancion> cancionesUsuario, String codigo) {
+        for(Cancion cancion : cancionesUsuario){
+            if (cancion.getCodigo().equals(codigo)){
+                return true;
+            }
+        }
+        return false;
+    }
 }

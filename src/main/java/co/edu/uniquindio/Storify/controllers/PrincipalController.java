@@ -291,7 +291,7 @@ public class PrincipalController {
                 imagenView.setImage(caratula);
                 indiceTabla = indiceAleatorio;
 
-                if(cancionesUsuario.contains(tablaCanciones.getItems().get(indiceTabla))){
+                if(storify.verificarContencion(cancionesUsuario,tablaCanciones.getItems().get(indiceTabla).getCodigo())){
                     Image image = new Image("/imagenes/check.png");
                     imgLike.setImage(image);
                     stateLike = true;
@@ -316,7 +316,7 @@ public class PrincipalController {
 
                     indiceTabla = tablaCanciones.getItems().size()-1;
 
-                    if(cancionesUsuario.contains(tablaCanciones.getItems().get(indiceTabla))){
+                    if(storify.verificarContencion(cancionesUsuario,tablaCanciones.getItems().get(indiceTabla).getCodigo())){
                         Image image = new Image("/imagenes/check.png");
                         imgLike.setImage(image);
                         stateLike = true;
@@ -339,7 +339,7 @@ public class PrincipalController {
                     Image caratula = new Image(tablaCanciones.getItems().get(indiceTabla).getCaratula());
                     imagenView.setImage(caratula);
 
-                    if(cancionesUsuario.contains(tablaCanciones.getItems().get(indiceTabla))){
+                    if(storify.verificarContencion(cancionesUsuario,tablaCanciones.getItems().get(indiceTabla).getCodigo())){
                         Image image = new Image("/imagenes/check.png");
                         imgLike.setImage(image);
                         stateLike = true;
@@ -370,7 +370,7 @@ public class PrincipalController {
                 Image caratula = new Image(tablaCanciones.getItems().get(indiceTabla).getCaratula());
                 imagenView.setImage(caratula);
 
-                if(cancionesUsuario.contains(tablaCanciones.getItems().get(indiceAleatorio))){
+                if(storify.verificarContencion(cancionesUsuario,tablaCanciones.getItems().get(indiceAleatorio).getCodigo())){
                     Image image = new Image("/imagenes/check.png");
                     imgLike.setImage(image);
                     stateLike = true;
@@ -392,7 +392,7 @@ public class PrincipalController {
 
                     indiceTabla = 0;
 
-                    if(cancionesUsuario.contains(tablaCanciones.getItems().get(0))){
+                    if(storify.verificarContencion(cancionesUsuario,tablaCanciones.getItems().get(0).getCodigo())){
                         Image image = new Image("/imagenes/check.png");
                         imgLike.setImage(image);
                         stateLike = true;
@@ -414,7 +414,7 @@ public class PrincipalController {
                 } else {
 
                     indiceTabla = indiceTabla + 1;
-                    if(cancionesUsuario.contains(tablaCanciones.getItems().get(indiceTabla))){
+                    if(storify.verificarContencion(cancionesUsuario,tablaCanciones.getItems().get(indiceTabla).getCodigo())){
                         Image image = new Image("/imagenes/check.png");
                         imgLike.setImage(image);
                         stateLike = true;

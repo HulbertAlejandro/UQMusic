@@ -45,7 +45,7 @@ public class LikesController {
     private int indiceTabla;
     private ToggleGroup toggleGroup;
     private final Storify storify = Storify.getInstance();
-    private ArrayList<Cancion> cancionesSistema = storify.enviarCanciones();
+    private ArrayList<Cancion> cancionesSistema = storify.enviarUsuario().getCanciones().toArrayList();
     private ArrayList<Cancion> cancionesUsuario = storify.enviarUsuario().getCanciones().toArrayList();
     private Usuario usuario = storify.enviarUsuario();
     @FXML
