@@ -105,8 +105,8 @@ public class Storify {
         boolean state = false;
         for (Usuario c : usuarios.values()) {
             if (c.getUsername().equals(usuario) && c.getContrasena().equals(contrasena)) {
+                USUARIO_SESION = c;
                 state = true;
-                break;
             }
         }
         return state;
@@ -408,16 +408,6 @@ public class Storify {
     }
 
     /**
-     * Almacena un usuario en la lista de usuarios registrados.
-     *
-     * @param Usuario El usuario a almacenar.
-     */
-    public void almacenarUsuario(Usuario Usuario) {
-        USUARIO_SESION = Usuario;
-        System.out.println(USUARIO_SESION.getUsername());
-    }
-
-    /**
      * Serializa los datos de la aplicación y los guarda en archivos.
      */
     public void serializar() {
@@ -483,5 +473,8 @@ public class Storify {
     }
     public ArbolBinario enviarArtistas(){
         return autores;
+    }
+    public Usuario enviarUsuario() {
+        return USUARIO_SESION;
     }
 }

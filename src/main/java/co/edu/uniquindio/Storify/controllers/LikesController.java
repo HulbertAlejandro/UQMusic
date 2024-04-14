@@ -18,7 +18,7 @@ import javafx.scene.web.WebView;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class PrincipalController {
+public class LikesController {
 
     @FXML
     private TableView<Cancion> tablaCanciones;
@@ -68,29 +68,29 @@ public class PrincipalController {
         // Configurar la columna de carátula para mostrar imágenes
         columnaCaratula.setCellValueFactory(new PropertyValueFactory<>("caratula"));
         columnaCaratula.setCellFactory(param -> new javafx.scene.control.TableCell<>() {
-        private final ImageView imageView = new ImageView();
+            private final ImageView imageView = new ImageView();
 
-        @Override
-        protected void updateItem(String caratulaPath, boolean empty) {
-           super.updateItem(caratulaPath, empty);
-           if (empty || caratulaPath == null) {
-               setGraphic(null);
-           } else {
-               try {
-                   Image image = new Image(caratulaPath);
-                   imageView.setImage(image);
-                   imageView.setFitWidth(50); // Tamaño de la imagen
-                   imageView.setPreserveRatio(true);
-                   setGraphic(imageView);
-               } catch (Exception e) {
+            @Override
+            protected void updateItem(String caratulaPath, boolean empty) {
+                super.updateItem(caratulaPath, empty);
+                if (empty || caratulaPath == null) {
+                    setGraphic(null);
+                } else {
+                    try {
+                        Image image = new Image(caratulaPath);
+                        imageView.setImage(image);
+                        imageView.setFitWidth(50); // Tamaño de la imagen
+                        imageView.setPreserveRatio(true);
+                        setGraphic(imageView);
+                    } catch (Exception e) {
                         System.out.println("Error al cargar la imagen: " + caratulaPath);
                         System.out.println("Excepción: " + e.getMessage());
                         e.printStackTrace();
                         setGraphic(null); // Mostrar celda vacía si no se puede cargar la imagen
-               }
-           }
-        }
-    });
+                    }
+                }
+            }
+        });
 
         // Configurar otras columnas para mostrar propiedades de la canción
         columnaNombreCancion.setCellValueFactory(new PropertyValueFactory<>("nombreCancion"));
