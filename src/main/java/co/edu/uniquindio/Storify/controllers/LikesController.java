@@ -37,7 +37,7 @@ public class LikesController {
     @FXML
     private TableColumn<Cancion, Double> columnaDuracion;
     @FXML
-    private ImageView imagenView, imgLike, imgAleatorio;
+    private ImageView imagenView, imgLike, imgAleatorio, imgDeshacer, imgRehacer;
     @FXML
     private Label labelCancion, labelArtista;
     private boolean stateAletorio = false;
@@ -439,4 +439,12 @@ public class LikesController {
             stateAletorio = true;
         }
     }
+    public void deshacer (ActionEvent actionEvent) {
+
+    }
+
+    public void rehacer (ActionEvent actionEvent) {
+
+    }
+
 }

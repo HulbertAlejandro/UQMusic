@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import java.net.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.control.cell.*?>
@@ -7,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="921.0" style="-fx-background-color: #000000; -fx-border-radius: 20;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.Storify.controllers.LikesController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="921.0" style="-fx-background-color: #000000; -fx-border-radius: 20;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.Storify.controllers.LikesController">
     <stylesheets>
         <URL value="@../styles.css" />
     </stylesheets>
@@ -137,5 +138,23 @@
             <Font name="Segoe UI" size="14.0" />
          </font>
       </Label>
+      <Button fx:id="deshacer" layoutX="777.0" layoutY="535.0" mnemonicParsing="false" onAction="#deshacer" style="-fx-background-color: #000000;">
+         <graphic>
+            <ImageView fx:id="imgDeshacer" fitHeight="21.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagenes/deshacer.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="rehacer" layoutX="818.0" layoutY="535.0" mnemonicParsing="false" onAction="#rehacer" prefHeight="29.0" prefWidth="35.0" style="-fx-background-color: #000000;">
+         <graphic>
+            <ImageView fx:id="imgHacer" fitHeight="21.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagenes/rehacer.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
     </children>
 </AnchorPane>

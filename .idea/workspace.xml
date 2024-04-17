@@ -5,9 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="09a5be0b-dfd4-46c5-9245-9a8d4b49f8c0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/imagenes/deshacer.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/imagenes/rehacer.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/controllers/LikesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/controllers/LikesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/controllers/PrincipalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/controllers/PrincipalController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/serializable/usuario.ser" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/serializable/usuario.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/windows/likes.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/windows/likes.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -45,6 +47,9 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\MI PC\Desktop\proyectoAlmacenUQ\UQMusic\src\main\resources\imagenes" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="co.edu.uniquindio.Storify.utils" />
     </key>
