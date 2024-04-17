@@ -203,49 +203,65 @@ public class PrincipalController {
 
     // Método para buscar por artistas
     private ObservableList<Cancion> buscarPorArtistas(String nombre) {
-        ObservableList<Cancion> artistasFiltrados = FXCollections.observableArrayList();
-        for (Autor artista : storify.enviarAutores()) {
-            if (artista.getNombre().toLowerCase().contains(nombre.toLowerCase())) {
-                artistasFiltrados.addAll(artista.getListaCanciones().toArrayList());
-            }
+        if (nombre.isBlank() || nombre.isEmpty()) {
+            return FXCollections.observableArrayList(cancionesSistema);
         }
-        return artistasFiltrados;
+        else {
+            ObservableList<Cancion> artistasFiltrados = FXCollections.observableArrayList();
+            for (Autor artista : storify.enviarAutores()) {
+                if (artista.getNombre().toLowerCase().contains(nombre.toLowerCase())) {
+                    artistasFiltrados.addAll(artista.getListaCanciones().toArrayList());
+                }
+            }
+            return artistasFiltrados;
+        }
     }
 
     // Método para buscar por O
-    private ObservableList<Cancion> buscarPorO(String[] atributos) {
-        ObservableList<Cancion> cancionesCoincidentes = FXCollections.observableArrayList();
-        if (atributos.length == 0) {
+    private ObservableList<Cancion> buscarPorO(String atributo) {
+        if(atributo.isEmpty() || atributo.isBlank()){
             return FXCollections.observableArrayList(cancionesSistema);
-        }
-        for (Cancion cancion : cancionesSistema) {
-            for (String atributo : atributos) {
-                if (cancion.coincideAtributo(atributo)) {
-                    cancionesCoincidentes.add(cancion);
+        }else{
+            String [] atributos = atributo.split(",");
+            ObservableList<Cancion> cancionesCoincidentes = FXCollections.observableArrayList();
+            if (atributos.length == 0) {
+                return FXCollections.observableArrayList(cancionesSistema);
+            }
+            for (Cancion cancion : cancionesSistema) {
+                for (String atr : atributos) {
+                    if (cancion.coincideAtributo(atr)) {
+                        cancionesCoincidentes.add(cancion);
+                    }
                 }
             }
+            return cancionesCoincidentes;
         }
-        return cancionesCoincidentes;
+
     }
 
     // Método para buscar por Y
-    private ObservableList<Cancion> buscarPorY(String[] atributos) {
-        ObservableList<Cancion> cancionesCoincidentes = FXCollections.observableArrayList();
-        if (atributos.length == 0) {
+    private ObservableList<Cancion> buscarPorY(String atributo) {
+        if(atributo.isEmpty() || atributo.isBlank()){
             return FXCollections.observableArrayList(cancionesSistema);
-        }
-        for (Cancion cancion : cancionesSistema) {
-            int atributosCoincidentes = 0;
-            for (String atributo : atributos) {
-                if (cancion.coincideAtributo(atributo)) {
-                    atributosCoincidentes+=1;
+        }else{
+            String [] atributos = atributo.split(",");
+            ObservableList<Cancion> cancionesCoincidentes = FXCollections.observableArrayList();
+            if (atributos.length == 0) {
+                return FXCollections.observableArrayList(cancionesSistema);
+            }
+            for (Cancion cancion : cancionesSistema) {
+                int atributosCoincidentes = 0;
+                for (String atr : atributos) {
+                    if (cancion.coincideAtributo(atr)) {
+                        atributosCoincidentes+=1;
+                    }
+                }
+                if (atributosCoincidentes == atributos.length) {
+                    cancionesCoincidentes.add(cancion);
                 }
             }
-            if (atributosCoincidentes == atributos.length) {
-                cancionesCoincidentes.add(cancion);
-            }
+            return cancionesCoincidentes;
         }
-        return cancionesCoincidentes;
     }
 
     public void buscar (ActionEvent actionEvent) {
@@ -257,12 +273,12 @@ public class PrincipalController {
         if (bttO.isSelected()){
             System.out.println("BUSQUEDA POR O");
             buscador.textProperty().addListener((observable, oldValue, newValue) ->
-                    tablaCanciones.setItems(buscarPorO(newValue.split(","))));
+                    tablaCanciones.setItems(buscarPorO(newValue)));
         }
         if (bttY.isSelected()){
             System.out.println("BUSQUEDA POR Y");
             buscador.textProperty().addListener((observable, oldValue, newValue) ->
-                    tablaCanciones.setItems(buscarPorY(newValue.split(","))));
+                    tablaCanciones.setItems(buscarPorY(newValue)));
         }
     }
 

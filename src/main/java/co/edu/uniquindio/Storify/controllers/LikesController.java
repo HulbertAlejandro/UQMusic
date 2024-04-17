@@ -50,21 +50,6 @@ public class LikesController {
     private Usuario usuario = storify.enviarUsuario();
     @FXML
     public void initialize() {
-        toggleGroup = new ToggleGroup();
-
-        // Asigna el grupo de toogle a los RadioButtons
-        bttO.setToggleGroup(toggleGroup);
-        bttArtista.setToggleGroup(toggleGroup);
-        bttY.setToggleGroup(toggleGroup);
-
-        // Configura un listener para los eventos de selección
-        toggleGroup.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue == null) {
-                // Si no hay RadioButton seleccionado, selecciona el anterior
-                oldValue.setSelected(true);
-            }
-        });
-
         // Configurar la columna de carátula para mostrar imágenes
         columnaCaratula.setCellValueFactory(new PropertyValueFactory<>("caratula"));
         columnaCaratula.setCellFactory(param -> new javafx.scene.control.TableCell<>() {
@@ -137,6 +122,8 @@ public class LikesController {
 
         // Asignar las canciones al TableView
         tablaCanciones.getItems().addAll(cancionesSistema);
+        buscador.textProperty().addListener((observable, oldValue, newValue) ->
+                tablaCanciones.setItems(buscarPorO(newValue)));
     }
     @FXML
     void play() {
@@ -202,69 +189,57 @@ public class LikesController {
     }
 
     // Método para buscar por artistas
-    private ObservableList<Cancion> buscarPorArtistas(String nombre) {
-        ObservableList<Cancion> artistasFiltrados = FXCollections.observableArrayList();
-        for (Autor artista : storify.enviarAutores()) {
-            if (artista.getNombre().toLowerCase().contains(nombre.toLowerCase())) {
-                artistasFiltrados.addAll(artista.getListaCanciones().toArrayList());
-            }
-        }
-        return artistasFiltrados;
-    }
+//    private ObservableList<Cancion> buscarPorArtistas(String nombre) {
+//        ObservableList<Cancion> artistasFiltrados = FXCollections.observableArrayList();
+//        for (Autor artista : storify.enviarAutores()) {
+//            if (artista.getNombre().toLowerCase().contains(nombre.toLowerCase())) {
+//                artistasFiltrados.addAll(artista.getListaCanciones().toArrayList());
+//            }
+//        }
+//        return artistasFiltrados;
+//    }
 
     // Método para buscar por O
-    private ObservableList<Cancion> buscarPorO(String[] atributos) {
-        ObservableList<Cancion> cancionesCoincidentes = FXCollections.observableArrayList();
-        if (atributos.length == 0) {
+    private ObservableList<Cancion> buscarPorO(String atributo) {
+        if(atributo.isEmpty() || atributo.isBlank()){
             return FXCollections.observableArrayList(cancionesSistema);
-        }
-        for (Cancion cancion : cancionesSistema) {
-            for (String atributo : atributos) {
-                if (cancion.coincideAtributo(atributo)) {
-                    cancionesCoincidentes.add(cancion);
+        }else{
+            String [] atributos = atributo.split(",");
+            ObservableList<Cancion> cancionesCoincidentes = FXCollections.observableArrayList();
+            if (atributos.length == 0) {
+                return FXCollections.observableArrayList(cancionesSistema);
+            }
+            for (Cancion cancion : cancionesSistema) {
+                for (String atr : atributos) {
+                    if (cancion.coincideAtributo(atr)) {
+                        cancionesCoincidentes.add(cancion);
+                    }
                 }
             }
+            return cancionesCoincidentes;
         }
-        return cancionesCoincidentes;
+
     }
 
     // Método para buscar por Y
-    private ObservableList<Cancion> buscarPorY(String[] atributos) {
-        ObservableList<Cancion> cancionesCoincidentes = FXCollections.observableArrayList();
-        if (atributos.length == 0) {
-            return FXCollections.observableArrayList(cancionesSistema);
-        }
-        for (Cancion cancion : cancionesSistema) {
-            int atributosCoincidentes = 0;
-            for (String atributo : atributos) {
-                if (cancion.coincideAtributo(atributo)) {
-                    atributosCoincidentes+=1;
-                }
-            }
-            if (atributosCoincidentes == atributos.length) {
-                cancionesCoincidentes.add(cancion);
-            }
-        }
-        return cancionesCoincidentes;
-    }
-
-    public void buscar (ActionEvent actionEvent) {
-        if (bttArtista.isSelected()){
-            System.out.println("BUSQUEDA POR ARTISTA");
-            buscador.textProperty().addListener((observable, oldValue, newValue) ->
-                    tablaCanciones.setItems(buscarPorArtistas(newValue)));
-        }
-        if (bttO.isSelected()){
-            System.out.println("BUSQUEDA POR O");
-            buscador.textProperty().addListener((observable, oldValue, newValue) ->
-                    tablaCanciones.setItems(buscarPorO(newValue.split(","))));
-        }
-        if (bttY.isSelected()){
-            System.out.println("BUSQUEDA POR Y");
-            buscador.textProperty().addListener((observable, oldValue, newValue) ->
-                    tablaCanciones.setItems(buscarPorY(newValue.split(","))));
-        }
-    }
+//    private ObservableList<Cancion> buscarPorY(String[] atributos) {
+//        ObservableList<Cancion> cancionesCoincidentes = FXCollections.observableArrayList();
+//        if (atributos.length == 0) {
+//            return FXCollections.observableArrayList(cancionesSistema);
+//        }
+//        for (Cancion cancion : cancionesSistema) {
+//            int atributosCoincidentes = 0;
+//            for (String atributo : atributos) {
+//                if (cancion.coincideAtributo(atributo)) {
+//                    atributosCoincidentes+=1;
+//                }
+//            }
+//            if (atributosCoincidentes == atributos.length) {
+//                cancionesCoincidentes.add(cancion);
+//            }
+//        }
+//        return cancionesCoincidentes;
+//    }
 
     public void exit(ActionEvent actionEvent) {
         storify.loadStage("/windows/login.fxml", actionEvent);
