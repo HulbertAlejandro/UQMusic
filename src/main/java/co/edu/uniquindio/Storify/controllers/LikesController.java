@@ -41,6 +41,10 @@ public class LikesController {
     @FXML
     private Label labelCancion, labelArtista;
     private boolean stateAletorio = false;
+
+    private static Cancion cancionSeleccionada;
+    private boolean stateEliminada;
+    private boolean stateInsertada;
     private boolean stateLike;
     private int indiceTabla;
     private ToggleGroup toggleGroup;
@@ -413,12 +417,14 @@ public class LikesController {
     }
 
     public void like(ActionEvent actionEvent) {
+        cancionSeleccionada = tablaCanciones.getSelectionModel().getSelectedItem();
         if(!stateLike){
             usuario.getCanciones().agregar(tablaCanciones.getItems().get(indiceTabla));
             storify.serializar();
             Image image = new Image("/imagenes/check.png");
             imgLike.setImage(image);
             stateLike = true;
+
         }else{
             usuario.getCanciones().eliminar(tablaCanciones.getItems().get(indiceTabla));
             storify.serializar();
@@ -426,6 +432,7 @@ public class LikesController {
             imgLike.setImage(image);
             stateLike = false;
         }
+        tablaCanciones.refresh();
     }
 
     public void aleatorio(ActionEvent actionEvent) {
@@ -439,12 +446,56 @@ public class LikesController {
             stateAletorio = true;
         }
     }
-    public void deshacer (ActionEvent actionEvent) {
 
+    public void deshacer (Cancion cancion) {
+        if(!stateLike){
+            /*
+            cancionesUsuario.remove(cancion);
+            usuario.getCanciones().eliminar(cancionSeleccionada);
+            storify.serializar();
+            Image image = new Image("/imagenes/checkOFF.png");
+            imgLike.setImage(image);
+            stateLike = false;
+        }else{
+
+             */
+            cancionesUsuario.add(cancion);
+            usuario.getCanciones().agregar(cancionSeleccionada);
+            storify.serializar();
+            Image image = new Image("/imagenes/check.png");
+            imgLike.setImage(image);
+            stateLike = true;
+        }
+    }
+
+    public void rehacer (Cancion cancion) {
+        if(!stateLike){
+            /*
+            cancionesUsuario.add(cancion);
+            usuario.getCanciones().agregar(cancionSeleccionada);
+            storify.serializar();
+            Image image = new Image("/imagenes/check.png");
+            imgLike.setImage(image);
+            stateLike = true;
+        }else{
+
+             */
+            cancionesUsuario.remove(cancion);
+            usuario.getCanciones().eliminar(cancionSeleccionada);
+            storify.serializar();
+            Image image = new Image("/imagenes/checkOFF.png");
+            imgLike.setImage(image);
+            stateLike = false;
+        }
+    }
+    public void deshacer (ActionEvent actionEvent) {
+        deshacer(cancionSeleccionada);
+        tablaCanciones.refresh();
     }
 
     public void rehacer (ActionEvent actionEvent) {
-
+        rehacer(cancionSeleccionada);
+        tablaCanciones.refresh();
     }
 
 }

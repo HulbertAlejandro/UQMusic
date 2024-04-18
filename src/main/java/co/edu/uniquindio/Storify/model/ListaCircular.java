@@ -80,4 +80,32 @@ public class ListaCircular<T> implements Serializable {
             } while (nodoActual != inicio); // Continuar hasta que volvamos al inicio de la lista
         }
     }
+    public T getElementAtIndex(int index) {
+        if (inicio == null || index < 0) {
+            throw new IllegalArgumentException("La lista está vacía o el índice es negativo");
+        }
+
+        // Convertimos el índice a positivo si es negativo
+        while (index < 0) {
+            index += tamaño;
+        }
+
+        // Encontramos el nodo en la posición index
+        Nodo<T> current = inicio;
+        for (int i = 0; i < index; i++) {
+            current = current.getSiguiente();
+            if (current == inicio) {
+                throw new IndexOutOfBoundsException("El índice está fuera de los límites de la lista");
+            }
+        }
+        return current.getElemento();
+    }
+
+    public int getTamaño() {
+        return tamaño;
+    }
+
+    public void setTamaño(int tamaño) {
+        this.tamaño = tamaño;
+    }
 }

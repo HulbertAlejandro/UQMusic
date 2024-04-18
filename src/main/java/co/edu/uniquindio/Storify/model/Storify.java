@@ -486,4 +486,52 @@ public class Storify {
         }
         return false;
     }
+    /*
+    public String devolverGenero(){
+        int contRock=0, contPop=0, contPunk=-0, contReggaeton=0, contElectronica=0;
+        String genero = "";
+        int indice = 0;
+        for (Map.Entry<String, Usuario> entry : usuarios.entrySet()) {
+            Usuario usuario = entry.getValue();
+            ListaCircular<Cancion> lista = usuario.getCanciones();
+            for (int i = 0; i < lista.getTamaño(); i++) {
+                Cancion cancion = lista.getElementAtIndex(indice);
+                String generoCancion = cancion.getGenero();
+                if(generoCancion.equals("Rock")){
+                    contRock ++;
+                }
+                if(generoCancion.equals("Pop")){
+                    contPop ++;
+                }
+                if(generoCancion.equals("Punk")){
+                    contPunk ++;
+                }
+                if(generoCancion.equals("Reggaeton")){
+                    contReggaeton ++;
+                }
+                if(generoCancion.equals("Electronica")){
+                    contElectronica ++;
+                }
+            }
+            indice ++;
+        }
+        if(contRock > contPop && contRock > contPunk && contRock > contReggaeton && contRock > contElectronica){
+            genero = "Rock";
+        }
+        if(contPop > contRock && contPop > contPunk && contPop > contReggaeton && contPop > contElectronica){
+            genero = "Pop";
+        }
+        if(contPunk > contPop && contPunk > contRock && contPunk > contReggaeton && contPunk > contElectronica){
+            genero = "Punk";
+        }
+        if(contReggaeton > contPop && contReggaeton > contPunk && contReggaeton > contRock && contPunk > contElectronica){
+            genero = "Reggaeton";
+        }
+        if(contElectronica > contPop && contElectronica > contPunk && contElectronica > contReggaeton && contElectronica > contRock){
+            genero = "Electronica";
+        }
+        return genero;
+    }
+
+     */
 }

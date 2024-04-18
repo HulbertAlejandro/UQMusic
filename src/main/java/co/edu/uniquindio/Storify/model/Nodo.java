@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 
 import java.io.Serializable;
 @AllArgsConstructor
+
 public class Nodo<T> implements Serializable {
     private T elemento;
     private Nodo<T> siguiente;
