@@ -1,0 +1,11 @@
+/* estilosTabla.css */
+
+/* Estilo para el título de la columna */
+.table-view .column-header .label {
+    -fx-text-fill: white; /* Color del texto blanco */
+}
+
+/* Estilo para el fondo transparente de la tabla */
+.table-view {
+    -fx-background-color: 212121; /* Fondo transparente */
+}

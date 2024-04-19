@@ -11,6 +11,10 @@
     -fx-border-style: solid; /* Estilo del borde de las celdas */
     -fx-text-fill: #FFFFFF; /* Color del texto dentro de las celdas (blanco) */
     -fx-alignment: center; /* Centrar el texto dentro de las celdas */
+
+     /* Establecer el tipo de letra y tamaño */
+     -fx-font-family: "Segoe UI"; /* Tipo de letra */
+     -fx-font-size: 13px; /* Tamaño de letra */
 }
 
 
@@ -30,6 +34,10 @@
     -fx-border-color: black; /* Color del borde */
     -fx-border-width: 1; /* Ancho del borde */
     -fx-padding: 5; /* Espaciado interno */
+
+    /* Establecer el tipo de letra y tamaño */
+    -fx-font-family: "Segoe UI"; /* Tipo de letra */
+    -fx-font-size: 13px; /* Tamaño de letra */
 }
 
 

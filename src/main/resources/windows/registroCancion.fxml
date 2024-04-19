@@ -12,12 +12,17 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
+<?import java.net.URL?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="911.0" style="-fx-background-color: black; -fx-border-radius: 80;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.Storify.controllers.RegistroCancionController">
+    <stylesheets>
+        <URL value="@../estilosTabla.css"/> <!-- Ruta al archivo CSS con los estilos -->
+    </stylesheets>
     <children>
         <Pane id="sidebarPane" layoutX="11.0" layoutY="18.0" prefHeight="564.0" prefWidth="888.0" style="-fx-background-color: #121212; -fx-background-radius: 10;">
             <children>
                 <Pane id="contentPane" focusTraversable="true" layoutX="37.0" layoutY="17.0" prefHeight="531.0" prefWidth="815.0" style="-fx-background-color: #212121; -fx-background-radius: 10;">
                     <children>
+
                         <ImageView fitHeight="53.0" fitWidth="74.0" layoutX="229.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../imagenes/storify.png" />

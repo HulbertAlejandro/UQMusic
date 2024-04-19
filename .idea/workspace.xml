@@ -5,10 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="09a5be0b-dfd4-46c5-9245-9a8d4b49f8c0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/estilosTabla.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/controllers/LikesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/controllers/LikesController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/controllers/PrincipalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/controllers/PrincipalController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/model/ListaCircular.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/model/ListaCircular.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/model/Storify.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/model/Storify.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/serializable/usuario.ser" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/serializable/usuario.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/windows/registro.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/windows/registro.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/windows/registroArtista.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/windows/registroArtista.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/windows/registroCancion.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/windows/registroCancion.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +52,9 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\MI PC\Desktop\proyectoAlmacenUQ\UQMusic\src\main\resources\imagenes" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\nesto\Documents\GitHub\UQMusic\src\main\resources" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="co.edu.uniquindio.Storify.utils" />

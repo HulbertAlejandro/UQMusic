@@ -7,63 +7,65 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="911.0" style="-fx-background-color: black; -fx-border-radius: 80;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.Storify.controllers.RegistroArtistaController">
     <children>
-        <Pane id="sidebarPane" layoutX="11.0" layoutY="18.0" prefHeight="564.0" prefWidth="888.0" style="-fx-background-color: #121212; -fx-background-radius: 10;">
+        <Pane id="sidebarPane" layoutX="12.0" layoutY="18.0" prefHeight="564.0" prefWidth="888.0" style="-fx-background-color: #121212; -fx-background-radius: 10;">
             <children>
                 <Pane id="contentPane" focusTraversable="true" layoutX="222.0" layoutY="19.0" prefHeight="531.0" prefWidth="461.0" style="-fx-background-color: #212121; -fx-background-radius: 10;">
                     <children>
-                        <ImageView fitHeight="81.0" fitWidth="101.0" layoutX="14.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="81.0" fitWidth="101.0" layoutX="37.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../imagenes/storify.png" />
                             </image>
                         </ImageView>
-                        <Label layoutX="119.0" layoutY="45.0" text="Registro de Artista" textFill="WHITE">
+                        <Label layoutX="132.0" layoutY="80.0" text="Artist Registration" textFill="WHITE">
                             <font>
                                 <Font name="Segoe UI Bold" size="34.0" /> <!-- Modifica el tamaño y el texto según sea necesario -->
                             </font>
                         </Label>
-                        <TextField fx:id="codigo" layoutX="68.0" layoutY="140.0" prefHeight="45.0" prefWidth="346.0" promptText="Código" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;">
+                        <TextField fx:id="codigo" layoutX="68.0" layoutY="200.0" prefHeight="26.0" prefWidth="346.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;">
+                            <font>
+                                <Font name="Segoe UI Bold" size="17.0" /> <!-- Modifica el tamaño de la fuente según sea necesario -->
+                            </font>
+                        </TextField>
+                        <TextField fx:id="nombre" layoutX="68.0" layoutY="278.0" prefHeight="26.0" prefWidth="346.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;">
                             <font>
                                 <Font name="Segoe UI Semibold" size="17.0" /> <!-- Modifica el tamaño de la fuente según sea necesario -->
                             </font>
                         </TextField>
-                        <TextField fx:id="nombre" layoutX="68.0" layoutY="215.0" prefHeight="45.0" prefWidth="346.0" promptText="Nombre" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;">
+                        <TextField fx:id="nacionalidad" layoutX="68.0" layoutY="357.0" prefHeight="34.0" prefWidth="346.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;">
                             <font>
                                 <Font name="Segoe UI Semibold" size="17.0" /> <!-- Modifica el tamaño de la fuente según sea necesario -->
                             </font>
                         </TextField>
-                        <TextField fx:id="nacionalidad" layoutX="68.0" layoutY="290.0" prefHeight="45.0" prefWidth="346.0" promptText="Nacionalidad" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;">
+                        <CheckBox fx:id="esGrupoCheckBox" layoutX="67.0" layoutY="417.0" mnemonicParsing="false" text="It's a group" textFill="WHITE">
                             <font>
-                                <Font name="Segoe UI Semibold" size="17.0" /> <!-- Modifica el tamaño de la fuente según sea necesario -->
-                            </font>
-                        </TextField>
-                        <CheckBox fx:id="esGrupoCheckBox" layoutX="68.0" layoutY="356.0" mnemonicParsing="false" text="Es Grupo" textFill="WHITE">
-                            <font>
-                                <Font name="Segoe UI Semibold" size="17.0" />
+                                <Font name="Segoe UI Bold" size="17.0" />
                             </font>
                         </CheckBox>
-                        <Label layoutX="68.0" layoutY="394.0" text="Canciones:" textFill="WHITE">
+                        <Button fx:id="registro" layoutX="166.0" layoutY="470.0" mnemonicParsing="false" onAction="#registrarse" prefHeight="38.0" prefWidth="129.0" style="-fx-background-color: #212121;" text="Register" textFill="WHITE">
                             <font>
-                                <Font name="Segoe UI Semibold" size="17.0" />
-                            </font>
-                        </Label>
-                        <ComboBox fx:id="cancionesComboBox" layoutX="68.0" layoutY="420.0" prefHeight="30.0" prefWidth="200.0" promptText="Seleccionar Canción" style="-fx-font-size: 14.0;">
-                        </ComboBox>
-
-                        <Button fx:id="addCancionButton" layoutX="285.0" layoutY="420.0" mnemonicParsing="false" onAction="#agregarCancion" prefHeight="30.0" prefWidth="100.0" text="Agregar">
-                            <font>
-                                <Font name="Segoe UI Semibold" size="14.0" />
+                                <Font name="Segoe UI Bold" size="20.0" /> <!-- Modifica el tamaño de la fuente según sea necesario -->
                             </font>
                         </Button>
-                        <Button fx:id="registro" layoutX="177.0" layoutY="473.0" mnemonicParsing="false" onAction="#registrarse" prefHeight="34.0" prefWidth="108.0" style="-fx-background-color: #212121;" text="Registrar" textFill="WHITE">
-                            <font>
-                                <Font name="Segoe UI Semibold" size="20.0" /> <!-- Modifica el tamaño de la fuente según sea necesario -->
-                            </font>
-                        </Button>
+                      <Label layoutX="64.0" layoutY="333.0" text="Nacionality" textFill="WHITE">
+                          <font>
+                              <Font name="Segoe UI Bold" size="20.0" />
+                          </font>
+                      </Label>
+                      <Label layoutX="64.0" layoutY="254.0" text="Name" textFill="WHITE">
+                          <font>
+                              <Font name="Segoe UI Bold" size="20.0" />
+                          </font>
+                      </Label>
+                      <Label layoutX="68.0" layoutY="176.0" text="Code" textFill="WHITE">
+                          <font>
+                              <Font name="Segoe UI Bold" size="20.0" />
+                          </font>
+                      </Label>
                     </children>
                 </Pane>
                 <Button fx:id="back" layoutX="16.0" layoutY="510.0" mnemonicParsing="false" onAction="#back" prefHeight="34.0" prefWidth="108.0" style="-fx-background-color: #212121;" text="Back" textFill="WHITE">
                     <font>
-                        <Font name="Segoe UI Semibold" size="15.0" /> <!-- Modifica el tamaño de la fuente según sea necesario -->
+                        <Font name="Segoe UI Bold" size="16.0" /> <!-- Modifica el tamaño de la fuente según sea necesario -->
                     </font>
                 </Button>
             </children>

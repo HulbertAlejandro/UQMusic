@@ -4,6 +4,8 @@ import co.edu.uniquindio.Storify.exceptions.CampoObligatorioException;
 import co.edu.uniquindio.Storify.exceptions.CampoRepetido;
 import co.edu.uniquindio.Storify.exceptions.CampoVacioException;
 import co.edu.uniquindio.Storify.utils.ArchivoUtils;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -59,6 +61,7 @@ public class Storify {
      * Código para la próxima canción a ser registrada.
      */
     private ArbolBinario autores = new ArbolBinario();
+
     /**
      * Método que devuelve la instancia única de la clase Storify (patrón Singleton).
      *
@@ -77,7 +80,7 @@ public class Storify {
     public void inicializar() {
         leerArtistas();
         leerUsuario();
-        autores.recorridoEnOrden(autores.getInicio(),0);
+        autores.recorridoEnOrden(autores.getInicio(), 0);
     }
 
     private void leerArtistas() {
@@ -167,7 +170,8 @@ public class Storify {
             mostrarMensaje(Alert.AlertType.WARNING, "El usuario ya existe");
         }
     }
-    public void guardarCancion(String nombre, String album, String urlCaratula, int anioLanzamiento, double duracionCancion, String genre, String url, String codigo, Autor autorSelected) throws CampoObligatorioException, CampoVacioException{
+
+    public void guardarCancion(String nombre, String album, String urlCaratula, int anioLanzamiento, double duracionCancion, String genre, String url, String codigo, Autor autorSelected) throws CampoObligatorioException, CampoVacioException {
         if (nombre == null || nombre.isEmpty()) {
             throw new CampoObligatorioException(("Es necesario ingresar el nombre"));
         }
@@ -177,10 +181,10 @@ public class Storify {
         if (urlCaratula == null || urlCaratula.isEmpty()) {
             throw new CampoVacioException("Es necesario ingresar la contraseña");
         }
-        if (anioLanzamiento<0) {
+        if (anioLanzamiento < 0) {
             throw new CampoVacioException("Es necesario ingresar la contraseña");
         }
-        if (duracionCancion < 0 ) {
+        if (duracionCancion < 0) {
             throw new CampoVacioException("Es necesario ingresar la contraseña");
         }
         if (genre == null || genre.isEmpty()) {
@@ -203,25 +207,26 @@ public class Storify {
                 .duracion(duracionCancion)
                 .nombreAlbum(album)
                 .build();
-        if(autores.agregarAtributo(autores.getInicio(),autorSelected.getNombre(),cancion)){
-            mostrarMensaje(Alert.AlertType.CONFIRMATION,"La cancion ha sido agregada correctamente al artista: " + autorSelected.getNombre());
-        }else {
-            mostrarMensaje(Alert.AlertType.ERROR,"No se logró agregar la cancion correctamente");
+        if (autores.agregarAtributo(autores.getInicio(), autorSelected.getNombre(), cancion)) {
+            mostrarMensaje(Alert.AlertType.CONFIRMATION, "La cancion ha sido agregada correctamente al artista: " + autorSelected.getNombre());
+        } else {
+            mostrarMensaje(Alert.AlertType.ERROR, "No se logró agregar la cancion correctamente");
         }
-        ArchivoUtils.serializarArtista(RUTA_ARTISTAS,autores);
+        ArchivoUtils.serializarArtista(RUTA_ARTISTAS, autores);
     }
+
     /**
      * Registra un nuevo usuario en la aplicación.
      *
-     * @param codigoArtista   El codigo de usuario del nuevo artista.
-     * @param nombreArtista  El nombre del artista.
-     * @param nacionalidadArtista      La nacionalidad del artista.
-     * @param esGrupo      Si es grupo el artista.
+     * @param codigoArtista       El codigo de usuario del nuevo artista.
+     * @param nombreArtista       El nombre del artista.
+     * @param nacionalidadArtista La nacionalidad del artista.
+     * @param esGrupo             Si es grupo el artista.
      * @throws CampoVacioException       Si algún campo obligatorio está vacío.
      * @throws CampoObligatorioException Si algún campo es obligatorio y no se proporciona.
      * @throws CampoRepetido             Si las credenciales proporcionadas ya están en uso.
      */
-    public void registrarArtista(String codigoArtista, String nombreArtista, String nacionalidadArtista, boolean esGrupo) throws CampoObligatorioException,CampoVacioException {
+    public void registrarArtista(String codigoArtista, String nombreArtista, String nacionalidadArtista, boolean esGrupo) throws CampoObligatorioException, CampoVacioException {
         if (codigoArtista == null || codigoArtista.isEmpty()) {
             throw new CampoObligatorioException(("Es necesario ingresar el nombre"));
         }
@@ -241,10 +246,11 @@ public class Storify {
                 .listaCanciones(new ListaDoblementeEnlazada<>())
                 .build();
         autores.insertar(autor);
-        autores.recorridoEnOrden(autores.getInicio(),0);
+        autores.recorridoEnOrden(autores.getInicio(), 0);
         storify.mostrarMensaje(Alert.AlertType.INFORMATION, "Registro exitoso");
         ArchivoUtils.serializarArtista(RUTA_ARTISTAS, autores);
     }
+
     /**
      * Verifica si el codigo de un artista ya existe en la lista de artistas registrados.
      *
@@ -254,6 +260,7 @@ public class Storify {
     private boolean verificarArtista(String codigoArtista) {
         return autores.buscarCodigo(codigoArtista);
     }
+
     /**
      * Verifica si un usuario ya existe en la lista de usuarios registrados.
      *
@@ -373,7 +380,7 @@ public class Storify {
                 .artistas(artistas)
                 .build();
         almacenarCancion(cancion, artistas);
-        ArchivoUtils.serializarArtista(RUTA_ARTISTAS,autores);
+        ArchivoUtils.serializarArtista(RUTA_ARTISTAS, autores);
     }
 
     private void almacenarCancion(Cancion cancion, String artistas) {
@@ -450,7 +457,8 @@ public class Storify {
     public ArrayList<Autor> enviarAutores() {
         return autores.toList();
     }
-    public  void borrarDatosSerializados(String archivo) {
+
+    public void borrarDatosSerializados(String archivo) {
         Path path = Paths.get(archivo);
         try {
             if (Files.exists(path)) {
@@ -463,29 +471,33 @@ public class Storify {
             e.printStackTrace();
         }
     }
+
     public ArrayList<Cancion> enviarCanciones() {
-        return autores.recorridoCanciones(autores.getInicio(),new ArrayList<>());
+        return autores.recorridoCanciones(autores.getInicio(), new ArrayList<>());
     }
 
     public void cargarArtista(Autor autor) {
         autores.insertar(autor);
         ArchivoUtils.serializarArtista(RUTA_ARTISTAS, autores);
     }
-    public ArbolBinario enviarArtistas(){
+
+    public ArbolBinario enviarArtistas() {
         return autores;
     }
+
     public Usuario enviarUsuario() {
         return USUARIO_SESION;
     }
 
     public boolean verificarContencion(ArrayList<Cancion> cancionesUsuario, String codigo) {
-        for(Cancion cancion : cancionesUsuario){
-            if (cancion.getCodigo().equals(codigo)){
+        for (Cancion cancion : cancionesUsuario) {
+            if (cancion.getCodigo().equals(codigo)) {
                 return true;
             }
         }
         return false;
     }
+
     /*
     public String devolverGenero(){
         int contRock=0, contPop=0, contPunk=-0, contReggaeton=0, contElectronica=0;
@@ -534,4 +546,208 @@ public class Storify {
     }
 
      */
+    public ArrayList<Cancion> recorrerIzquierdaCompleto(NodoArbol inicio, ArrayList<Cancion> cancions, String[] atributos) {
+        if (inicio == null) {
+            return cancions;
+        }
+        ArrayList<Cancion> canciones = inicio.getAutor().getListaCanciones().toArrayList();
+        for (Cancion cancion : canciones) {
+            int atributosCoincidentes = 0;
+            for (String atr : atributos) {
+                if (cancion.coincideAtributo(atr)) {
+                    atributosCoincidentes += 1;
+                }
+            }
+            if (atributosCoincidentes == atributos.length) {
+                cancions.add(cancion);
+            }
+        }
+        recorrerIzquierdaCompleto(inicio.getNodoIzquierda(), cancions, atributos);
+        recorrerIzquierdaCompleto(inicio.getNodoDerecha(), cancions, atributos);
+        return cancions;
+    }
+
+    public ArrayList<Cancion> recorrerDerechaCompleto(NodoArbol inicio, ArrayList<Cancion> cancions, String[] atributos) {
+        if (inicio == null) {
+            return cancions;
+        }
+        ArrayList<Cancion> canciones = inicio.getAutor().getListaCanciones().toArrayList();
+        for (Cancion cancion : canciones) {
+            int atributosCoincidentes = 0;
+            for (String atr : atributos) {
+                if (cancion.coincideAtributo(atr)) {
+                    atributosCoincidentes += 1;
+                }
+            }
+            if (atributosCoincidentes == atributos.length) {
+                cancions.add(cancion);
+            }
+        }
+        recorrerDerechaCompleto(inicio.getNodoIzquierda(), cancions, atributos);
+        recorrerDerechaCompleto(inicio.getNodoDerecha(), cancions, atributos);
+        return cancions;
+    }
+    public ObservableList<Cancion> buscarPorArtistas(String nombre) {
+        if (nombre.isBlank() || nombre.isEmpty()) {
+            return FXCollections.observableArrayList(enviarCanciones());
+        }
+        else {
+            ObservableList<Cancion> artistasFiltrados = FXCollections.observableArrayList();
+            for (Autor artista : storify.enviarAutores()) {
+                if (artista.getNombre().toLowerCase().contains(nombre.toLowerCase())) {
+                    artistasFiltrados.addAll(artista.getListaCanciones().toArrayList());
+                }
+            }
+            return artistasFiltrados;
+        }
+    }
+
+    // Método para buscar por O
+    public ObservableList<Cancion> buscarPorO(String atributo) {
+
+        ObservableList<Cancion> cancionesCoincidentes = FXCollections.observableArrayList();
+
+        if (atributo == null || atributo.isEmpty()) {
+            return FXCollections.observableArrayList(enviarCanciones());
+        }
+
+        String[] atributos = atributo.split(",");
+
+        if (atributos.length == 0) {
+            return FXCollections.observableArrayList(enviarCanciones());
+        }
+
+        ArbolBinario arbolAutores = storify.enviarArtistas();
+        ArrayList<Cancion> cancionesIzquierda = new ArrayList<>();
+        ArrayList<Cancion> cancionesDerecha = new ArrayList<>();
+        ArrayList<Cancion> cancionesRaiz;
+
+        cancionesRaiz = evaluarRaizO(arbolAutores.getInicio(),new ArrayList<>(), atributos);
+        Thread hiloIzquierda = new Thread(() -> cancionesIzquierda.addAll(recorrerIzquierda(arbolAutores.getInicio().getNodoIzquierda(), new ArrayList<>(), atributos)));
+        Thread hiloDerecha = new Thread(() -> cancionesDerecha.addAll(recorrerDerecha(arbolAutores.getInicio().getNodoDerecha(), new ArrayList<>(), atributos)));
+
+        hiloIzquierda.start();
+        hiloDerecha.start();
+
+        try {
+            hiloIzquierda.join();
+            hiloDerecha.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        cancionesCoincidentes.addAll(cancionesRaiz);
+        cancionesCoincidentes.addAll(cancionesIzquierda);
+        cancionesCoincidentes.addAll(cancionesDerecha);
+
+        return cancionesCoincidentes;
+    }
+
+    public ArrayList<Cancion> evaluarRaizO(NodoArbol inicio, ArrayList<Cancion> cancions, String[] atributos) {
+        if(inicio == null){
+            return cancions;
+        }
+        ArrayList<Cancion> canciones = inicio.getAutor().getListaCanciones().toArrayList();
+        for(String atributo : atributos){
+            for(Cancion cancion : canciones){
+                if(cancion.coincideAtributo(atributo)){
+                    cancions.add(cancion);
+                }
+            }
+        }
+        return cancions;
+    }
+    public ArrayList<Cancion> evaluarRaizY(NodoArbol inicio, ArrayList<Cancion> cancions, String[] atributos) {
+        if(inicio == null){
+            return cancions;
+        }
+        ArrayList<Cancion> canciones = inicio.getAutor().getListaCanciones().toArrayList();
+        for (Cancion cancion : canciones) {
+            int atributosCoincidentes = 0;
+            for (String atr : atributos) {
+                if (cancion.coincideAtributo(atr)) {
+                    atributosCoincidentes+=1;
+                }
+            }
+            if (atributosCoincidentes == atributos.length) {
+                cancions.add(cancion);
+            }
+        }
+        return cancions;
+    }
+
+    public ArrayList<Cancion> recorrerIzquierda(NodoArbol inicio, ArrayList<Cancion> cancions, String[] atributos) {
+        if(inicio == null){
+            return cancions;
+        }
+        ArrayList<Cancion> canciones = inicio.getAutor().getListaCanciones().toArrayList();
+        for(String atributo : atributos){
+            for(Cancion cancion : canciones){
+                if(cancion.coincideAtributo(atributo)){
+                    cancions.add(cancion);
+                }
+            }
+        }
+        recorrerIzquierda(inicio.getNodoIzquierda(), cancions,atributos);
+        recorrerIzquierda(inicio.getNodoDerecha(), cancions,atributos);
+        return cancions;
+    }
+
+    public ArrayList<Cancion> recorrerDerecha(NodoArbol inicio, ArrayList<Cancion> cancions, String[] atributos) {
+        if(inicio == null){
+            return cancions;
+        }
+        ArrayList<Cancion> canciones = inicio.getAutor().getListaCanciones().toArrayList();
+        for(String atributo : atributos){
+            for(Cancion cancion : canciones){
+                if(cancion.coincideAtributo(atributo)){
+                    cancions.add(cancion);
+                }
+            }
+        }
+        recorrerDerecha(inicio.getNodoIzquierda(), cancions,atributos);
+        recorrerDerecha(inicio.getNodoDerecha(), cancions,atributos);
+        return cancions;
+    }
+
+    // Método para buscar por Y
+    public ObservableList<Cancion> buscarPorY(String atributo) {
+
+        ObservableList<Cancion> cancionesCoincidentes = FXCollections.observableArrayList();
+
+        if (atributo == null || atributo.isEmpty()) {
+            return FXCollections.observableArrayList(enviarCanciones());
+        }
+        String[] atributos = atributo.split(",");
+
+        if (atributos.length == 0) {
+            return FXCollections.observableArrayList(enviarCanciones());
+        }
+
+        ArbolBinario arbolAutores = storify.enviarArtistas();
+
+
+        ArrayList<Cancion> cancionesIzquierda = new ArrayList<>();
+        ArrayList<Cancion> cancionesDerecha = new ArrayList<>();
+        ArrayList<Cancion> cancionesRaiz;
+
+        cancionesRaiz = storify.evaluarRaizY(arbolAutores.getInicio(),new ArrayList<>(), atributos);
+        Thread hiloIzquierda = new Thread(() -> cancionesIzquierda.addAll(storify.recorrerIzquierdaCompleto(arbolAutores.getInicio().getNodoIzquierda(), new ArrayList<>(), atributos)));
+        Thread hiloDerecha = new Thread(() -> cancionesDerecha.addAll(storify.recorrerDerechaCompleto(arbolAutores.getInicio().getNodoDerecha(), new ArrayList<>(), atributos)));
+
+        hiloIzquierda.start();
+        hiloDerecha.start();
+
+        try {
+            hiloIzquierda.join();
+            hiloDerecha.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        cancionesCoincidentes.addAll(cancionesRaiz);
+        cancionesCoincidentes.addAll(cancionesIzquierda);
+        cancionesCoincidentes.addAll(cancionesDerecha);
+
+        return cancionesCoincidentes;
+    }
 }
