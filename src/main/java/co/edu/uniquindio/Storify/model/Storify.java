@@ -58,8 +58,13 @@ public class Storify {
      */
     private int proximoCodigoCancion = 0;
     /**
-     * Código para la próxima canción a ser registrada.
+     * ArrayList de autores y generos con sus respectivos contadores
      */
+    public ArrayList<String> listaAutores = new ArrayList<>();
+    public ArrayList<String> listaGeneros = new ArrayList<>();
+    public ArrayList<Integer> contadoresGenero = new ArrayList<>();
+    public ArrayList<Integer> contadoresArtista = new ArrayList<>();
+
     private ArbolBinario autores = new ArbolBinario();
 
     /**
@@ -498,54 +503,78 @@ public class Storify {
         return false;
     }
 
-    /*
-    public String devolverGenero(){
-        int contRock=0, contPop=0, contPunk=-0, contReggaeton=0, contElectronica=0;
-        String genero = "";
-        int indice = 0;
+    /**
+     * Metodo para inicializar los artistas y los generos con los contadores en 0
+     */
+    public void llenarAtributos(){
+        // Llenar el ArrayList contadores de genero con números del 1 al 9
+        for (int i = 1; i <= 5; i++) {
+            contadoresGenero.add(0);
+        }
+        // Llenar el ArrayList contadores de artista con números del 1 al 9
+        for (int i = 1; i <= 9; i++) {
+            contadoresArtista.add(0);
+        }
+        // Agregar los nombres al ArrayList de generos
+        listaGeneros.add("Rock");
+        listaGeneros.add("Pop");
+        listaGeneros.add("Punk");
+        listaGeneros.add("Reggaeton");
+        listaGeneros.add("Electronica");
+
+        // Agregar los nombres al ArrayList de artistas
+        listaAutores.add("Bad Bunny");
+        listaAutores.add("Blessd");
+        listaAutores.add("Dei V");
+        listaAutores.add("Ele A El Dominio");
+        listaAutores.add("Feid");
+        listaAutores.add("Jhayco");
+        listaAutores.add("Kris Floyd");
+        listaAutores.add("Lenny Tavares");
+        listaAutores.add("Omar Courtz");
+    }
+
+    /**
+     * Metodo para contar los generos mas escuchados
+     */
+    public void contarGenero(){
         for (Map.Entry<String, Usuario> entry : usuarios.entrySet()) {
             Usuario usuario = entry.getValue();
             ListaCircular<Cancion> lista = usuario.getCanciones();
-            for (int i = 0; i < lista.getTamaño(); i++) {
-                Cancion cancion = lista.getElementAtIndex(indice);
+            ArrayList<Cancion> canciones = lista.toArrayList();
+            for (int i = 0; i < canciones.size(); i++) {
+                Cancion cancion = canciones.get(i);
                 String generoCancion = cancion.getGenero();
-                if(generoCancion.equals("Rock")){
-                    contRock ++;
-                }
-                if(generoCancion.equals("Pop")){
-                    contPop ++;
-                }
-                if(generoCancion.equals("Punk")){
-                    contPunk ++;
-                }
-                if(generoCancion.equals("Reggaeton")){
-                    contReggaeton ++;
-                }
-                if(generoCancion.equals("Electronica")){
-                    contElectronica ++;
+                for (int j = 0; j < listaGeneros.size(); j++) {
+                    if(generoCancion.equals(listaGeneros.get(j))){
+                        int c = contadoresGenero.get(j) + 1;
+                        contadoresGenero.set(j, c);
+                    }
                 }
             }
-            indice ++;
         }
-        if(contRock > contPop && contRock > contPunk && contRock > contReggaeton && contRock > contElectronica){
-            genero = "Rock";
-        }
-        if(contPop > contRock && contPop > contPunk && contPop > contReggaeton && contPop > contElectronica){
-            genero = "Pop";
-        }
-        if(contPunk > contPop && contPunk > contRock && contPunk > contReggaeton && contPunk > contElectronica){
-            genero = "Punk";
-        }
-        if(contReggaeton > contPop && contReggaeton > contPunk && contReggaeton > contRock && contPunk > contElectronica){
-            genero = "Reggaeton";
-        }
-        if(contElectronica > contPop && contElectronica > contPunk && contElectronica > contReggaeton && contElectronica > contRock){
-            genero = "Electronica";
-        }
-        return genero;
     }
 
+    /**
+     * Metodo para contar los artistas mas escuchados
      */
+    public void contarArtista(){
+        for (Map.Entry<String, Usuario> entry : usuarios.entrySet()) {
+            Usuario usuario = entry.getValue();
+            ListaCircular<Cancion> lista = usuario.getCanciones();
+            ArrayList<Cancion> canciones = lista.toArrayList();
+            for (int i = 0; i < canciones.size(); i++) {
+                Cancion cancion = canciones.get(i);
+                String artistaCancion = cancion.getArtistas();
+                for (int j = 0; j < listaAutores.size(); j++) {
+                    if(artistaCancion.equals(listaAutores.get(j))){
+                        int c = contadoresArtista.get(j) + 1;
+                        contadoresArtista.set(j, c);
+                    }
+                }
+            }
+        }
+    }
     public ArrayList<Cancion> recorrerIzquierdaCompleto(NodoArbol inicio, ArrayList<Cancion> cancions, String[] atributos) {
         if (inicio == null) {
             return cancions;

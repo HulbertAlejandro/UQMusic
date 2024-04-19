@@ -9,6 +9,16 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.stage.FileChooser;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.Scene;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -47,6 +57,14 @@ public class AdminController {
     @FXML
     private Button crearCancion;
 
+    @FXML
+    private Button btnEstadisticas;
+
+    @FXML
+    public void initialize() {
+        storify.llenarAtributos();
+    }
+
     /**
      * Método que maneja el evento de volver a la ventana de inicio de sesión.
      * Carga la ventana de inicio de sesión para que el usuario pueda iniciar sesión si lo desea.
@@ -56,6 +74,86 @@ public class AdminController {
     void back(ActionEvent event) {
         storify.loadStage("/windows/login.fxml", event);
     }
+
+    /**
+     * Método que maneja el evento de ver las estadisticas.
+     * Carga la ventana de estadisticas para que el administrador pueda ver los generos y los artistas mas escuchados.
+     * @param event El evento de acción del botón de ver estadisticas.
+     */
+    @FXML
+    void verEstadisticas(ActionEvent event) {
+        //Se cuenta el numero de artistas y de generos
+        storify.contarArtista();
+        storify.contarGenero();
+
+        // Crear eje X y eje Y para el primer gráfico (Géneros)
+        CategoryAxis xAxisGeneros = new CategoryAxis();
+        NumberAxis yAxisGeneros = new NumberAxis();
+
+        // Crear el primer gráfico de barras (Géneros)
+        BarChart<String, Number> barChartGeneros = new BarChart<>(xAxisGeneros, yAxisGeneros);
+        barChartGeneros.setTitle("Estadísticas de Géneros");
+        xAxisGeneros.setLabel("Género");
+        yAxisGeneros.setLabel("Cantidad");
+
+        // Crear datos de ejemplo para el primer gráfico (Géneros)
+        ObservableList<XYChart.Data<String, Number>> dataGeneros = FXCollections.observableArrayList();
+        for (int i = 0; i < storify.listaGeneros.size(); i++) {
+            dataGeneros.add(new XYChart.Data<>(storify.listaGeneros.get(i), storify.contadoresGenero.get(i)));
+        }
+
+        // Crear lista de colores para cada barra del primer gráfico (Géneros)
+        String[] colors = {"#FF0000", "#00FF00", "#0000FF", "#FFFF00", "#00FFFF"};
+
+        // Agregar los datos al primer gráfico con colores
+        for (int i = 0; i < dataGeneros.size(); i++) {
+            XYChart.Data<String, Number> item = dataGeneros.get(i);
+            XYChart.Series<String, Number> series = new XYChart.Series<>();
+            series.getData().add(item);
+            barChartGeneros.getData().add(series);
+            item.getNode().setStyle("-fx-bar-fill: " + colors[i % colors.length] + ";");
+        }
+
+        // Crear eje X y eje Y para el segundo gráfico (Artistas)
+        CategoryAxis xAxisArtistas = new CategoryAxis();
+        NumberAxis yAxisArtistas = new NumberAxis();
+
+        // Crear el segundo gráfico de barras (Artistas)
+        BarChart<String, Number> barChartArtistas = new BarChart<>(xAxisArtistas, yAxisArtistas);
+        barChartArtistas.setTitle("Estadísticas de Artistas");
+        xAxisArtistas.setLabel("Artista");
+        yAxisArtistas.setLabel("Cantidad");
+
+        // Crear datos de ejemplo para el segundo gráfico (Artistas)
+        ObservableList<XYChart.Data<String, Number>> dataArtistas = FXCollections.observableArrayList();
+        for (int i = 0; i < storify.listaAutores.size(); i++) {
+            dataArtistas.add(new XYChart.Data<>(storify.listaAutores.get(i), storify.contadoresArtista.get(i)));
+        }
+
+        // Crear lista de colores para cada barra del segundo gráfico (Artistas)
+        String[] colorsArtistas = {"#FF5733", "#33FF57", "#5733FF", "#FF3357", "#57FF33"};
+
+        // Agregar los datos al segundo gráfico con colores
+        for (int i = 0; i < dataArtistas.size(); i++) {
+            XYChart.Data<String, Number> item = dataArtistas.get(i);
+            XYChart.Series<String, Number> series = new XYChart.Series<>();
+            series.getData().add(item);
+            barChartArtistas.getData().add(series);
+            item.getNode().setStyle("-fx-bar-fill: " + colorsArtistas[i % colorsArtistas.length] + ";");
+        }
+
+
+        // Crear el contenedor para los gráficos
+        VBox vbox = new VBox(barChartGeneros, barChartArtistas);
+
+        // Crear una nueva ventana para mostrar los gráficos
+        Stage stage = new Stage();
+        stage.setScene(new Scene(vbox, 800, 600));
+        stage.setTitle("Estadísticas de Géneros y Artistas");
+        stage.show();
+    }
+
+
 
     /**
      * Método que maneja el evento de cargar información desde un archivo.

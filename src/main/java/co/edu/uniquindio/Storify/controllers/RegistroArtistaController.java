@@ -85,6 +85,7 @@ public class RegistroArtistaController {
 
         try {
             storify.registrarArtista(codigoArtista,nombreArtista,nacionalidadArtista,esGrupo);
+            storify.listaAutores.add(nombreArtista);
         }catch (CampoVacioException | CampoObligatorioException e){
             storify.mostrarMensaje(Alert.AlertType.ERROR,e.getMessage());
         }
