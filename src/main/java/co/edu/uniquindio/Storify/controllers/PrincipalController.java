@@ -1,9 +1,6 @@
 package co.edu.uniquindio.Storify.controllers;
 
-import co.edu.uniquindio.Storify.model.Autor;
-import co.edu.uniquindio.Storify.model.Cancion;
-import co.edu.uniquindio.Storify.model.Storify;
-import co.edu.uniquindio.Storify.model.Usuario;
+import co.edu.uniquindio.Storify.model.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -16,6 +13,7 @@ import javafx.stage.Stage;
 import javafx.scene.web.WebView;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Random;
 
 public class PrincipalController {
@@ -219,51 +217,164 @@ public class PrincipalController {
 
     // Método para buscar por O
     private ObservableList<Cancion> buscarPorO(String atributo) {
-        if(atributo.isEmpty() || atributo.isBlank()){
+
+        ObservableList<Cancion> cancionesCoincidentes = FXCollections.observableArrayList();
+
+        if (atributo == null || atributo.isEmpty()) {
             return FXCollections.observableArrayList(cancionesSistema);
-        }else{
-            String [] atributos = atributo.split(",");
-            ObservableList<Cancion> cancionesCoincidentes = FXCollections.observableArrayList();
-            if (atributos.length == 0) {
-                return FXCollections.observableArrayList(cancionesSistema);
-            }
-            for (Cancion cancion : cancionesSistema) {
-                for (String atr : atributos) {
-                    if (cancion.coincideAtributo(atr)) {
-                        cancionesCoincidentes.add(cancion);
-                    }
-                }
-            }
-            return cancionesCoincidentes;
         }
 
+        String[] atributos = atributo.split(",");
+
+        if (atributos.length == 0) {
+            return FXCollections.observableArrayList(cancionesSistema);
+        }
+
+        ArbolBinario arbolAutores = storify.enviarArtistas();
+        ArrayList<Cancion> cancionesIzquierda = new ArrayList<>();
+        ArrayList<Cancion> cancionesDerecha = new ArrayList<>();
+
+        Thread hiloIzquierda = new Thread(() -> cancionesIzquierda.addAll(recorrerIzquierda(arbolAutores.getInicio(), new ArrayList<>(), atributos)));
+        Thread hiloDerecha = new Thread(() -> cancionesDerecha.addAll(recorrerDerecha(arbolAutores.getInicio(), new ArrayList<>(), atributos)));
+
+        hiloIzquierda.start();
+        hiloDerecha.start();
+
+        try {
+            hiloIzquierda.join();
+            hiloDerecha.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        cancionesCoincidentes.addAll(cancionesIzquierda);
+        cancionesCoincidentes.addAll(cancionesDerecha);
+
+        HashSet<Cancion> cancionesUnicas = new HashSet<>(cancionesCoincidentes);
+
+        cancionesCoincidentes.clear();
+        cancionesCoincidentes.addAll(cancionesUnicas);
+
+        return cancionesCoincidentes;
+    }
+
+    private ArrayList<Cancion> recorrerIzquierda(NodoArbol inicio, ArrayList<Cancion> cancions, String[] atributos) {
+        if(inicio == null){
+            return cancions;
+        }
+        ArrayList<Cancion> canciones = inicio.getAutor().getListaCanciones().toArrayList();
+        for(String atributo : atributos){
+            for(Cancion cancion : canciones){
+                if(cancion.coincideAtributo(atributo)){
+                    cancions.add(cancion);
+                }
+            }
+        }
+        recorrerIzquierda(inicio.getNodoIzquierda(), cancions,atributos);
+        recorrerIzquierda(inicio.getNodoDerecha(), cancions,atributos);
+        return cancions;
+    }
+
+    private ArrayList<Cancion> recorrerDerecha(NodoArbol inicio, ArrayList<Cancion> cancions, String[] atributos) {
+        if(inicio == null){
+            return cancions;
+        }
+        ArrayList<Cancion> canciones = inicio.getAutor().getListaCanciones().toArrayList();
+        for(String atributo : atributos){
+            for(Cancion cancion : canciones){
+                if(cancion.coincideAtributo(atributo)){
+                    cancions.add(cancion);
+                }
+            }
+        }
+        recorrerDerecha(inicio.getNodoIzquierda(), cancions,atributos);
+        recorrerDerecha(inicio.getNodoDerecha(), cancions,atributos);
+        return cancions;
     }
 
     // Método para buscar por Y
     private ObservableList<Cancion> buscarPorY(String atributo) {
-        if(atributo.isEmpty() || atributo.isBlank()){
+
+        ObservableList<Cancion> cancionesCoincidentes = FXCollections.observableArrayList();
+
+        if (atributo == null || atributo.isEmpty()) {
             return FXCollections.observableArrayList(cancionesSistema);
-        }else{
-            String [] atributos = atributo.split(",");
-            ObservableList<Cancion> cancionesCoincidentes = FXCollections.observableArrayList();
-            if (atributos.length == 0) {
-                return FXCollections.observableArrayList(cancionesSistema);
-            }
-            for (Cancion cancion : cancionesSistema) {
-                int atributosCoincidentes = 0;
-                for (String atr : atributos) {
-                    if (cancion.coincideAtributo(atr)) {
-                        atributosCoincidentes+=1;
-                    }
-                }
-                if (atributosCoincidentes == atributos.length) {
-                    cancionesCoincidentes.add(cancion);
-                }
-            }
-            return cancionesCoincidentes;
         }
+        String[] atributos = atributo.split(",");
+
+        if (atributos.length == 0) {
+            return FXCollections.observableArrayList(cancionesSistema);
+        }
+
+        ArbolBinario arbolAutores = storify.enviarArtistas();
+
+        ArrayList<Cancion> cancionesIzquierda = new ArrayList<>();
+        ArrayList<Cancion> cancionesDerecha = new ArrayList<>();
+
+        Thread hiloIzquierda = new Thread(() -> cancionesIzquierda.addAll(recorrerIzquierdaCompleto(arbolAutores.getInicio(), new ArrayList<>(), atributos)));
+        Thread hiloDerecha = new Thread(() -> cancionesDerecha.addAll(recorrerDerechaCompleto(arbolAutores.getInicio(), new ArrayList<>(), atributos)));
+
+        hiloIzquierda.start();
+        hiloDerecha.start();
+
+        try {
+            hiloIzquierda.join();
+            hiloDerecha.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        cancionesCoincidentes.addAll(cancionesIzquierda);
+        cancionesCoincidentes.addAll(cancionesDerecha);
+
+        HashSet<Cancion> cancionesUnicas = new HashSet<>(cancionesCoincidentes);
+
+        cancionesCoincidentes.clear();
+        cancionesCoincidentes.addAll(cancionesUnicas);
+
+        return cancionesCoincidentes;
+    }
+    private ArrayList<Cancion> recorrerIzquierdaCompleto(NodoArbol inicio, ArrayList<Cancion> cancions, String[] atributos) {
+        if(inicio == null){
+            return cancions;
+        }
+        ArrayList<Cancion> canciones = inicio.getAutor().getListaCanciones().toArrayList();
+        for (Cancion cancion : canciones) {
+            int atributosCoincidentes = 0;
+            for (String atr : atributos) {
+                if (cancion.coincideAtributo(atr)) {
+                    atributosCoincidentes+=1;
+                }
+            }
+            if (atributosCoincidentes == atributos.length) {
+                cancions.add(cancion);
+            }
+        }
+        recorrerIzquierdaCompleto(inicio.getNodoIzquierda(), cancions,atributos);
+        recorrerIzquierdaCompleto(inicio.getNodoDerecha(), cancions,atributos);
+        return cancions;
     }
 
+    private ArrayList<Cancion> recorrerDerechaCompleto(NodoArbol inicio, ArrayList<Cancion> cancions, String[] atributos) {
+        if(inicio == null){
+            return cancions;
+        }
+        ArrayList<Cancion> canciones = inicio.getAutor().getListaCanciones().toArrayList();
+        for (Cancion cancion : canciones) {
+            int atributosCoincidentes = 0;
+            for (String atr : atributos) {
+                if (cancion.coincideAtributo(atr)) {
+                    atributosCoincidentes+=1;
+                }
+            }
+            if (atributosCoincidentes == atributos.length) {
+                cancions.add(cancion);
+            }
+        }
+        recorrerDerechaCompleto(inicio.getNodoIzquierda(), cancions,atributos);
+        recorrerDerechaCompleto(inicio.getNodoDerecha(), cancions,atributos);
+        return cancions;
+    }
     public void buscar (ActionEvent actionEvent) {
         if (bttArtista.isSelected()){
             System.out.println("BUSQUEDA POR ARTISTA");

@@ -492,10 +492,8 @@ public class LikesController {
         deshacer(cancionSeleccionada);
         tablaCanciones.refresh();
     }
-
     public void rehacer (ActionEvent actionEvent) {
         rehacer(cancionSeleccionada);
         tablaCanciones.refresh();
     }
-
 }
