@@ -537,7 +537,7 @@ public class Storify {
     }
 
     /**
-     * Metodo para contar los generos mas escuchados
+     * Metodo para contar los generos más escuchados
      */
     public void contarGenero(){
         for (Map.Entry<String, Usuario> entry : usuarios.entrySet()) {
@@ -558,7 +558,7 @@ public class Storify {
     }
 
     /**
-     * Metodo para contar los artistas mas escuchados
+     * Metodo para contar los artistas más escuchados
      */
     public void contarArtista(){
         for (Map.Entry<String, Usuario> entry : usuarios.entrySet()) {

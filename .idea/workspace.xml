@@ -5,11 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="09a5be0b-dfd4-46c5-9245-9a8d4b49f8c0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/test/co/edu/uniquindio/Storify/model/ArbolBinarioTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/controllers/LikesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/controllers/LikesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/serializable/usuario.ser" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/serializable/usuario.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/windows/likes.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/windows/likes.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/model/ArbolBinario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/model/ArbolBinario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/model/Storify.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/model/Storify.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +21,7 @@
       <list>
         <option value="FxmlFile" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -52,6 +53,12 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\nesto\Documents\GitHub\UQMusic\src\main\resources" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="co.edu.uniquindio.Storify.model" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="co.edu.uniquindio.Storify.utils" />
     </key>
@@ -60,6 +67,96 @@
     <option name="myCommands">
       <command value="mvn clean install" />
     </option>
+  </component>
+  <component name="RunManager" selected="JUnit.CancionTest.coincideAtributo">
+    <configuration name="ArbolBinarioTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MusicUQ" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="co.edu.uniquindio.Storify.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="co.edu.uniquindio.Storify.model" />
+      <option name="MAIN_CLASS_NAME" value="co.edu.uniquindio.Storify.model.ArbolBinarioTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ArbolBinarioTest.agregarAtributo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MusicUQ" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="co.edu.uniquindio.Storify.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="co.edu.uniquindio.Storify.model" />
+      <option name="MAIN_CLASS_NAME" value="co.edu.uniquindio.Storify.model.ArbolBinarioTest" />
+      <option name="METHOD_NAME" value="agregarAtributo" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ArbolBinarioTest.buscarAutor" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MusicUQ" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="co.edu.uniquindio.Storify.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="co.edu.uniquindio.Storify.model" />
+      <option name="MAIN_CLASS_NAME" value="co.edu.uniquindio.Storify.model.ArbolBinarioTest" />
+      <option name="METHOD_NAME" value="buscarAutor" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ArbolBinarioTest.recorridoCanciones" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MusicUQ" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="co.edu.uniquindio.Storify.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="co.edu.uniquindio.Storify.model" />
+      <option name="MAIN_CLASS_NAME" value="co.edu.uniquindio.Storify.model.ArbolBinarioTest" />
+      <option name="METHOD_NAME" value="recorridoCanciones" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CancionTest.coincideAtributo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MusicUQ" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="co.edu.uniquindio.Storify.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="co.edu.uniquindio.Storify.model" />
+      <option name="MAIN_CLASS_NAME" value="co.edu.uniquindio.Storify.model.CancionTest" />
+      <option name="METHOD_NAME" value="coincideAtributo" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.CancionTest.coincideAtributo" />
+        <item itemvalue="JUnit.ArbolBinarioTest" />
+        <item itemvalue="JUnit.ArbolBinarioTest.buscarAutor" />
+        <item itemvalue="JUnit.ArbolBinarioTest.recorridoCanciones" />
+        <item itemvalue="JUnit.ArbolBinarioTest.agregarAtributo" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>

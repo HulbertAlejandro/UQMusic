@@ -112,6 +112,7 @@ public class ArbolBinario implements Serializable {
      * @param nombre El nombre del autor a buscar.
      * @return Una lista de canciones del autor si se encuentra, o null si no se encuentra.
      */
+
     public ArrayList<Cancion> buscarAutor(String nombre) {
         return buscarAutor(inicio, nombre);
     }
