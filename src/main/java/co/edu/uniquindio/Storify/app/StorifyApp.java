@@ -28,7 +28,7 @@ public class StorifyApp extends Application {
 
         Scene scene = new Scene(parent);
         stage.setScene(scene);
-        stage.setTitle("Storfy");
+        stage.setTitle("Storify");
         stage.show();
     }
 
