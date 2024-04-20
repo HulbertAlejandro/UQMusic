@@ -12,6 +12,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.image.Image;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 
@@ -440,6 +441,7 @@ public class Storify {
             Stage newStage = new Stage();
             newStage.setScene(scene);
             newStage.setTitle("Storify");
+            newStage.getIcons().add(new Image("/imagenes/storify.png"));
             newStage.show();
         } catch (Exception ex) {
             ex.printStackTrace();
