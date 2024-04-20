@@ -5,6 +5,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /**
@@ -27,6 +28,8 @@ public class StorifyApp extends Application {
         Parent parent = loader.load();
 
         Scene scene = new Scene(parent);
+        Image image = new Image("/imagenes/storify.png");
+        stage.getIcons().add(image);
         stage.setScene(scene);
         stage.setTitle("Storify");
         stage.show();
