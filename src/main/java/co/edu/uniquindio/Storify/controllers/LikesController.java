@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 import javafx.scene.web.WebView;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Random;
 
 public class LikesController {
@@ -40,6 +41,10 @@ public class LikesController {
     private ImageView imagenView, imgLike, imgAleatorio, imgDeshacer, imgRehacer;
     @FXML
     private Label labelCancion, labelArtista;
+
+    @FXML
+    public ComboBox<String> comboBoxOrdenamiento;
+
     private boolean stateAletorio = false;
 
     private static Cancion cancionSeleccionada;
@@ -52,10 +57,19 @@ public class LikesController {
     private ArrayList<Cancion> cancionesSistema = storify.enviarUsuario().getCanciones().toArrayList();
     private ArrayList<Cancion> cancionesUsuario = storify.enviarUsuario().getCanciones().toArrayList();
     private Usuario usuario = storify.enviarUsuario();
+
+    ObservableList<String> ordenamientoList =
+            FXCollections.observableArrayList("Título", "Artista", "Año", "Álbum", "Género", "Duración");
+
     @FXML
     public void initialize() {
         // Configurar la columna de carátula para mostrar imágenes
         columnaCaratula.setCellValueFactory(new PropertyValueFactory<>("caratula"));
+
+        //Inicializar el ComboBox con sus valores y sus tipos de ordenamiento para el usuario
+        llenarCombo(comboBoxOrdenamiento, ordenamientoList);
+        comboBoxOrdenamiento.setOnAction(this::ordenarLikes);
+
         columnaCaratula.setCellFactory(param -> new javafx.scene.control.TableCell<>() {
             private final ImageView imageView = new ImageView();
 
@@ -128,7 +142,14 @@ public class LikesController {
         tablaCanciones.getItems().addAll(cancionesSistema);
         buscador.textProperty().addListener((observable, oldValue, newValue) ->
                 tablaCanciones.setItems(buscarPorO(newValue)));
+
     }
+
+    //Metodo para meter los tipos de ordenamiento en el ComboBox
+    private void llenarCombo(ComboBox<String> comboBoxOrdenamiento, ObservableList<String> ordenamientoList) {
+        comboBoxOrdenamiento.getItems().addAll(ordenamientoList);
+    }
+
     @FXML
     void play() {
         Cancion cancionSeleccionada = tablaCanciones.getSelectionModel().getSelectedItem();
@@ -496,4 +517,39 @@ public class LikesController {
         rehacer(cancionSeleccionada);
         tablaCanciones.refresh();
     }
+
+    @FXML
+    void ordenarLikes(ActionEvent event) {
+        //String selectedAttribute = String.valueOf(comboBoxOrdenamiento.getValue());
+        System.out.println("Antes de ordenar: " + cancionesUsuario.toString());
+        String selectedAttribute = comboBoxOrdenamiento.getValue();
+        switch (selectedAttribute) {
+            case "Título":
+                cancionesUsuario.sort(Comparator.comparing(Cancion::getNombreCancion));
+                break;
+            case "Género":
+                cancionesUsuario.sort(Comparator.comparing(Cancion::getGenero));
+                break;
+            case "Año":
+                cancionesUsuario.sort(Comparator.comparingInt(Cancion::getAnio));
+                break;
+            case "Artista":
+                cancionesUsuario.sort(Comparator.comparing(Cancion::getArtistas));
+                break;
+            case "Álbum":
+                cancionesUsuario.sort(Comparator.comparing(Cancion::getNombreAlbum));
+                break;
+            case "Duración":
+                cancionesUsuario.sort(Comparator.comparingDouble(Cancion::getDuracion));
+            default:
+                System.out.println("Atributo de ordenamiento no válido.");
+                break;
+        }
+        System.out.println("Después de ordenar: " + cancionesUsuario.toString());
+        // Convertir ArrayList a ObservableList
+        ObservableList<Cancion> listaObservable = FXCollections.observableArrayList(cancionesUsuario);
+        // Establecer la TableView con la lista observable
+        tablaCanciones.setItems(listaObservable);
+    }
+
 }

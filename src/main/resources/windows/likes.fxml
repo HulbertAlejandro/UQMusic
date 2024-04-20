@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
 <?import java.net.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.control.cell.*?>
@@ -8,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="921.0" style="-fx-background-color: #000000; -fx-border-radius: 20;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.Storify.controllers.LikesController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="921.0" style="-fx-background-color: #000000; -fx-border-radius: 20;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.Storify.controllers.LikesController">
     <stylesheets>
         <URL value="@../styles.css" />
     </stylesheets>
@@ -44,12 +43,20 @@
                         </TableColumn>
                     </columns>
                 </TableView>
-            <ToolBar layoutX="545.0" layoutY="14.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="40.0" prefWidth="246.0" style="-fx-background-color: #212121;" />
-            <TextField fx:id="buscador" layoutX="39.0" layoutY="17.0" prefHeight="34.0" prefWidth="728.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 15;">
+            <ToolBar layoutX="545.0" layoutY="14.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="40.0" prefWidth="221.0" style="-fx-background-color: #212121;">
+               <items>
+                  <ComboBox fx:id="comboBoxOrdenamiento" onAction="#ordenarLikes" prefHeight="25.0" prefWidth="207.0" promptText="Escoja la forma de ordenar:" />
+               </items></ToolBar>
+            <TextField fx:id="buscador" layoutX="39.0" layoutY="17.0" prefHeight="34.0" prefWidth="338.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 15;">
                <font>
                   <Font name="Segoe UI" size="15.0" />
                </font>
             </TextField>
+            <Label layoutX="437.0" layoutY="26.0" prefHeight="17.0" prefWidth="108.0" text="ORDENAR POR:" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+            </Label>
             </children>
         </Pane>
         <Pane id="sidebarPane" layoutX="14.0" layoutY="41.0" prefHeight="455.0" prefWidth="71.0" style="-fx-background-color: #121212; -fx-background-radius: 10;">
