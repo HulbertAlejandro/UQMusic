@@ -407,18 +407,23 @@ public class PrincipalController {
     }
 
     public void like(ActionEvent actionEvent) {
+        Cancion cancionSeleccionada = tablaCanciones.getSelectionModel().getSelectedItem();
         if(!stateLike){
             usuario.getCanciones().agregar(tablaCanciones.getItems().get(indiceTabla));
             storify.serializar();
             Image image = new Image("/imagenes/check.png");
             imgLike.setImage(image);
             stateLike = true;
+            storify.pilaDeshacer.push("Insertar");
+            storify.pilaCancionesDeshacer.push(cancionSeleccionada);
         }else{
             usuario.getCanciones().eliminar(tablaCanciones.getItems().get(indiceTabla));
             storify.serializar();
             Image image = new Image("/imagenes/checkOFF.png");
             imgLike.setImage(image);
             stateLike = false;
+            storify.pilaDeshacer.push("Eliminar");
+            storify.pilaCancionesDeshacer.push(cancionSeleccionada);
         }
     }
 

@@ -47,7 +47,6 @@ public class LikesController {
 
     private boolean stateAletorio = false;
 
-    private static Cancion cancionSeleccionada;
     private boolean stateEliminada;
     private boolean stateInsertada;
     private boolean stateLike;
@@ -438,13 +437,15 @@ public class LikesController {
     }
 
     public void like(ActionEvent actionEvent) {
-        cancionSeleccionada = tablaCanciones.getSelectionModel().getSelectedItem();
+        Cancion cancionSeleccionada = tablaCanciones.getSelectionModel().getSelectedItem();
         if(!stateLike){
             usuario.getCanciones().agregar(tablaCanciones.getItems().get(indiceTabla));
             storify.serializar();
             Image image = new Image("/imagenes/check.png");
             imgLike.setImage(image);
             stateLike = true;
+            storify.pilaDeshacer.push("Insertar");
+            storify.pilaCancionesDeshacer.push(cancionSeleccionada);
 
         }else{
             usuario.getCanciones().eliminar(tablaCanciones.getItems().get(indiceTabla));
@@ -452,8 +453,11 @@ public class LikesController {
             Image image = new Image("/imagenes/checkOFF.png");
             imgLike.setImage(image);
             stateLike = false;
+            storify.pilaDeshacer.push("Eliminar");
+            storify.pilaCancionesDeshacer.push(cancionSeleccionada);
         }
-        tablaCanciones.refresh();
+        tablaCanciones.setItems(FXCollections.observableArrayList(storify.enviarCanciones()));
+        storify.loadStage("/windows/likes.fxml", actionEvent);
     }
 
     public void aleatorio(ActionEvent actionEvent) {
@@ -468,54 +472,64 @@ public class LikesController {
         }
     }
 
-    public void deshacer (Cancion cancion) {
-        if(!stateLike){
-            /*
-            cancionesUsuario.remove(cancion);
-            usuario.getCanciones().eliminar(cancionSeleccionada);
-            storify.serializar();
-            Image image = new Image("/imagenes/checkOFF.png");
-            imgLike.setImage(image);
-            stateLike = false;
+    public void deshacer () {
+        if(!storify.pilaDeshacer.empty()){
+            Cancion c = storify.pilaCancionesDeshacer.pop();
+            if(storify.pilaDeshacer.pop().equals("Eliminar")){
+                cancionesUsuario.add(c);
+                usuario.getCanciones().agregar(c);
+                storify.serializar();
+                Image image = new Image("/imagenes/check.png");
+                imgLike.setImage(image);
+                stateLike = true;
+                storify.pilaRehacer.push("Insertar");
+                storify.pilaCancionesRehacer.push(c);
+            }else{
+                cancionesUsuario.remove(c);
+                usuario.getCanciones().eliminar(c);
+                storify.serializar();
+                Image image = new Image("/imagenes/checkOFF.png");
+                imgLike.setImage(image);
+                stateLike = false;
+                storify.pilaRehacer.push("Eliminar");
+                storify.pilaCancionesRehacer.push(c);
+            }
         }else{
-
-             */
-            cancionesUsuario.add(cancion);
-            usuario.getCanciones().agregar(cancionSeleccionada);
-            storify.serializar();
-            Image image = new Image("/imagenes/check.png");
-            imgLike.setImage(image);
-            stateLike = true;
+            storify.mostrarMensaje(Alert.AlertType.ERROR,"No hay acciones para deshacer");
         }
+        tablaCanciones.setItems(FXCollections.observableArrayList(storify.enviarCanciones()));
     }
 
-    public void rehacer (Cancion cancion) {
-        if(!stateLike){
-            /*
-            cancionesUsuario.add(cancion);
-            usuario.getCanciones().agregar(cancionSeleccionada);
-            storify.serializar();
-            Image image = new Image("/imagenes/check.png");
-            imgLike.setImage(image);
-            stateLike = true;
+    public void rehacer () {
+        if(!storify.pilaRehacer.empty()){
+            Cancion c = storify.pilaCancionesRehacer.pop();
+            if(storify.pilaRehacer.pop().equals("Eliminar")){
+                cancionesUsuario.add(c);
+                usuario.getCanciones().agregar(c);
+                storify.serializar();
+                Image image = new Image("/imagenes/check.png");
+                imgLike.setImage(image);
+                stateLike = true;
+            }else{
+                cancionesUsuario.remove(c);
+                usuario.getCanciones().eliminar(c);
+                storify.serializar();
+                Image image = new Image("/imagenes/checkOFF.png");
+                imgLike.setImage(image);
+                stateLike = false;
+            }
         }else{
-
-             */
-            cancionesUsuario.remove(cancion);
-            usuario.getCanciones().eliminar(cancionSeleccionada);
-            storify.serializar();
-            Image image = new Image("/imagenes/checkOFF.png");
-            imgLike.setImage(image);
-            stateLike = false;
+            storify.mostrarMensaje(Alert.AlertType.ERROR,"No hay acciones para rehacer");
         }
+        tablaCanciones.setItems(FXCollections.observableArrayList(storify.enviarCanciones()));
     }
     public void deshacer (ActionEvent actionEvent) {
-        deshacer(cancionSeleccionada);
-        tablaCanciones.refresh();
+        deshacer();
+        storify.loadStage("/windows/likes.fxml", actionEvent);
     }
     public void rehacer (ActionEvent actionEvent) {
-        rehacer(cancionSeleccionada);
-        tablaCanciones.refresh();
+        rehacer();
+        storify.loadStage("/windows/likes.fxml", actionEvent);
     }
 
     @FXML

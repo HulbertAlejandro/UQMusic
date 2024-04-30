@@ -66,6 +66,12 @@ public class Storify {
     public ArrayList<Integer> contadoresGenero = new ArrayList<>();
     public ArrayList<Integer> contadoresArtista = new ArrayList<>();
 
+    public Stack<String> pilaDeshacer = new Stack<>();
+    public Stack<String> pilaRehacer = new Stack<>();
+    public Stack<Cancion> pilaCancionesDeshacer = new Stack<>();
+    public Stack<Cancion> pilaCancionesRehacer = new Stack<>();
+
+
     private ArbolBinario autores = new ArbolBinario();
 
     /**
