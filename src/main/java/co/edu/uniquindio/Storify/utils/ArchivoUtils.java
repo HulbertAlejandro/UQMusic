@@ -212,7 +212,7 @@ public class ArchivoUtils {
             // Leer canciones
             while ((linea = br.readLine()) != null) {
                 String[] partes = linea.split(";");
-                if (partes.length == 7) {
+                if (partes.length == 8) {
                     String nombreArtista = partes[0];
                     String nombreCancion = partes[1];
                     String nombreAlbum = partes[2];
@@ -220,6 +220,7 @@ public class ArchivoUtils {
                     double duracion = Double.parseDouble(partes[4]);
                     String genero = partes[5];
                     String url = partes[6];
+                    String imagen = partes[7];
 
                     // Buscar el autor correspondiente
                     Autor autor = buscarAutor(artistas, nombreArtista);
@@ -231,8 +232,9 @@ public class ArchivoUtils {
                                 .duracion(duracion)
                                 .genero(genero)
                                 .url(url)
+                                .caratula(imagen)
+                                .artistas(nombreArtista)
                                 .build();
-
                         autor.getListaCanciones().añadirFinal(cancion);
                     }
                 }

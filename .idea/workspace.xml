@@ -5,11 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="09a5be0b-dfd4-46c5-9245-9a8d4b49f8c0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/test/co/edu/uniquindio/Storify/model/ArbolBinarioTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/co/edu/uniquindio/Storify/model/AutorTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/model/ArbolBinario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/model/ArbolBinario.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/model/Storify.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/model/Storify.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/utils/ArchivoUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/utils/ArchivoUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/serializable/artistas.ser" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/serializable/artistas.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/serializable/usuario.ser" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/serializable/usuario.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/test/co/edu/uniquindio/Storify/model/ArbolBinarioTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/test/co/edu/uniquindio/Storify/model/CancionTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,10 +55,17 @@
       <recent name="C:\Users\MI PC\Desktop\proyectoAlmacenUQ\UQMusic\src\main\resources\imagenes" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\nesto\Documents\GitHub\UQMusic\src\test\java\co\edu\uniquindio\Storify\model" />
+      <recent name="C:\Users\nesto\Documents\GitHub\UQMusic\src\main\java\co\edu\uniquindio\Storify" />
       <recent name="C:\Users\nesto\Documents\GitHub\UQMusic\src\main\resources" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+      <recent name="co.edu.uniquindio.Storify" />
+      <recent name="test" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
       <recent name="co.edu.uniquindio.Storify.model" />
@@ -68,9 +79,9 @@
       <command value="mvn clean install" />
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.CancionTest.coincideAtributo">
+  <component name="RunManager" selected="JUnit.CancionTest">
     <configuration name="ArbolBinarioTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="MusicUQ" />
+      <module name="TiendaUQ" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="co.edu.uniquindio.Storify.model.*" />
@@ -79,23 +90,8 @@
       </extension>
       <option name="PACKAGE_NAME" value="co.edu.uniquindio.Storify.model" />
       <option name="MAIN_CLASS_NAME" value="co.edu.uniquindio.Storify.model.ArbolBinarioTest" />
+      <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ArbolBinarioTest.agregarAtributo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="MusicUQ" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="co.edu.uniquindio.Storify.model.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="co.edu.uniquindio.Storify.model" />
-      <option name="MAIN_CLASS_NAME" value="co.edu.uniquindio.Storify.model.ArbolBinarioTest" />
-      <option name="METHOD_NAME" value="agregarAtributo" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -132,8 +128,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="CancionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TiendaUQ" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="co.edu.uniquindio.Storify.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="co.edu.uniquindio.Storify.model" />
+      <option name="MAIN_CLASS_NAME" value="co.edu.uniquindio.Storify.model.CancionTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="CancionTest.coincideAtributo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="MusicUQ" />
+      <module name="TiendaUQ" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="co.edu.uniquindio.Storify.model.*" />
@@ -150,11 +161,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.CancionTest.coincideAtributo" />
+        <item itemvalue="JUnit.CancionTest" />
         <item itemvalue="JUnit.ArbolBinarioTest" />
+        <item itemvalue="JUnit.CancionTest.coincideAtributo" />
         <item itemvalue="JUnit.ArbolBinarioTest.buscarAutor" />
         <item itemvalue="JUnit.ArbolBinarioTest.recorridoCanciones" />
-        <item itemvalue="JUnit.ArbolBinarioTest.agregarAtributo" />
       </list>
     </recent_temporary>
   </component>
@@ -195,5 +206,10 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/LoginController_java$CancionTest_coincideAtributo.ic" NAME="CancionTest.coincideAtributo Coverage Results" MODIFIED="1715135090508" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>co.edu.uniquindio.Storify.model.*</FILTER>
+    </SUITE>
   </component>
 </project>

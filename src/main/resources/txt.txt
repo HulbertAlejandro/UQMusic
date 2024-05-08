@@ -1,0 +1,8 @@
+#Artistas
+25;Reykon;Colombiano;false
+26;YOVNGCHIMI;Puertoriqueño;false
+27;Myke Towers;Puertoriqueño;false
+#Canciones
+Myke Towers;ADIVINO;ADIVINO;2024;279;Reggaeton;https://www.youtube.com/watch?v=QI85rOM4G7E;/imagenes/ADD.png
+YOVNGCHIMI;Grave Digger;WLGS;2023;182;Reggaeton;https://www.youtube.com/watch?v=X48sl98gRds;/imagenes/YCH.png
+Reykon;Secretos;Secretos;2014;212;Reggaeton;https://www.youtube.com/watch?v=ZFwpzIz8eWE;/imagenes/SCC.png
