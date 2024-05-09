@@ -43,6 +43,14 @@ public class ListaCircular<T> implements Serializable {
         return arrayList;
     }
 
+    /**
+     * Elimina el elemento especificado de la lista circular.
+     * Si el elemento a eliminar es el primer elemento de la lista, se actualizan los enlaces apropiadamente.
+     * Si el elemento a eliminar es el último elemento de la lista, se actualiza el enlace del último nodo al nuevo último nodo.
+     * Si el elemento a eliminar está en medio de la lista, se actualizan los enlaces para eliminar el nodo.
+     *
+     * @param selectedItem El elemento a eliminar de la lista.
+     */
     public void eliminar(T selectedItem) {
         if (inicio != null) {
             Nodo<T> nodoActual = inicio;

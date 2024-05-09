@@ -71,4 +71,5 @@ public class NodoArbol implements Serializable {
     public static int compararNombres(String nombre1, String nombre2) {
         return nombre1.compareToIgnoreCase(nombre2);
     }
+
 }

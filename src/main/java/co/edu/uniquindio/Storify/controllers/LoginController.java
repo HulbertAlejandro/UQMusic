@@ -74,6 +74,7 @@ public class LoginController {
             }
         }
     }
+
     /**
      * Método que maneja el evento de registro del usuario.
      * Carga la ventana de registro para que el usuario pueda crear una nueva cuenta.

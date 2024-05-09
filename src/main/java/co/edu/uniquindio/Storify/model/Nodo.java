@@ -10,6 +10,10 @@ public class Nodo<T> implements Serializable {
     private T elemento;
     private Nodo<T> siguiente;
 
+    /**
+     * Constructor de la clase nodo
+     * @param elemento
+     */
     public Nodo(T elemento) {
         this.elemento = elemento;
         siguiente = null;

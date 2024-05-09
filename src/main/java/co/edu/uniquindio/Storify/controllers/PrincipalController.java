@@ -247,6 +247,16 @@ public class PrincipalController {
         storify.loadStage("/windows/likes.fxml",actionEvent);
     }
 
+    /**
+     * Retrocede a la canción anterior en la lista y actualiza la interfaz gráfica en consecuencia.
+     * Si el modo aleatorio está activado, selecciona una canción al azar de la lista.
+     * Si ya está en la primera canción de la lista, retrocede al final de la lista.
+     * Actualiza la información de la canción en la interfaz gráfica, incluyendo el título, artistas y carátula.
+     * Verifica si la canción está marcada como favorita y actualiza el estado correspondiente.
+     * Reproduce la canción seleccionada.
+     *
+     * @param actionEvent El evento que desencadenó la acción de retroceder.
+     */
     public void back(ActionEvent actionEvent) {
         if(indiceTabla!= -1){
             if(stateAletorio){
@@ -327,6 +337,16 @@ public class PrincipalController {
         }
     }
 
+    /**
+     * Avanza a la siguiente canción en la lista y actualiza la interfaz gráfica en consecuencia.
+     * Si el modo aleatorio está activado, selecciona una canción al azar de la lista.
+     * Si ya está en la última canción de la lista, avanza al principio de la lista.
+     * Actualiza la información de la canción en la interfaz gráfica, incluyendo el título, artistas y carátula.
+     * Verifica si la canción está marcada como favorita y actualiza el estado correspondiente.
+     * Reproduce la canción seleccionada.
+     *
+     * @param actionEvent El evento que desencadenó la acción de avanzar.
+     */
     public void next(ActionEvent actionEvent) {
         if(indiceTabla!= -1){
             if(stateAletorio){
@@ -406,6 +426,14 @@ public class PrincipalController {
         }
     }
 
+    /**
+     * Marca la canción actual como favorita o elimina la marca si ya está marcada como favorita.
+     * Actualiza la interfaz gráfica para reflejar el cambio en el estado de la canción.
+     * Serializa los cambios en el sistema de almacenamiento.
+     * Registra la acción en la pila de deshacer para permitir la reversión de la acción.
+     *
+     * @param actionEvent El evento que desencadenó la acción de marcar como favorita.
+     */
     public void like(ActionEvent actionEvent) {
         Cancion cancionSeleccionada = tablaCanciones.getSelectionModel().getSelectedItem();
         if(!stateLike){
@@ -427,6 +455,14 @@ public class PrincipalController {
         }
     }
 
+    /**
+     * Activa o desactiva el modo aleatorio para reproducir canciones.
+     * Si el modo aleatorio está activado, desactiva el modo.
+     * Si el modo aleatorio está desactivado, lo activa.
+     * Actualiza la interfaz gráfica para reflejar el estado actual del modo aleatorio.
+     *
+     * @param actionEvent El evento que desencadenó la acción de cambiar el modo aleatorio.
+     */
     public void aleatorio(ActionEvent actionEvent) {
         if(stateAletorio){
             stateAletorio = false;

@@ -469,6 +469,12 @@ public class Storify {
         return autores.toList();
     }
 
+    /**
+     * Borra los datos serializados almacenados en el archivo especificado.
+     * Si el archivo existe, se eliminan todos los archivos y directorios dentro del directorio del archivo, incluido el archivo mismo.
+     *
+     * @param archivo El nombre o la ruta del archivo que contiene los datos serializados a borrar.
+     */
     public void borrarDatosSerializados(String archivo) {
         Path path = Paths.get(archivo);
         try {
@@ -483,23 +489,50 @@ public class Storify {
         }
     }
 
+    /**
+     * Devuelve una lista de todas las canciones almacenadas en la estructura de datos.
+     *
+     * @return Una lista de todas las canciones.
+     */
     public ArrayList<Cancion> enviarCanciones() {
         return autores.recorridoCanciones(autores.getInicio(), new ArrayList<>());
     }
 
+    /**
+     * Carga un nuevo artista en la estructura de datos y serializa la información.
+     *
+     * @param autor El autor a cargar.
+     */
     public void cargarArtista(Autor autor) {
         autores.insertar(autor);
         ArchivoUtils.serializarArtista(RUTA_ARTISTAS, autores);
     }
 
+    /**
+     * Devuelve el árbol binario que contiene todos los artistas almacenados.
+     *
+     * @return El árbol binario de artistas.
+     */
     public ArbolBinario enviarArtistas() {
         return autores;
     }
 
+    /**
+     * Devuelve el usuario actual en sesión.
+     *
+     * @return El usuario en sesión.
+     */
     public Usuario enviarUsuario() {
         return USUARIO_SESION;
     }
 
+    /**
+     * Verifica si una canción con el código especificado está contenida en la lista de canciones del usuario.
+     *
+     * @param cancionesUsuario La lista de canciones del usuario.
+     * @param codigo El código de la canción a verificar.
+     * @return true si la canción está contenida en la lista del usuario, false de lo contrario.
+     */
     public boolean verificarContencion(ArrayList<Cancion> cancionesUsuario, String codigo) {
         for (Cancion cancion : cancionesUsuario) {
             if (cancion.getCodigo().equals(codigo)) {
@@ -581,6 +614,15 @@ public class Storify {
             }
         }
     }
+
+    /**
+     * Recorre el subárbol izquierdo del nodo dado de manera completa, buscando canciones que coincidan con los atributos especificados.
+     *
+     * @param inicio El nodo a partir del cual comenzar el recorrido.
+     * @param cancions La lista de canciones encontradas hasta el momento.
+     * @param atributos Los atributos que deben coincidir para que una canción sea añadida a la lista.
+     * @return Una lista de canciones que coinciden con los atributos especificados en el subárbol izquierdo del nodo dado.
+     */
     public ArrayList<Cancion> recorrerIzquierdaCompleto(NodoArbol inicio, ArrayList<Cancion> cancions, String[] atributos) {
         if (inicio == null) {
             return cancions;
@@ -602,6 +644,14 @@ public class Storify {
         return cancions;
     }
 
+    /**
+     * Recorre el subárbol derecho del nodo dado de manera completa, buscando canciones que coincidan con los atributos especificados.
+     *
+     * @param inicio El nodo a partir del cual comenzar el recorrido.
+     * @param cancions La lista de canciones encontradas hasta el momento.
+     * @param atributos Los atributos que deben coincidir para que una canción sea añadida a la lista.
+     * @return Una lista de canciones que coinciden con los atributos especificados en el subárbol derecho del nodo dado.
+     */
     public ArrayList<Cancion> recorrerDerechaCompleto(NodoArbol inicio, ArrayList<Cancion> cancions, String[] atributos) {
         if (inicio == null) {
             return cancions;
@@ -622,6 +672,13 @@ public class Storify {
         recorrerDerechaCompleto(inicio.getNodoDerecha(), cancions, atributos);
         return cancions;
     }
+
+    /**
+     * Busca canciones filtradas por el nombre del artista.
+     *
+     * @param nombre El nombre del artista a buscar.
+     * @return Una lista observable de canciones filtradas por el nombre del artista.
+     */
     public ObservableList<Cancion> buscarPorArtistas(String nombre) {
         if (nombre.isBlank() || nombre.isEmpty()) {
             return FXCollections.observableArrayList(enviarCanciones());
@@ -637,7 +694,12 @@ public class Storify {
         }
     }
 
-    // Método para buscar por O
+    /**
+     * Busca canciones filtradas por un conjunto de atributos utilizando la operación lógica "o".
+     *
+     * @param atributo La cadena de atributos separados por comas.
+     * @return Una lista observable de canciones que coinciden con al menos uno de los atributos proporcionados.
+     */
     public ObservableList<Cancion> buscarPorO(String atributo) {
 
         ObservableList<Cancion> cancionesCoincidentes = FXCollections.observableArrayList();
@@ -677,6 +739,14 @@ public class Storify {
         return cancionesCoincidentes;
     }
 
+    /**
+     * Evalúa las canciones en el nodo raíz del árbol utilizando la operación lógica "o".
+     *
+     * @param inicio     El nodo raíz del árbol.
+     * @param cancions   La lista de canciones actualmente encontradas.
+     * @param atributos  Los atributos para los cuales se busca coincidencia.
+     * @return Una lista de canciones que coinciden con al menos uno de los atributos proporcionados.
+     */
     public ArrayList<Cancion> evaluarRaizO(NodoArbol inicio, ArrayList<Cancion> cancions, String[] atributos) {
         if(inicio == null){
             return cancions;
@@ -691,6 +761,15 @@ public class Storify {
         }
         return cancions;
     }
+
+    /**
+     * Evalúa las canciones en el nodo raíz del árbol utilizando la operación lógica "y".
+     *
+     * @param inicio     El nodo raíz del árbol.
+     * @param cancions   La lista de canciones actualmente encontradas.
+     * @param atributos  Los atributos para los cuales se busca coincidencia.
+     * @return Una lista de canciones que coinciden con todos los atributos proporcionados.
+     */
     public ArrayList<Cancion> evaluarRaizY(NodoArbol inicio, ArrayList<Cancion> cancions, String[] atributos) {
         if(inicio == null){
             return cancions;
@@ -710,6 +789,14 @@ public class Storify {
         return cancions;
     }
 
+    /**
+     * Recorre el subárbol izquierdo del nodo proporcionado en busca de canciones que coincidan con los atributos especificados.
+     *
+     * @param inicio     El nodo raíz del subárbol izquierdo.
+     * @param cancions   La lista de canciones actualmente encontradas.
+     * @param atributos  Los atributos para los cuales se busca coincidencia.
+     * @return Una lista de canciones que coinciden con los atributos proporcionados en el subárbol izquierdo.
+     */
     public ArrayList<Cancion> recorrerIzquierda(NodoArbol inicio, ArrayList<Cancion> cancions, String[] atributos) {
         if(inicio == null){
             return cancions;
@@ -727,6 +814,14 @@ public class Storify {
         return cancions;
     }
 
+    /**
+     * Recorre el subárbol derecho del nodo proporcionado en busca de canciones que coincidan con los atributos especificados.
+     *
+     * @param inicio     El nodo raíz del subárbol derecho.
+     * @param cancions   La lista de canciones actualmente encontradas.
+     * @param atributos  Los atributos para los cuales se busca coincidencia.
+     * @return Una lista de canciones que coinciden con los atributos proporcionados en el subárbol derecho.
+     */
     public ArrayList<Cancion> recorrerDerecha(NodoArbol inicio, ArrayList<Cancion> cancions, String[] atributos) {
         if(inicio == null){
             return cancions;
@@ -744,7 +839,12 @@ public class Storify {
         return cancions;
     }
 
-    // Método para buscar por Y
+    /**
+     * Busca canciones que coincidan con todos los atributos especificados mediante el operador lógico "Y".
+     *
+     * @param atributo El conjunto de atributos separados por comas para los cuales se busca coincidencia.
+     * @return Una lista de canciones que coinciden con todos los atributos proporcionados.
+     */
     public ObservableList<Cancion> buscarPorY(String atributo) {
 
         ObservableList<Cancion> cancionesCoincidentes = FXCollections.observableArrayList();

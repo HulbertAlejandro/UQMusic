@@ -140,6 +140,14 @@ public class RegistroCancionController implements Serializable {
         return String.valueOf(codigoAleatorio);
     }
 
+    /**
+     * Maneja la acción de seleccionar un artista de la tabla de artistas.
+     * Muestra un mensaje de confirmación.
+     * Establece el estado de selección a verdadero.
+     * Obtiene el artista seleccionado de la tabla de artistas.
+     *
+     * @param actionEvent El evento que desencadenó la acción de seleccionar un artista.
+     */
     public void seleccionarArtista(ActionEvent actionEvent) {
         storify.mostrarMensaje(Alert.AlertType.CONFIRMATION, "Se selecciono el artista");
         isSelected = true;
