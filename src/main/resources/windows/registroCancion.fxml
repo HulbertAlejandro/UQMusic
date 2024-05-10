@@ -88,7 +88,7 @@
                   </TableView>
                   <Button fx:id="bttSeleccionar" layoutX="445.0" layoutY="359.0" mnemonicParsing="false" onAction="#seleccionarArtista" prefHeight="38.0" prefWidth="346.0" style="-fx-background-color: #212121;" text="Seleccionar Artista" textFill="WHITE">
                      <font>
-                        <Font name="Segoe UI Semibold" size="15.0" />
+                        <Font name="Segoe UI Bold" size="14.0" />
                      </font>
                   </Button>
                     </children>
@@ -97,6 +97,6 @@
         </Pane>
     </children>
     <stylesheets>
-
+        <URL value="@../estilosTabla.css"/> <!-- Ruta al archivo CSS con los estilos -->
     </stylesheets>
 </AnchorPane>

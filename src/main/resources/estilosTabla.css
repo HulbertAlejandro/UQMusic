@@ -1,11 +1,44 @@
-/* estilosTabla.css */
+/* estiloTabla.css */
 
-/* Estilo para el título de la columna */
-.table-view .column-header .label {
-    -fx-text-fill: white; /* Color del texto blanco */
+.table-view .column-header, .table-view .filler, .table-view .column-header-background {
+    -fx-background-color: #212121; /* Cambia el color de fondo de los encabezados de columna */
+    -fx-font-family: "Segoe UI Semibold"; /* Cambia la fuente de los encabezados de columna */
+    -fx-font-size: 16px; /* Cambia el tamaño de fuente de los encabezados de columna */
+    -fx-text-fill: white; /* Cambia el color del texto de los encabezados de columna */
 }
 
-/* Estilo para el fondo transparente de la tabla */
+.table-view .column-header .label {
+    -fx-font-family: "Segoe UI Semibold"; /* Cambia la fuente del texto de los encabezados de columna */
+    -fx-font-size: 16px; /* Cambia el tamaño de fuente del texto de los encabezados de columna */
+    -fx-text-fill: white; /* Cambia el color del texto de los encabezados de columna */
+}
+
 .table-view {
-    -fx-background-color: 212121; /* Fondo transparente */
+    -fx-table-cell-border-color: transparent; /* Hace que los bordes de las celdas de la tabla sean transparentes */
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #212121; /* Cambia el color de fondo del encabezado de columna */
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: white; /* Cambia el color del texto en los encabezados de columna */
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #121212; /* Cambia el color de fondo de las filas impares */
+}
+
+.table-row-cell:even {
+    -fx-background-color: #212121; /* Cambia el color de fondo de las filas pares */
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #004d40; /* Cambia el color de fondo de las filas seleccionadas */
+}
+
+.table-row-cell {
+    -fx-font-family: "Segoe UI"; /* Cambia la fuente del texto en las celdas de la tabla */
+    -fx-font-size: 15px; /* Cambia el tamaño de fuente del texto en las celdas de la tabla */
+    -fx-text-fill: white; /* Cambia el color del texto en las celdas de la tabla */
 }
