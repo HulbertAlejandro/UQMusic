@@ -1,21 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Font?>
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<?import java.net.URL?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="911.0" style="-fx-background-color: black; -fx-border-radius: 80;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.Storify.controllers.RegistroCancionController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="911.0" style="-fx-background-color: black; -fx-border-radius: 80;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.Storify.controllers.RegistroCancionController">
     <stylesheets>
-        <URL value="@../estilosTabla.css"/> <!-- Ruta al archivo CSS con los estilos -->
+        <URL value="@../estilosTabla.css" /> <!-- Ruta al archivo CSS con los estilos -->
     </stylesheets>
     <children>
         <Pane id="sidebarPane" layoutX="11.0" layoutY="18.0" prefHeight="564.0" prefWidth="888.0" style="-fx-background-color: #121212; -fx-background-radius: 10;">
@@ -88,7 +81,7 @@
                   </TableView>
                   <Button fx:id="bttSeleccionar" layoutX="445.0" layoutY="359.0" mnemonicParsing="false" onAction="#seleccionarArtista" prefHeight="38.0" prefWidth="346.0" style="-fx-background-color: #212121;" text="Seleccionar Artista" textFill="WHITE">
                      <font>
-                        <Font name="Segoe UI Bold" size="14.0" />
+                        <Font name="Segoe UI Semibold" size="14.0" />
                      </font>
                   </Button>
                     </children>
@@ -97,6 +90,6 @@
         </Pane>
     </children>
     <stylesheets>
-        <URL value="@../estilosTabla.css"/> <!-- Ruta al archivo CSS con los estilos -->
+        <URL value="@../estilosTabla.css" /> <!-- Ruta al archivo CSS con los estilos -->
     </stylesheets>
 </AnchorPane>

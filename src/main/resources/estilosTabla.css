@@ -25,20 +25,24 @@
     -fx-text-fill: white; /* Cambia el color del texto en los encabezados de columna */
 }
 
-.table-row-cell:odd {
-    -fx-background-color: #121212; /* Cambia el color de fondo de las filas impares */
-}
-
-.table-row-cell:even {
-    -fx-background-color: #212121; /* Cambia el color de fondo de las filas pares */
-}
-
-.table-row-cell:selected {
-    -fx-background-color: #004d40; /* Cambia el color de fondo de las filas seleccionadas */
-}
-
 .table-row-cell {
     -fx-font-family: "Segoe UI"; /* Cambia la fuente del texto en las celdas de la tabla */
     -fx-font-size: 15px; /* Cambia el tamaño de fuente del texto en las celdas de la tabla */
     -fx-text-fill: white; /* Cambia el color del texto en las celdas de la tabla */
+    -fx-background-color: #212121; /* Cambia el color de fondo de las celdas de la tabla */
 }
+
+.table-row-cell:selected {
+    -fx-background-color: white; /* Cambia el color de fondo de las filas seleccionadas a blanco */
+}
+
+/* Estilo para el texto en las celdas seleccionadas */
+.table-row-cell:selected .table-cell {
+    -fx-text-fill: black; /* Cambia el color del texto a negro en las celdas seleccionadas */
+}
+
+/* Estilo para el texto en las celdas de la tabla */
+.table-cell {
+    -fx-text-fill: white; /* Cambia el color del texto a blanco */
+}
+
