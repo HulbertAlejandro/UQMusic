@@ -5,16 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="09a5be0b-dfd4-46c5-9245-9a8d4b49f8c0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/model/Clases.puml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/model/NodoPila.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/model/Pila.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/controllers/LikesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/controllers/LikesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/controllers/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/controllers/PrincipalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/controllers/PrincipalController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/controllers/RegistroCancionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/controllers/RegistroCancionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/model/ArbolBinario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/model/ArbolBinario.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/model/ListaCircular.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/model/ListaCircular.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/model/Nodo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/model/Nodo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/model/NodoArbol.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/model/NodoArbol.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/model/Storify.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Storify/model/Storify.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/serializable/usuario.ser" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/serializable/usuario.ser" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,8 +23,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="FxmlFile" />
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
+        <option value="UML Class" />
       </list>
     </option>
   </component>
@@ -34,7 +33,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4

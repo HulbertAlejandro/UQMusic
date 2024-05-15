@@ -1,0 +1,184 @@
+@startuml
+
+class Storify {
+    - RUTA_USUARIOS: String
+    - RUTA_ARTISTAS: String
+    - storify: Storify
+    - usuarios: Map<String, Usuario>
+    - USUARIO_SESION: Usuario
+    - mediaPlayer: MediaPlayer
+    - proximoCodigoCancion: int
+    - listaAutores: ArrayList<String>
+    - listaGeneros: ArrayList<String>
+    - contadoresGenero: ArrayList<Integer>
+    - contadoresArtista: ArrayList<Integer>
+    - pilaDeshacer: Pila<String>
+    - pilaRehacer: Pila<String>
+    - pilaCancionesDeshacer: Pila<Cancion>
+    - pilaCancionesRehacer: Pila<Cancion>
+    - autores: ArbolBinario
+    + getInstance(): Storify
+    + inicializar(): void
+    + verificarUsuario(usuario: String, contrasena: String): boolean
+    + registrarUsuario(username: String, contrasena: String, email: String): void
+    + guardarCancion(nombre: String, album: String, urlCaratula: String, anioLanzamiento: int, duracionCancion: double, genre: String, url: String, codigo: String, autorSelected: Autor): void
+    + registrarArtista(codigoArtista: String, nombreArtista: String, nacionalidadArtista: String, esGrupo: boolean): void
+    + leerArtistas(): void
+    + leerUsuario(): void
+    + verificarArtista(codigoArtista: String): boolean
+    + buscarUsuarioPorNombre(username: String): Usuario
+    + verifyCredentials(usuario: String, contrasena: String): boolean
+    + verifyUser(username: String, usuarios: Map<String, Usuario>): boolean
+    - findUser(user: String, password: String): boolean
+    + registrarCancion(name: String, artistas: String, code: String, album: String, caratula: String, genero: String, url: String, anio: String, duracion: double): void
+    - almacenarCancion(cancion: Cancion, artistas: String): void
+    + guardarUsuario(user: String, password: String): Usuario
+    - generarCodigoProducto(): int
+    + serializar(): void
+    + loadStage(url: String, event: Event): void
+    + mostrarMensaje(tipo: Alert.AlertType, mensaje: String): void
+    + enviarAutores(): ArrayList<Autor>
+    + borrarDatosSerializados(archivo: String): void
+    + enviarCanciones(): ArrayList<Cancion>
+    + cargarArtista(autor: Autor): void
+    + enviarArtistas(): ArbolBinario
+    + enviarUsuario(): Usuario
+    + verificarContencion(cancionesUsuario: ArrayList<Cancion>, codigo: String): boolean
+    + llenarAtributos(): void
+    + contarGenero(): void
+    + contarArtista(): void
+    + recorrerIzquierdaCompleto(inicio: NodoArbol, cancions: ArrayList<Cancion>, atributos: String[]): ArrayList<Cancion>
+    + recorrerDerechaCompleto(inicio: NodoArbol, cancions: ArrayList<Cancion>, atributos: String[]): ArrayList<Cancion>
+    + buscarPorArtistas(nombre: String): ObservableList<Cancion>
+    + buscarPorO(atributo: String): ObservableList<Cancion>
+    + evaluarRaizO(inicio: NodoArbol, cancions: ArrayList<Cancion>, atributos: String[]): ArrayList<Cancion>
+    + evaluarRaizY(inicio: NodoArbol, cancions: ArrayList<Cancion>, atributos: String[]): ArrayList<Cancion>
+    + recorrerIzquierda(inicio: NodoArbol, cancions: ArrayList<Cancion>, atributos: String[]): ArrayList<Cancion>
+    + recorrerDerecha(inicio: NodoArbol, cancions: ArrayList<Cancion>, atributos: String[]): ArrayList<Cancion>
+    + buscarPorY(atributo: String): ObservableList<Cancion>
+}
+
+class Usuario {
+    - username: String
+    - contrasena: String
+    - email: String
+    - canciones: ListaCircular<Cancion>
+    + getUsername(): String
+    + setUsername(username: String): void
+    + getContrasena(): String
+    + setContrasena(contrasena: String): void
+    + getEmail(): String
+    + setEmail(email: String): void
+    + getCanciones(): ListaCircular<Cancion>
+    + setCanciones(canciones: ListaCircular<Cancion>): void
+}
+
+class Autor {
+    - codigo: String
+    - nombre: String
+    - nacionalidad: String
+    - esGrupo: boolean
+    - listaCanciones: ListaCircular<Cancion>
+    + getCodigo(): String
+    + setCodigo(codigo: String): void
+    + getNombre(): String
+    + setNombre(nombre: String): void
+    + getNacionalidad(): String
+    + setNacionalidad(nacionalidad: String): void
+    + isEsGrupo(): boolean
+    + setEsGrupo(esGrupo: boolean): void
+    + getListaCanciones(): ListaCircular<Cancion>
+    + setListaCanciones(listaCanciones: ListaCircular<Cancion>): void
+}
+
+class Cancion {
+    - nombreCancion: String
+    - nombreAlbum: String
+    - codigo: String
+    - caratula: String
+    - anio: int
+    - duracion: double
+    - genero: String
+    - url: String
+    - artistas: String
+    + getNombreCancion(): String
+    + setNombreCancion(nombreCancion: String): void
+    + getNombreAlbum(): String
+    + setNombreAlbum(nombreAlbum: String): void
+    + getCodigo(): String
+    + setCodigo(codigo: String): void
+    + getCaratula(): String
+    + setCaratula(caratula: String): void
+    + getAnio(): int
+    + setAnio(anio: int): void
+    + getDuracion(): double
+    + setDuracion(duracion: double): void
+    + getGenero(): String
+    + setGenero(genero: String): void
+    + getUrl(): String
+    + setUrl(url: String): void
+    + getArtistas(): String
+    + setArtistas(artistas: String): void
+}
+
+class ArbolBinario {
+    - inicio: NodoArbol
+    + getInicio(): NodoArbol
+    + setInicio(inicio: NodoArbol): void
+    + insertar(autor: Autor): void
+}
+
+class NodoArbol {
+    - autor: Autor
+    - nodoIzquierda: NodoArbol
+    - nodoDerecha: NodoArbol
+    + getAutor(): Autor
+    + setAutor(autor: Autor): void
+    + getNodoIzquierda(): NodoArbol
+    + setNodoIzquierda(nodoIzquierda: NodoArbol): void
+    + getNodoDerecha(): NodoArbol
+    + setNodoDerecha(nodoDerecha: NodoArbol): void
+}
+
+class ListaCircular<T> {
+    - cabeza: NodoLista<T>
+    + getCabeza(): NodoLista<T>
+    + setCabeza(cabeza: NodoLista<T>): void
+    + insertar(valor: T): void
+    + eliminar(valor: T): void
+    + toArrayList(): ArrayList<T>
+}
+
+class NodoLista<T> {
+    - valor: T
+    - siguiente: NodoLista<T>
+    + getValor(): T
+    + setValor(valor: T): void
+    + getSiguiente(): NodoLista<T>
+    + setSiguiente(siguiente: NodoLista<T>): void
+}
+
+class Pila<T> {
+    - elementos: ArrayList<T>
+    + push(elemento: T): void
+    + pop(): T
+    + peek(): T
+    + isEmpty(): boolean
+    + size(): int
+}
+
+Storify "1" --> "1" Usuario
+Storify "1" --> "1" Autor
+Storify "1" --> "1" Cancion
+Storify "1" --> "1" ArbolBinario
+Storify "1" --> "1" NodoArbol
+Storify "1" --> "1" ListaCircular
+Storify "1" --> "1" NodoLista
+Storify "1" --> "1" Pila
+Storify "1" --> "1" ObservableList
+Storify "1" --> "1" FXCollections
+Storify "1" --> "1" Alert
+Storify "1" --> "1" Event
+Storify "1" --> "1" MediaPlayer
+
+@enduml

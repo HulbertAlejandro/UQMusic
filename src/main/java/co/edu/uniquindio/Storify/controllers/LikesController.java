@@ -585,7 +585,7 @@ public class LikesController {
      */
     public void deshacer () {
         // Verifica si hay una acción para deshacer en la pila
-        if(!storify.pilaDeshacer.empty()){
+        if(!storify.pilaDeshacer.isEmpty()){
             Cancion c = storify.pilaCancionesDeshacer.pop(); // Obtiene la última canción afectada por la acción
             if(storify.pilaDeshacer.pop().equals("Eliminar")){ // Si la acción a deshacer fue eliminar una canción, la añade nuevamente a la lista de canciones del usuario
                 cancionesUsuario.add(c);
@@ -609,7 +609,7 @@ public class LikesController {
             }
         }else{
             // Si no hay acciones para deshacer, muestra un mensaje de error
-            storify.mostrarMensaje(Alert.AlertType.ERROR,"No hay acciones para deshacer");
+            //storify.mostrarMensaje(Alert.AlertType.ERROR,"No hay acciones para deshacer");
         }
         // Actualiza la tabla de canciones en la interfaz gráfica con la lista actualizada de canciones del usuario
         tablaCanciones.setItems(FXCollections.observableArrayList(storify.enviarCanciones()));
@@ -621,7 +621,7 @@ public class LikesController {
      * Si no hay acciones para rehacer, muestra un mensaje de error.
      */
     public void rehacer () {
-        if(!storify.pilaRehacer.empty()){
+        if(!storify.pilaRehacer.isEmpty()){
             // Verifica si hay una acción para rehacer en la pila
             Cancion c = storify.pilaCancionesRehacer.pop();
             if(storify.pilaRehacer.pop().equals("Eliminar")){
@@ -632,6 +632,8 @@ public class LikesController {
                 Image image = new Image("/imagenes/check.png");
                 imgLike.setImage(image);
                 stateLike = true;
+                storify.pilaDeshacer.push("Insertar"); // Agrega la acción deshecha a la pila de rehacer
+                storify.pilaCancionesDeshacer.push(c); // Agrega la canción deshecha a la pila de rehacer
             }else{
                 // Si la acción a rehacer fue insertar una canción, la elimina de la lista de canciones del usuario
                 cancionesUsuario.remove(c);
@@ -640,10 +642,12 @@ public class LikesController {
                 Image image = new Image("/imagenes/checkOFF.png");
                 imgLike.setImage(image);
                 stateLike = false;
+                storify.pilaDeshacer.push("Eliminar"); // Agrega la acción deshecha a la pila de rehacer
+                storify.pilaCancionesDeshacer.push(c); // Agrega la canción deshecha a la pila de rehacer
             }
         }else{
             // Si no hay acciones para rehacer, muestra un mensaje de error
-            storify.mostrarMensaje(Alert.AlertType.ERROR,"No hay acciones para rehacer");
+            //storify.mostrarMensaje(Alert.AlertType.ERROR,"No hay acciones para rehacer");
         }
         // Actualiza la tabla de canciones en la interfaz gráfica con la lista actualizada de canciones del usuario
         tablaCanciones.setItems(FXCollections.observableArrayList(storify.enviarCanciones()));
