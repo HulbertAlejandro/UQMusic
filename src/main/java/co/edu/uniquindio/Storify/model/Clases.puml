@@ -171,9 +171,9 @@ Storify "1" --> "1" Usuario
 Storify "1" --> "1" Autor
 Storify "1" --> "1" Cancion
 Storify "1" --> "1" ArbolBinario
-Storify "1" --> "1" NodoArbol
+ArbolBinario "1" *-- "1" NodoArbol
 Storify "1" --> "1" ListaCircular
-Storify "1" --> "1" NodoLista
+ListaCircular "1" *-- "1" NodoLista
 Storify "1" --> "1" Pila
 Storify "1" --> "1" ObservableList
 Storify "1" --> "1" FXCollections
